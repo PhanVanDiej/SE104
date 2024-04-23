@@ -26,3 +26,6 @@ C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\bin\Debug\net7
 C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
 C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\QuanLyHocSinh.csproj.AssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\QuanLyHocSinh.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\App.baml
+C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\Resources\MainResources.baml

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    class LoginVM
+    class LoginViewModel
     {
     }
 }
