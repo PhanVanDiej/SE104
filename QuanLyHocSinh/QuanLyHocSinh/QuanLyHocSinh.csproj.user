@@ -7,7 +7,31 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AddStudentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ForgotPasswordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MainHomeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SignUpView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\StudentListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\StudentProfileView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\StudentScoreBoardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -18,7 +42,31 @@
     <Page Update="Resources\MainResources.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\AddStudentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ForgotPasswordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainHomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SignUpView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StudentListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StudentProfileView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StudentScoreBoardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserProfileView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
