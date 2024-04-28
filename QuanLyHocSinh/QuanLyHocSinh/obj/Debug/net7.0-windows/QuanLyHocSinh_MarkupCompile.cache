@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\App.xaml
-2-11465216
+3-970397101
 
 5871635878
 2031756061069
-Resources\MainResources.xaml;View\Login.xaml;
+Resources\ColorLibrary.xaml;Resources\MainResources.xaml;View\Login.xaml;
 
 False
 

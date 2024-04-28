@@ -9,8 +9,130 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{StaticResource LoginVM}"
         ResizeMode="NoResize"
-        Height="768" Width="1260">
+        WindowStartupLocation="CenterScreen"
+        Height="600" Width="1000">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
-        <Image Margin="0,10,869,624" Source="/Resources/Images/logo.jpg" Stretch="Fill"/>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image  Source="/Resources/Images/logo.jpg" Stretch="Fill"
+                Height="92"
+                Width="253"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"/>
+        <Grid Grid.Row="1">
+            <materialDesign:Card 
+                Height="400"
+                Width="700"
+                VerticalAlignment="Top">
+                <Border 
+                    BorderBrush="Black"
+                    BorderThickness="0.5"
+                    CornerRadius="15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock
+                                Text="Quản lý học sinh"
+                                FontSize="60"
+                                FontWeight="Regular"
+                                TextAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="Varta"></TextBlock>
+                            <Line 
+                                X1="0" Y1="0"
+                                X2="450" Y2="0"
+                                Stroke="{StaticResource PrimaryColor}"
+                                StrokeThickness="1"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Margin="10"></Line>
+
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox 
+                                Grid.Column="1"
+                                Height="50"
+                                VerticalContentAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Margin="10,5,10,5"
+                                Template="{StaticResource TextBoxBaseControlTemplate}"
+                                FontSize="25">
+                            </TextBox>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBox 
+                                 Grid.Column="1"
+                                 Height="50"
+                                 VerticalContentAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="10,5,10,5"
+                                 Template="{StaticResource TextBoxBaseControlTemplate}"
+                                 FontSize="25">
+                            </TextBox>
+                        </Grid>
+                        <TextBlock
+                            Grid.Row="3"
+                            Text="Quên mật khẩu?"
+                            Margin="460,0,16,0"
+                            FontSize="15"
+                            Foreground="{StaticResource PrimaryColor}"
+                            FontWeight="Light"/>
+                        <Grid
+                            Grid.Row="4">
+                            <Button
+                                Width="150"
+                                Height="45"
+                                
+                                materialDesign:ButtonAssist.CornerRadius="25">
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </materialDesign:Card>
+        </Grid>
+
+
+
     </Grid>
 </Window>
