@@ -12,6 +12,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Resources\ColorLibrary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\MainResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Login.xaml">
       <SubType>Designer</SubType>
     </Page>
