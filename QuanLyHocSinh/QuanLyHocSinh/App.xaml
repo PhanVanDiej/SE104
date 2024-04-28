@@ -8,7 +8,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/MainResources.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/ColorLibrary.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Resources/ButtonDesign.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

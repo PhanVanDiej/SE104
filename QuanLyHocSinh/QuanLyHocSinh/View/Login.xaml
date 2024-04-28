@@ -49,18 +49,18 @@
                 VerticalAlignment="Top">
                 <Border 
                     BorderBrush="Black"
-                    BorderThickness="0.5"
+                    BorderThickness="0"
                     CornerRadius="15">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"></RowDefinition>
-                            <RowDefinition Height="2*"></RowDefinition>
-                            <RowDefinition Height="2*"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="89*"></RowDefinition>
+                            <RowDefinition Height="89*"></RowDefinition>
+                            <RowDefinition Height="89*"></RowDefinition>
+                            <RowDefinition Height="27*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
+                            <RowDefinition Height="50*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <Grid Grid.Row="0" Margin="0,0,0,89" Grid.RowSpan="2">
                             <TextBlock
                                 Text="Quản lý học sinh"
                                 FontSize="60"
@@ -79,7 +79,7 @@
 
                         </Grid>
 
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="1" Margin="0,0,0,88" Grid.RowSpan="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -111,22 +111,83 @@
                                  FontSize="25">
                             </TextBox>
                         </Grid>
-                        <TextBlock
+                        <TextBlock 
+                            Text="Quên mật khẩu?" 
+                            FontSize="16" 
+                            VerticalAlignment="Top"
                             Grid.Row="3"
-                            Text="Quên mật khẩu?"
-                            Margin="460,0,16,0"
-                            FontSize="15"
+                            HorizontalAlignment="Right"   
+                            Margin="0,0,130,0"
                             Foreground="{StaticResource PrimaryColor}"
-                            FontWeight="Light"/>
-                        <Grid
-                            Grid.Row="4">
-                            <Button
-                                Width="150"
-                                Height="45"
-                                
-                                materialDesign:ButtonAssist.CornerRadius="25">
-                            </Button>
-                        </Grid>
+                            FontWeight="Light">    
+                             <i:Interaction.Triggers>
+                                 <i:EventTrigger EventName="MouseLeftButtonDown">
+                                     <i:InvokeCommandAction Command="{Binding OpenChangePasswordCommand}"
+                                                            CommandParameter="{Binding ElementName=SignInWD}"></i:InvokeCommandAction>
+                                 </i:EventTrigger>   
+                             </i:Interaction.Triggers> 
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <Trigger 
+                                            Property="IsMouseOver"
+                                            Value="True">
+                                            <Setter 
+                                                Property="TextDecorations"
+                                                Value="Underline" />
+                                            <Setter 
+                                                Property="Cursor"
+                                                Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+
+
+                        <Button
+                            Grid.Row="4"
+                            Content="Đăng nhập"
+                            FontSize="20"
+                            Height="40"
+                            Width="150"
+                            Background="{StaticResource LightPrimaryColor}" Margin="5">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="20"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <TextBlock 
+                            Text="Tạo tài khoản" 
+                            FontSize="20" 
+                            VerticalAlignment="Center"
+                            Grid.Row="5" 
+                            Foreground="{StaticResource PrimaryColor}"
+                            HorizontalAlignment="Center"
+                            FontWeight="Regular"> 
+                             <i:Interaction.Triggers>
+                                 <i:EventTrigger EventName="MouseLeftButtonDown">
+                                     <i:InvokeCommandAction Command="{Binding OpenChangePasswordCommand}"
+                                                            CommandParameter="{Binding ElementName=SignInWD}"></i:InvokeCommandAction>
+                                 </i:EventTrigger>   
+                             </i:Interaction.Triggers> 
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="TextDecorations"
+                                                    Value="Underline" />
+                                            <Setter Property="Cursor"
+                                                    Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
                     </Grid>
                 </Border>
             </materialDesign:Card>

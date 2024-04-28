@@ -10,10 +10,14 @@
 
   <ItemGroup>
     <None Remove="Resources\Images\logo.jpg" />
+    <None Remove="Resources\Images\shadowTextbox.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Images\logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\shadowTextbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
