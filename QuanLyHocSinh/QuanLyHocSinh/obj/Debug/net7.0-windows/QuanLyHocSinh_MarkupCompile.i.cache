@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\
+C:\Users\THINH\Desktop\nmcnpm\SE104\SE104\QuanLyHocSinh\QuanLyHocSinh\obj\Debug\net7.0-windows\
 QuanLyHocSinh
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\Admin\Documents\GitHub\SE104\QuanLyHocSinh\QuanLyHocSinh\App.xaml
+C:\Users\THINH\Desktop\nmcnpm\SE104\SE104\QuanLyHocSinh\QuanLyHocSinh\App.xaml
 11-1709822625
 
-151261708702
-2031756061069
+17-634673077
+203-547445273
 Resources\ColorLibrary.xaml;Resources\MainResources.xaml;View\AddStudentView.xaml;View\ForgotPasswordView.xaml;View\Login.xaml;View\MainHomeView.xaml;View\SignUpView.xaml;View\StudentListView.xaml;View\StudentProfileView.xaml;View\StudentScoreBoardView.xaml;View\UserProfileView.xaml;
 
-False
+True
 

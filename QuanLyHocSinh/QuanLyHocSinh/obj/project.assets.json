@@ -475,19 +475,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\THINH\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\SE104\\QuanLyHocSinh\\QuanLyHocSinh\\QuanLyHocSinh.csproj",
+      "projectUniqueName": "C:\\Users\\THINH\\Desktop\\nmcnpm\\SE104\\SE104\\QuanLyHocSinh\\QuanLyHocSinh\\QuanLyHocSinh.csproj",
       "projectName": "QuanLyHocSinh",
-      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\SE104\\QuanLyHocSinh\\QuanLyHocSinh\\QuanLyHocSinh.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\SE104\\QuanLyHocSinh\\QuanLyHocSinh\\obj\\",
+      "projectPath": "C:\\Users\\THINH\\Desktop\\nmcnpm\\SE104\\SE104\\QuanLyHocSinh\\QuanLyHocSinh\\QuanLyHocSinh.csproj",
+      "packagesPath": "C:\\Users\\THINH\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\THINH\\Desktop\\nmcnpm\\SE104\\SE104\\QuanLyHocSinh\\QuanLyHocSinh\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\THINH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -545,6 +550,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.15, 7.0.15]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -553,7 +576,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
