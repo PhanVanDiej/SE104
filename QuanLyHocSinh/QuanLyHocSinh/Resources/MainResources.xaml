@@ -3,5 +3,6 @@
                     xmlns:viewmodels="clr-namespace:QuanLyHocSinh.ViewModel">
     <!--usercontrol-->
     <viewmodels:LoginViewModel x:Key="LoginVM"></viewmodels:LoginViewModel>
-    
+    <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
+
 </ResourceDictionary>
