@@ -80,7 +80,7 @@ namespace QuanLyHocSinh.ViewModel
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect login information!");
+                            MessageBox.Show("Thông tin đăng nhập không chính xác!");
                         }
                     }
                 }

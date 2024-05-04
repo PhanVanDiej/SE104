@@ -32,6 +32,14 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        <Style x:Key="PlaceHolder"
+               TargetType="TextBlock">
+            <Setter Property="Padding" Value="15,0,0,15"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -86,6 +94,11 @@
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
+                            <TextBlock Text="Mã - Tên đăng nhập"
+                                       Grid.Column="1"
+                                       Margin="10,0,10,0"
+                                       Style="{StaticResource PlaceHolder}"
+                                       Name="IDPlaceHolder"/>
                             <TextBox 
                                 Grid.Column="1"
                                 Height="50"
@@ -94,7 +107,10 @@
                                 Margin="10,5,10,5"
                                 Template="{StaticResource TextBoxBaseControlTemplate}"
                                 FontSize="25"
-                                Text="{Binding ID}">
+                                Text="{Binding ID}"
+                                Padding="10,0,0,0"
+                                Background="Transparent"
+                                TextChanged="TextBox_TextChanged">
                             </TextBox>
                         </Grid>
                         <Grid Grid.Row="2">
@@ -103,21 +119,37 @@
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <PasswordBox
-                                 x:Name="FloatingPasswordBox"
-                                 Grid.Column="1"
-                                 Height="50"
-                                 VerticalContentAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Margin="10,5,10,5"
-                                 FontSize="25">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="PasswordChanged">
-                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
-                       CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </PasswordBox>
+                            <TextBlock Text="Mật khẩu"
+                                       Grid.Column="1"
+                                       Margin="10,0,10,15"
+                                       Style="{StaticResource PlaceHolder}"
+                                       Name="PassPlaceHolder"/>
+                            <Border  BorderBrush="{StaticResource PrimaryColor}"
+                                     BorderThickness="1"
+                                     CornerRadius="20"
+                                     Grid.Column="1"
+                                     Height="50"
+                                     Margin="10,0,10,0"
+                                     Padding="0,0,0,0">
+                                <PasswordBox x:Name="FloatingPasswordBox"
+                                             VerticalContentAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             FontSize="25"
+                                             Margin="0,0,0,0"
+                                             BorderThickness="0"
+                                             BorderBrush="Transparent"
+                                             Background="Transparent"
+                                             Padding="10,0,0,0"
+                                             PasswordChanged="FloatingPasswordBox_PasswordChanged">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger   EventName="PasswordChanged">
+                                            <i:InvokeCommandAction
+                                                Command="{Binding PasswordChangedCommand}" 
+                                                CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </PasswordBox>
+                            </Border>
                         </Grid>
                         <TextBlock 
                             Text="Quên mật khẩu?" 
