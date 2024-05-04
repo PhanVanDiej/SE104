@@ -64,16 +64,14 @@ namespace QuanLyHocSinh.ViewModel
                     connection.Open();
 
                     // Example: Execute a query
-                    string query = "SELECT 1 FROM USERS WHERE ID = @ID AND Pass = @Password";
+                    string query = "SELECT Pass FROM USERS WHERE ID = @ID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         // Add parameters to prevent SQL injection
                         command.Parameters.AddWithValue("@ID", ID);
-                        command.Parameters.AddWithValue("@Password", Password);
-
                         // Execute the command
-                        object result = command.ExecuteScalar();
-                        if (result != null)
+                        string? storedHashedPassword = command.ExecuteScalar() as string;
+                        if (storedHashedPassword != null && PasswordManager.VerifyPassword(Password, storedHashedPassword))
                         {
                             isLogin = true;
                             p.Close();
