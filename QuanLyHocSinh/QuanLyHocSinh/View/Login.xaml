@@ -10,7 +10,8 @@
         DataContext="{StaticResource LoginVM}"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Height="600" Width="1000">
+        Height="600" Width="1000"
+        Name="loginWindow">
     <Window.Resources>
         <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
             <Border Background="{TemplateBinding Background}" 
@@ -92,7 +93,8 @@
                                 VerticalAlignment="Bottom"
                                 Margin="10,5,10,5"
                                 Template="{StaticResource TextBoxBaseControlTemplate}"
-                                FontSize="25">
+                                FontSize="25"
+                                Text="{Binding ID}">
                             </TextBox>
                         </Grid>
                         <Grid Grid.Row="2">
@@ -101,15 +103,21 @@
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBox 
+                            <PasswordBox
+                                 x:Name="FloatingPasswordBox"
                                  Grid.Column="1"
                                  Height="50"
                                  VerticalContentAlignment="Center"
                                  VerticalAlignment="Center"
                                  Margin="10,5,10,5"
-                                 Template="{StaticResource TextBoxBaseControlTemplate}"
                                  FontSize="25">
-                            </TextBox>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" 
+                       CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
                         </Grid>
                         <TextBlock 
                             Text="Quên mật khẩu?" 
@@ -152,7 +160,9 @@
                             FontSize="20"
                             Height="40"
                             Width="150"
-                            Background="{StaticResource LightPrimaryColor}" Margin="5">
+                            Background="{StaticResource LightPrimaryColor}" Margin="5"
+                            IsDefault="True"
+                             Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginWindow}">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="20"/>

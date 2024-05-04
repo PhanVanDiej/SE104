@@ -9,20 +9,20 @@ namespace QuanLyHocSinh.ViewModel
     public class LoginViewModel: ViewModelBase
     {
         //Fields
-        private string _username;
+        private string _ID;
         private string _password;
         public bool isLogin { get; private set; } = false;
 
         //Properties
-        public string Username
+        public string ID
         {
             get
             {
-                return _username;
+                return _ID;
             }
             set
             {
-                _username = value;
+                _ID = value;
                 OnPropertyChanged();
             }
         }
@@ -47,7 +47,7 @@ namespace QuanLyHocSinh.ViewModel
         //Constructor
         public LoginViewModel()
         {
-            Username = "";
+            ID = "";
             Password = "";
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
@@ -64,11 +64,11 @@ namespace QuanLyHocSinh.ViewModel
                     connection.Open();
 
                     // Example: Execute a query
-                    string query = "SELECT 1 FROM TB WHERE Username = @Username AND Pass = @Password";
+                    string query = "SELECT 1 FROM USERS WHERE ID = @ID AND Pass = @Password";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         // Add parameters to prevent SQL injection
-                        command.Parameters.AddWithValue("@Username", Username);
+                        command.Parameters.AddWithValue("@ID", ID);
                         command.Parameters.AddWithValue("@Password", Password);
 
                         // Execute the command
