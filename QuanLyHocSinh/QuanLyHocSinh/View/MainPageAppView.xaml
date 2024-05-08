@@ -8,9 +8,11 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:component="clr-namespace:QuanLyHocSinh.Component"
         mc:Ignorable="d"
+        Name="MainPage"
         Icon="\Resources\Images\LogoIcon.ico"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource MainPageAppVM}"
         Height="810" Width="1440">
     <Grid>
         <Grid.RowDefinitions>
@@ -23,5 +25,8 @@
         <component:NavigationBarView></component:NavigationBarView>
         <component:FooterView Grid.Row="4" VerticalAlignment="Top"></component:FooterView>
         <component:ControlFuntionBarView Grid.Row="1"></component:ControlFuntionBarView>
+        <ContentControl
+            Content="{Binding CurPageView}"
+            Grid.Row="3"></ContentControl>
     </Grid>
 </Window>
