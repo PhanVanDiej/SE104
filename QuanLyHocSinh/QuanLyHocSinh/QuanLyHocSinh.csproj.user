@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Component\NavigationBarView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AddStudentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +45,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Component\NavigationBarView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Resources\ColorLibrary.xaml">
       <SubType>Designer</SubType>
     </Page>

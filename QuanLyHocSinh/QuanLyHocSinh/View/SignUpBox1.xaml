@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
              Width="700"
              Height="400"
+             Name="SignUp1"
              d:DesignHeight="400" d:DesignWidth="700">
     <Grid>
         <materialDesign:Card
@@ -21,39 +22,6 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image
-            HorizontalAlignment="Left"
-            Width="25"
-            Height="20"
-            VerticalAlignment="Center"
-            Margin="10,0,0,0">
-                    <Image.Source>
-                        <BitmapImage UriSource="\Resources\Images\Arrow.png" Rotation="Rotate180"></BitmapImage>
-                    </Image.Source>
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:InvokeCommandAction 
-                        Command="{Binding GoBackSignUpCommand}"
-                        CommandParameter="{Binding ElementName=SignUp1}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    <Image.Style>
-                        <Style TargetType="Image">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                 Value="True">
-                                    <Setter Property="Cursor"
-                                    Value="Hand"/>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="Gray" Opacity="0.5"></DropShadowEffect>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                </Image>
 
                 <TextBox 
             Grid.Row="0"
