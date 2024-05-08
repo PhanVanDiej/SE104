@@ -8,11 +8,12 @@
              xmlns:local="clr-namespace:QuanLyHocSinh.View"
              mc:Ignorable="d" 
              Name="SignUp1"
-        Width="700"
-        Height="450"
-        Title="Đăng ký tài khoản"
-        Foreground="#2C3F4E"
-        DataContext="{StaticResource SignUpVM}"
+             Width="700"
+             Height="450"
+             Title="Đăng ký tài khoản"
+             Foreground="#2C3F4E"
+             DataContext="{StaticResource SignUpVM}"
+             ResizeMode="NoResize"
              WindowStartupLocation="CenterScreen"
              d:DesignHeight="400" d:DesignWidth="700">
     <Grid>
