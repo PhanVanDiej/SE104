@@ -1,12 +1,22 @@
 ﻿<Window x:Class="QuanLyHocSinh.View.SignUpView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyHocSinh.View"
-        mc:Ignorable="d"
-        Title="SignUpView" Height="450" Width="800">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:QuanLyHocSinh.View"
+             mc:Ignorable="d" 
+             Name="SignUp1"
+        Width="700"
+        Height="450"
+        Title="Đăng ký tài khoản"
+        Foreground="#2C3F4E"
+        DataContext="{StaticResource SignUpVM}"
+             WindowStartupLocation="CenterScreen"
+             d:DesignHeight="400" d:DesignWidth="700">
     <Grid>
-        
+        <ContentControl
+            Content="{Binding curSignUpView}"></ContentControl>
     </Grid>
 </Window>

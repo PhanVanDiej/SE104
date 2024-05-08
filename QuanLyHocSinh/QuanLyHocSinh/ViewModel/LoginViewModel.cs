@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System.Windows;
 using QuanLyHocSinh.Resources;
 using Microsoft.Data.SqlClient;
+using QuanLyHocSinh.View;
 
 namespace QuanLyHocSinh.ViewModel
 {
@@ -39,8 +40,10 @@ namespace QuanLyHocSinh.ViewModel
             }
         }
         //Command
+        public ICommand OpenForgotPassCommand { get; set; }  
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
+        public ICommand SignUpCommand { get; set; }
 
         // Delegate to store the close window action
         private Action closeAction;
@@ -51,8 +54,14 @@ namespace QuanLyHocSinh.ViewModel
             Password = "";
             LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
+            OpenForgotPassCommand=new RelayCommand<object>((p) => true, (p)=> ForgotPasswordCommand());
+            SignUpCommand = new RelayCommand<object>((p) => true, (p) => { SignUpView newSignUp = new SignUpView(); newSignUp.Show(); });
         }
-
+        private void ForgotPasswordCommand()
+        {
+            ForgotPasswordView newView= new ForgotPasswordView();
+            newView.Show();
+        }
         private void Login(Window p)
         {
             if (p == null) { return; }
@@ -88,11 +97,6 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-
-        // Function to set the close action from the view
-        public void SetCloseAction(Action close)
-        {
-            closeAction = close;
-        }
+      
     }
 }
