@@ -1,0 +1,26 @@
+﻿<Window x:Class="QuanLyHocSinh.View.MainPageAppView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyHocSinh.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:component="clr-namespace:QuanLyHocSinh.Component"
+        mc:Ignorable="d"
+        Icon="\Resources\Images\LogoIcon.ico"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="810" Width="1440">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="480"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <component:NavigationBarView></component:NavigationBarView>
+        <component:FooterView Grid.Row="4" VerticalAlignment="Top"></component:FooterView>
+    </Grid>
+</Window>

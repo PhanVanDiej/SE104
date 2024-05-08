@@ -21,10 +21,14 @@
     <None Remove="Resources\Images\bg1.png" />
     <None Remove="Resources\Images\confirmLogo.png" />
     <None Remove="Resources\Images\email.png" />
+    <None Remove="Resources\Images\FBLogo.png" />
+    <None Remove="Resources\Images\gmailLogo.png" />
     <None Remove="Resources\Images\HelpLogo.png" />
     <None Remove="Resources\Images\logo.jpg" />
+    <None Remove="Resources\Images\LogoIcon.ico" />
     <None Remove="Resources\Images\NotificationLogo.png" />
     <None Remove="Resources\Images\shadowTextbox.png" />
+    <None Remove="Resources\Images\SimpleLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,16 +47,28 @@
     <Resource Include="Resources\Images\email.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\FBLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\gmailLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\HelpLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\LogoIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\NotificationLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\shadowTextbox.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\SimpleLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
