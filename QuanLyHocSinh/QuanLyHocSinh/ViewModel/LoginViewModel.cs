@@ -64,6 +64,12 @@ namespace QuanLyHocSinh.ViewModel
         }
         private void Login(Window p)
         {
+            //Test
+            MainPageAppView app=new MainPageAppView();
+            p.Close();
+            app.Show();
+            return;
+            //-----------------------------
             if (p == null) { return; }
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {

@@ -18,7 +18,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"></ColumnDefinition>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="165"></ColumnDefinition>
                     <ColumnDefinition Width="140"></ColumnDefinition>
                     <ColumnDefinition Width="120"></ColumnDefinition>
                     <ColumnDefinition Width="100"></ColumnDefinition>
@@ -32,7 +32,7 @@
                     HorizontalAlignment="Center"
                     Kind="HomeImportOutline" />
                 <StackPanel Orientation="Horizontal" Grid.Column="1"
-                            Width="90"
+                            Width="150"
                             VerticalAlignment="Bottom"
                             Margin="0,0,0,10"
                             HorizontalAlignment="Left"
@@ -40,7 +40,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
+                                Command="{Binding AddStudentCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -65,7 +65,7 @@
                         Kind="CardAccountDetailsOutline" />
                     <TextBlock
                         FontWeight="Light"
-                        Text="Học sinh"
+                        Text="Tiếp nhận học sinh"
                         Margin="10,3,0,0"
                         VerticalAlignment="Center"
                         FontSize="15">

@@ -56,9 +56,9 @@
             Height="20"
             VerticalAlignment="Top"
             Margin="0,2,0,0"
-            Text="Đại học Công nghệ thông tin - Đại học Quốc gia Hồ Chí Minh"></TextBlock>
+            Text="Đại học Công nghệ thông tin - Đại học Quốc gia TP.Hồ Chí Minh"></TextBlock>
         <TextBlock
-            Text="ĐC: Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh"
+            Text="ĐC: Khu phố 6, P.Linh Trung, Q.Thủ Đức, Tp.Hồ Chí Minh"
             Height="20"
             Grid.Column="1"
             VerticalAlignment="Top"
