@@ -14,13 +14,14 @@
         Height="810" Width="1440">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="480"></RowDefinition>
-            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="90"></RowDefinition>
         </Grid.RowDefinitions>
         <component:NavigationBarView></component:NavigationBarView>
         <component:FooterView Grid.Row="4" VerticalAlignment="Top"></component:FooterView>
+        <component:ControlFuntionBarView Grid.Row="1"></component:ControlFuntionBarView>
     </Grid>
 </Window>

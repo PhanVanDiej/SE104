@@ -7,7 +7,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="1440">
+             d:DesignHeight="90" d:DesignWidth="1440">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -40,7 +40,7 @@
             Height="20"
             Width="20"
             HorizontalAlignment="Left"
-            Margin="20,15,0,0"
+            Margin="20,22,0,48"
             ></Image>
         <TextBlock
             Text="qlhs@gm.uit.edu.vn"
@@ -48,7 +48,7 @@
             Width="200"
             Height="20"
             HorizontalAlignment="Left"
-            Margin="40,20,0,0"></TextBlock>
+            Margin="40,24,0,46"></TextBlock>
         <TextBlock
             Grid.Column="1"
             HorizontalAlignment="Center"
@@ -67,36 +67,50 @@
             Margin="0,20,0,0"></TextBlock>
         <TextBlock
             Text="ĐT:"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Center"
             HorizontalAlignment="Left"
-            Height="15"
+            Height="16"
             Grid.Column="1"
             FontWeight="Light"
-            Margin="96,0,0,-8"></TextBlock>
+            Margin="98,0,0,0"></TextBlock>
         <TextBlock
             Text="(028) 372 51993"
             FontWeight="DemiBold"
-            Height="15"
+            Height="16"
             Grid.Column="1"
-            Margin="118,0,0,-8"
-            VerticalAlignment="Bottom"
+            Margin="121,0,0,0"
+            VerticalAlignment="Center"
             HorizontalAlignment="Left"></TextBlock>
         <TextBlock
             Text="FAX"
             FontWeight="Light"
             Height="15"
-            Margin="215,0,0,-8"
+            Margin="221,0,0,0"
             Grid.Column="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"></TextBlock>
+            VerticalAlignment="Center"></TextBlock>
         <TextBlock
             Text="(028) 372 52148"
             FontWeight="DemiBold"
-            Height="15"
-            Margin="235,0,0,-8"
+            Height="16"
+            Margin="240,0,0,0"
             Grid.Column="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"></TextBlock> 
-
+            VerticalAlignment="Center"></TextBlock>
+        <Image
+            Source="/Resources/Images/LocationLogo.png"
+            Grid.Column="1" Margin="80,22,386,56"/>
+        <Image
+            Source="/Resources/Images/phoneLogo.png"
+            Grid.Column="1" Margin="80,36,384,33"/>
+        <Image
+            Source="/Resources/Images/CopyrightLogo.png"
+            Grid.Column="2" Margin="98,21,360,51"></Image>
+        <TextBlock 
+            Height="20"
+            Width="100"
+            Grid.Column="2"
+            Text="Copyright by Team"
+            FontWeight="Light" Margin="120,21,260,49"></TextBlock>
     </Grid>
 </UserControl>

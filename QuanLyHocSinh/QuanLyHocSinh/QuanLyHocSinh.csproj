@@ -20,13 +20,16 @@
     <None Remove="Resources\Images\Avatar.png" />
     <None Remove="Resources\Images\bg1.png" />
     <None Remove="Resources\Images\confirmLogo.png" />
+    <None Remove="Resources\Images\CopyrightLogo.png" />
     <None Remove="Resources\Images\email.png" />
     <None Remove="Resources\Images\FBLogo.png" />
     <None Remove="Resources\Images\gmailLogo.png" />
     <None Remove="Resources\Images\HelpLogo.png" />
+    <None Remove="Resources\Images\LocationLogo.png" />
     <None Remove="Resources\Images\logo.jpg" />
     <None Remove="Resources\Images\LogoIcon.ico" />
     <None Remove="Resources\Images\NotificationLogo.png" />
+    <None Remove="Resources\Images\phoneLogo.png" />
     <None Remove="Resources\Images\shadowTextbox.png" />
     <None Remove="Resources\Images\SimpleLogo.png" />
   </ItemGroup>
@@ -44,6 +47,9 @@
     <Resource Include="Resources\Images\confirmLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\CopyrightLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\email.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -56,6 +62,9 @@
     <Resource Include="Resources\Images\HelpLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\LocationLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -63,6 +72,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\NotificationLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\phoneLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\shadowTextbox.png">
