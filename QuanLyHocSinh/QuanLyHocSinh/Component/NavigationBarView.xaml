@@ -8,7 +8,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              Name="Navigation"
-             d:DesignHeight="100" d:DesignWidth="1440">
+             d:DesignHeight="80" d:DesignWidth="1440">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="210*"></ColumnDefinition>
