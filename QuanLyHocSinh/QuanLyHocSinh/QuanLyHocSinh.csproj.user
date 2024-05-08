@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Component\FooterView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Component\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\MainHomeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MainPageAppView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\SignUpBox1.xaml.cs">
@@ -45,6 +51,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Component\FooterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Component\NavigationBarView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -64,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainHomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainPageAppView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\SignUpBox1.xaml">
