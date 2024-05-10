@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLyHocSinh.View
+namespace QuanLyHocSinh.Component
 {
     /// <summary>
-    /// Interaction logic for UserProfileView.xaml
+    /// Interaction logic for FooterView.xaml
     /// </summary>
-    public partial class UserProfileView : UserControl
+    public partial class FooterView : UserControl
     {
-        public UserProfileView()
+        public FooterView()
         {
             InitializeComponent();
         }

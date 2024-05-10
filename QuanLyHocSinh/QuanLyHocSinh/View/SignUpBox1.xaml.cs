@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuanLyHocSinh.View
 {
     /// <summary>
-    /// Interaction logic for UserProfileView.xaml
+    /// Interaction logic for SignUpBox1.xaml
     /// </summary>
-    public partial class UserProfileView : UserControl
+    public partial class SignUpBox1 : UserControl
     {
-        public UserProfileView()
+        public SignUpBox1()
         {
             InitializeComponent();
         }

@@ -56,186 +56,185 @@
                 Height="400"
                 Width="700"
                 VerticalAlignment="Top">
-                <Border 
-                    BorderBrush="Black"
-                    BorderThickness="0"
-                    CornerRadius="15">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="89*"></RowDefinition>
-                            <RowDefinition Height="89*"></RowDefinition>
-                            <RowDefinition Height="89*"></RowDefinition>
-                            <RowDefinition Height="27*"></RowDefinition>
-                            <RowDefinition Height="50*"></RowDefinition>
-                            <RowDefinition Height="50*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Margin="0,0,0,89" Grid.RowSpan="2">
-                            <TextBlock
-                                Text="Quản lý học sinh"
-                                FontSize="60"
-                                FontWeight="Regular"
-                                TextAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Varta"></TextBlock>
-                            <Line 
-                                X1="0" Y1="0"
-                                X2="450" Y2="0"
-                                Stroke="{StaticResource PrimaryColor}"
-                                StrokeThickness="1"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                Margin="10"></Line>
-
-                        </Grid>
-
-                        <Grid Grid.Row="1" Margin="0,0,0,88" Grid.RowSpan="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition Width="4*"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Mã - Tên đăng nhập"
-                                       Grid.Column="1"
-                                       Margin="10,0,10,0"
-                                       Style="{StaticResource PlaceHolder}"
-                                       Name="IDPlaceHolder"/>
-                            <TextBox 
-                                Grid.Column="1"
-                                Height="50"
-                                VerticalContentAlignment="Center"
-                                VerticalAlignment="Bottom"
-                                Margin="10,5,10,5"
-                                Template="{StaticResource TextBoxBaseControlTemplate}"
-                                FontSize="25"
-                                Text="{Binding ID}"
-                                Padding="10,0,0,0"
-                                Background="Transparent"
-                                TextChanged="TextBox_TextChanged">
-                            </TextBox>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition Width="4*"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Mật khẩu"
-                                       Grid.Column="1"
-                                       Margin="10,0,10,15"
-                                       Style="{StaticResource PlaceHolder}"
-                                       Name="PassPlaceHolder"/>
-                            <Border  BorderBrush="{StaticResource PrimaryColor}"
-                                     BorderThickness="1"
-                                     CornerRadius="20"
-                                     Grid.Column="1"
-                                     Height="50"
-                                     Margin="10,0,10,0"
-                                     Padding="0,0,0,0">
-                                <PasswordBox x:Name="FloatingPasswordBox"
-                                             VerticalContentAlignment="Center"
-                                             VerticalAlignment="Center"
-                                             FontSize="25"
-                                             Margin="0,0,0,0"
-                                             BorderThickness="0"
-                                             BorderBrush="Transparent"
-                                             Background="Transparent"
-                                             Padding="10,0,0,0"
-                                             PasswordChanged="FloatingPasswordBox_PasswordChanged">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger   EventName="PasswordChanged">
-                                            <i:InvokeCommandAction
-                                                Command="{Binding PasswordChangedCommand}" 
-                                                CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </PasswordBox>
-                            </Border>
-                        </Grid>
-                        <TextBlock 
-                            Text="Quên mật khẩu?" 
-                            FontSize="16" 
-                            VerticalAlignment="Top"
-                            Grid.Row="3"
-                            HorizontalAlignment="Right"   
-                            Margin="0,0,130,0"
-                            Foreground="{StaticResource PrimaryColor}"
-                            FontWeight="Light">    
-                             <i:Interaction.Triggers>
-                                 <i:EventTrigger EventName="MouseLeftButtonDown">
-                                     <i:InvokeCommandAction Command="{Binding OpenChangePasswordCommand}"
-                                                            CommandParameter="{Binding ElementName=SignInWD}"></i:InvokeCommandAction>
-                                 </i:EventTrigger>   
-                             </i:Interaction.Triggers> 
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Style.Triggers>
-                                        <Trigger 
-                                            Property="IsMouseOver"
-                                            Value="True">
-                                            <Setter 
-                                                Property="TextDecorations"
-                                                Value="Underline" />
-                                            <Setter 
-                                                Property="Cursor"
-                                                Value="Hand"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-
-
-
-                        <Button
-                            Grid.Row="4"
-                            Content="Đăng nhập"
-                            FontSize="20"
-                            Height="40"
-                            Width="150"
-                            Background="{StaticResource LightPrimaryColor}" Margin="5"
-                            IsDefault="True"
-                             Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginWindow}">
-                            <Button.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="20"/>
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-                        <TextBlock 
-                            Text="Tạo tài khoản" 
-                            FontSize="20" 
-                            VerticalAlignment="Center"
-                            Grid.Row="5" 
-                            Foreground="{StaticResource PrimaryColor}"
-                            HorizontalAlignment="Center"
-                            FontWeight="Regular"> 
-                             <i:Interaction.Triggers>
-                                 <i:EventTrigger EventName="MouseLeftButtonDown">
-                                     <i:InvokeCommandAction Command="{Binding OpenChangePasswordCommand}"
-                                                            CommandParameter="{Binding ElementName=SignInWD}"></i:InvokeCommandAction>
-                                 </i:EventTrigger>   
-                             </i:Interaction.Triggers> 
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver"
-                                                 Value="True">
-                                            <Setter Property="TextDecorations"
-                                                    Value="Underline" />
-                                            <Setter Property="Cursor"
-                                                    Value="Hand"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="89*"></RowDefinition>
+                        <RowDefinition Height="89*"></RowDefinition>
+                        <RowDefinition Height="89*"></RowDefinition>
+                        <RowDefinition Height="27*"></RowDefinition>
+                        <RowDefinition Height="50*"></RowDefinition>
+                        <RowDefinition Height="50*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,0,0,89" Grid.RowSpan="2">
+                        <TextBlock
+                        Text="Quản lý học sinh"
+                        FontSize="60"
+                        FontWeight="Regular"
+                        TextAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="Varta"></TextBlock>
+                        <Line 
+                        X1="0" Y1="0"
+                        X2="450" Y2="0"
+                        Stroke="{StaticResource PrimaryColor}"
+                        StrokeThickness="1"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Margin="10"></Line>
 
                     </Grid>
-                </Border>
+
+                    <Grid Grid.Row="1" Margin="0,0,0,88" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock 
+                            Text="Mã - Tên đăng nhập"
+                            Grid.Column="1"
+                            Margin="10,0,10,0"
+                            Style="{StaticResource PlaceHolder}"
+                            Name="IDPlaceHolder"/>
+                        <TextBox 
+                            Grid.Column="1"
+                            Height="50"
+                            VerticalContentAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Margin="10,5,10,5"
+                            Template="{StaticResource TextBoxBaseControlTemplate}"
+                            FontSize="25"
+                            Text="{Binding ID}"
+                            Padding="10,0,0,0"
+                            Background="Transparent"
+                            TextChanged="TextBox_TextChanged">
+                        </TextBox>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Mật khẩu"
+                                Grid.Column="1"
+                                Margin="10,0,10,15"
+                                Style="{StaticResource PlaceHolder}"
+                                Name="PassPlaceHolder"/>
+                        <Border  
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            BorderThickness="1"
+                            CornerRadius="20"
+                            Grid.Column="1"
+                            Height="50"
+                            Margin="10,0,10,0"
+                            Padding="0,0,0,0">
+                            <PasswordBox 
+                                x:Name="FloatingPasswordBox"
+                                VerticalContentAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="25"
+                                Margin="0,0,0,0"
+                                BorderThickness="0"
+                                BorderBrush="Transparent"
+                                Background="Transparent"
+                                Padding="10,0,0,0"
+                                PasswordChanged="FloatingPasswordBox_PasswordChanged">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger   EventName="PasswordChanged">
+                                        <i:InvokeCommandAction
+                                        Command="{Binding PasswordChangedCommand}" 
+                                        CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
+                        </Border>
+                    </Grid>
+                    <TextBlock 
+                        Text="Quên mật khẩu?" 
+                        FontSize="16" 
+                        VerticalAlignment="Top"
+                        Grid.Row="3"
+                        HorizontalAlignment="Right"   
+                        Margin="0,0,130,0"
+                        Foreground="{StaticResource PrimaryColor}"
+                        FontWeight="Light">    
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding OpenForgotPassCommand}"
+                                                    CommandParameter="{Binding ElementName=loginWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>   
+                    </i:Interaction.Triggers>
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger 
+                                    Property="IsMouseOver"
+                                    Value="True">
+                                        <Setter 
+                                        Property="TextDecorations"
+                                        Value="Underline" />
+                                        <Setter 
+                                        Property="Cursor"
+                                        Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+
+
+                    <Button
+                        Grid.Row="4"
+                        Content="Đăng nhập"
+                        FontSize="20"
+                        Height="40"
+                        Width="150"
+                        materialDesign:ButtonAssist.CornerRadius="25"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+                        Background="{StaticResource LightPrimaryColor}" Margin="5"
+                        IsDefault="True"
+                        Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginWindow}">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <TextBlock 
+                        Text="Tạo tài khoản" 
+                        FontSize="20" 
+                        VerticalAlignment="Center"
+                        Grid.Row="5" 
+                        Foreground="{StaticResource PrimaryColor}"
+                        HorizontalAlignment="Center"
+                        FontWeight="Regular"> 
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding SignUpCommand}"
+                                                        CommandParameter="{Binding ElementName=loginWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>   
+                        </i:Interaction.Triggers>
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver"
+                                            Value="True">
+                                        <Setter Property="TextDecorations"
+                                                Value="Underline" />
+                                        <Setter Property="Cursor"
+                                                Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                </Grid>
             </materialDesign:Card>
         </Grid>
-
-
-
     </Grid>
 </Window>

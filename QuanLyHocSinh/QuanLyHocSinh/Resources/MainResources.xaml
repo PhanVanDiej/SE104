@@ -4,5 +4,6 @@
     <!--usercontrol-->
     <viewmodels:LoginViewModel x:Key="LoginVM"></viewmodels:LoginViewModel>
     <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
-
+    <viewmodels:SignUpViewModel x:Key="SignUpVM"></viewmodels:SignUpViewModel>
+    <viewmodels:MainPageAppViewModel x:Key="MainPageAppVM"></viewmodels:MainPageAppViewModel>
 </ResourceDictionary>

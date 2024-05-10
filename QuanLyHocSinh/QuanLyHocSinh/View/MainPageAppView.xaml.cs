@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuanLyHocSinh.View
 {
     /// <summary>
-    /// Interaction logic for UserProfileView.xaml
+    /// Interaction logic for MainPageAppView.xaml
     /// </summary>
-    public partial class UserProfileView : UserControl
+    public partial class MainPageAppView : Window
     {
-        public UserProfileView()
+        public MainPageAppView()
         {
             InitializeComponent();
         }

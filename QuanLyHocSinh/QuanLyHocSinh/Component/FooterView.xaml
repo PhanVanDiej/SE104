@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="QuanLyHocSinh.Component.FooterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyHocSinh.Component"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="1440">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Line X1="0" X2="1440"
+              Y1="0" Y2="0"
+              Stroke="{StaticResource PrimaryColor}"
+              StrokeThickness="1"
+              Grid.Column="0" Grid.ColumnSpan="3"></Line>
+        <Image
+            Source="/Resources/Images/FBLogo.png"
+            Margin="20,1,0,0"
+            Height="20"
+            Width="20"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left">
+        </Image>
+        <TextBlock
+            Text="facebook.com/UIT.Fanpage"
+            Margin="40,3,0,0"
+            Height="20"
+            Width="200"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            FontSize="10"></TextBlock>
+        <Image
+            Source="/Resources/Images/gmailLogo.png"
+            Height="20"
+            Width="20"
+            HorizontalAlignment="Left"
+            Margin="20,22,0,48"
+            ></Image>
+        <TextBlock
+            Text="qlhs@gm.uit.edu.vn"
+            FontSize="10"
+            Width="200"
+            Height="20"
+            HorizontalAlignment="Left"
+            Margin="40,24,0,46"></TextBlock>
+        <TextBlock
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            FontWeight="DemiBold"
+            Height="20"
+            VerticalAlignment="Top"
+            Margin="0,2,0,0"
+            Text="Đại học Công nghệ thông tin - Đại học Quốc gia TP.Hồ Chí Minh"></TextBlock>
+        <TextBlock
+            Text="ĐC: Khu phố 6, P.Linh Trung, Q.Thủ Đức, Tp.Hồ Chí Minh"
+            Height="20"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            FontWeight="Light"
+            HorizontalAlignment="Center"
+            Margin="0,20,0,0"></TextBlock>
+        <TextBlock
+            Text="ĐT:"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Height="16"
+            Grid.Column="1"
+            FontWeight="Light"
+            Margin="98,0,0,0"></TextBlock>
+        <TextBlock
+            Text="(028) 372 51993"
+            FontWeight="DemiBold"
+            Height="16"
+            Grid.Column="1"
+            Margin="121,0,0,0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"></TextBlock>
+        <TextBlock
+            Text="FAX"
+            FontWeight="Light"
+            Height="15"
+            Margin="221,0,0,0"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"></TextBlock>
+        <TextBlock
+            Text="(028) 372 52148"
+            FontWeight="DemiBold"
+            Height="16"
+            Margin="240,0,0,0"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"></TextBlock>
+        <Image
+            Source="/Resources/Images/LocationLogo.png"
+            Grid.Column="1" Margin="80,22,386,56"/>
+        <Image
+            Source="/Resources/Images/phoneLogo.png"
+            Grid.Column="1" Margin="80,36,384,33"/>
+        <Image
+            Source="/Resources/Images/CopyrightLogo.png"
+            Grid.Column="2" Margin="98,21,360,51"></Image>
+        <TextBlock 
+            Height="20"
+            Width="100"
+            Grid.Column="2"
+            Text="Copyright by Team"
+            FontWeight="Light" Margin="120,21,260,49"></TextBlock>
+    </Grid>
+</UserControl>

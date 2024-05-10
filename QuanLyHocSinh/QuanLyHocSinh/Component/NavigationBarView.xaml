@@ -1,0 +1,154 @@
+﻿<UserControl x:Class="QuanLyHocSinh.Component.NavigationBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyHocSinh.Component"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             Name="Navigation"
+             d:DesignHeight="80" d:DesignWidth="1440">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210*"></ColumnDefinition>
+            <ColumnDefinition Width="300*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image
+            Source="\Resources\Images\SimpleLogo.png"
+            Height="50"
+            Width="50"
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Left"
+            Margin="10,5,0,0"></Image>
+        <TextBlock
+            Text="Chọn UIT - Chọn để dẫn đầu"
+            FontSize="15"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="70,17,0,0"
+            Foreground="{StaticResource PrimaryColor}">
+            
+        </TextBlock>
+        <TextBlock
+            Grid.Column="1"
+            Text="Quản lý học sinh"
+            FontSize="30"
+            HorizontalAlignment="Left"
+            Margin="110,20,0,0"
+            VerticalAlignment="Top"></TextBlock>
+        <Image
+            Grid.Column="3"
+            Source="\Resources\Images\HelpLogo.png"
+            Width="20"
+            Margin="15,10,0,0"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding }"
+                CommandParameter="{Binding ElementName=SignUp1}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Cursor"
+                                    Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image
+            Grid.Column="3"
+            Source="\Resources\Images\NotificationLogo.png"
+            Height="20"
+            Margin="0,10,10,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Width="30">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction
+                        Command="{Binding GoFrontSignUpCommand}"
+                        CommandParameter="{Binding ElementName=Navigation}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Cursor"
+                                    Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <TextBlock 
+            Background="white"
+            TextAlignment="Left"
+            Text="1"
+            Grid.Column="3"
+            Width="20"
+            Foreground="Red"
+            FontWeight="Bold"
+            HorizontalAlignment="Right"
+            FontSize="15" Margin="0,0,-10,80"  />
+        <Image
+            Source="\Resources\Images\Avatar.png"
+            Height="30"
+            Width="20"
+            Grid.Column="4"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Margin="10,3,3,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction 
+                        Command="{Binding ProfileUserCommand}"
+                        CommandParameter="{Binding ElementName=Navigation}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Cursor"
+                                    Value="Hand"/>
+
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <TextBlock
+            Text="UserName"
+            Grid.Column="4"
+            FontSize="10"
+            FontWeight="Regular"
+            Foreground="{StaticResource PrimaryColor}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Margin="5,5,10,0"></TextBlock>
+        <TextBlock
+            Text="Rule"
+            Grid.Column="4"
+            FontSize="10"
+            FontWeight="Light"
+            Foreground="{StaticResource PrimaryColor}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Margin="0,22,38,0"></TextBlock>
+
+    </Grid>
+</UserControl>

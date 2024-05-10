@@ -9,19 +9,78 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\email.png" />
-    <None Remove="Resources\Images\logo.jpg" />
-    <None Remove="Resources\Images\shadowTextbox.png" />
+    <Compile Remove="Components\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <None Remove="Components\**" />
+    <Page Remove="Components\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\Arrow.png" />
+    <None Remove="Resources\Images\Avatar.png" />
+    <None Remove="Resources\Images\bg1.png" />
+    <None Remove="Resources\Images\confirmLogo.png" />
+    <None Remove="Resources\Images\CopyrightLogo.png" />
+    <None Remove="Resources\Images\email.png" />
+    <None Remove="Resources\Images\FBLogo.png" />
+    <None Remove="Resources\Images\gmailLogo.png" />
+    <None Remove="Resources\Images\HelpLogo.png" />
+    <None Remove="Resources\Images\LocationLogo.png" />
+    <None Remove="Resources\Images\logo.jpg" />
+    <None Remove="Resources\Images\LogoIcon.ico" />
+    <None Remove="Resources\Images\NotificationLogo.png" />
+    <None Remove="Resources\Images\phoneLogo.png" />
+    <None Remove="Resources\Images\shadowTextbox.png" />
+    <None Remove="Resources\Images\SimpleLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\bg1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\confirmLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\CopyrightLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\email.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\FBLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\gmailLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\HelpLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\LocationLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\LogoIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\NotificationLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\phoneLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\shadowTextbox.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\SimpleLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -29,7 +88,7 @@
   <ItemGroup>
     <PackageReference Include="DnsClient" Version="1.7.0" />
     <PackageReference Include="MaterialDesignColors" Version="3.0.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
