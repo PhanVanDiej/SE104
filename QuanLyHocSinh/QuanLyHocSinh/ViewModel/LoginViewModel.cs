@@ -43,7 +43,6 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand OpenForgotPassCommand { get; set; }  
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
-        public ICommand SignUpCommand { get; set; }
 
         //Constructor
         public LoginViewModel()
@@ -58,22 +57,14 @@ namespace QuanLyHocSinh.ViewModel
                 (p) => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
             OpenForgotPassCommand=new RelayCommand<object>((p) => true, (p)=> ForgotPasswordCommand());
-            SignUpCommand = new RelayCommand<object>((p) => true, (p) => { SignUpView newSignUp = new SignUpView(); newSignUp.Show(); });
         }
         private void ForgotPasswordCommand()
         {
             ForgotPasswordView newView= new ForgotPasswordView();
-            newView.Show();
+            newView.ShowDialog();
         }
         private void Login(Window p)
         {
-            //Test
-            MainPageAppView app=new MainPageAppView();
-            p.Close();
-            app.Show();
-            return;
-            //-----------------------------
-            if (p == null) { return; }
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
                 try
@@ -91,8 +82,9 @@ namespace QuanLyHocSinh.ViewModel
                         string? storedHashedPassword = command.ExecuteScalar() as string;
                         if (storedHashedPassword != null && PasswordManager.VerifyPassword(Password, storedHashedPassword))
                         {
-                            isLogin = true;
+                            MainPageAppView app = new();
                             p.Close();
+                            app.Show();
                         }
                         else
                         {

@@ -25,19 +25,7 @@
     <Compile Update="View\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\MainHomeView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\MainPageAppView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\SignUpBox1.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\SignUpBox2.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\SignUpView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\StudentListView.xaml.cs">
@@ -78,19 +66,7 @@
     <Page Update="View\Login.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MainHomeView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="View\MainPageAppView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\SignUpBox1.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\SignUpBox2.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\SignUpView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\StudentListView.xaml">
