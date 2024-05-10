@@ -42,14 +42,17 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
 
-        // Delegate to store the close window action
-        private Action closeAction;
         //Constructor
         public LoginViewModel()
         {
             ID = "";
             Password = "";
-            LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { Login(p); });
+            LoginCommand = new RelayCommand<Window>((p) => {
+                if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Password))
+                    return false;
+                return true;
+            },
+                (p) => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
         }
 
@@ -87,12 +90,6 @@ namespace QuanLyHocSinh.ViewModel
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
-        }
-
-        // Function to set the close action from the view
-        public void SetCloseAction(Action close)
-        {
-            closeAction = close;
         }
     }
 }
