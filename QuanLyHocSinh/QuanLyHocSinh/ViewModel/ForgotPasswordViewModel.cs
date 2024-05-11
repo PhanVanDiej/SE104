@@ -88,7 +88,7 @@ namespace QuanLyHocSinh.ViewModel
             try
             {
                 string senderEmail = "projectmailer40@gmail.com";
-                string senderPassword = "fbmgpsulwlnjfqwa";
+                string senderPassword = "vdureqfznfusmudj";
                 string senderDisplayName = "Quản lý học sinh";
                 string subject = "Mã phục hồi mật khẩu";
                 string body = $"Mã phục hồi mật khẩu của bạn là: {recoveryCode}";
