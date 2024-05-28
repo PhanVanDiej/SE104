@@ -18,15 +18,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="570"></RowDefinition>
             <RowDefinition Height="90"></RowDefinition>
         </Grid.RowDefinitions>
         <component:NavigationBarView></component:NavigationBarView>
-        <component:FooterView Grid.Row="4" VerticalAlignment="Top"></component:FooterView>
+        <component:FooterView Grid.Row="3" VerticalAlignment="Top"></component:FooterView>
         <component:ControlFuntionBarView Grid.Row="1"></component:ControlFuntionBarView>
         <ContentControl
             Content="{Binding CurPageView}"
-            Grid.Row="3"></ContentControl>
+            Grid.Row="2"></ContentControl>
     </Grid>
 </Window>
