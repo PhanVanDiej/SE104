@@ -11,12 +11,14 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Height="600" Width="1000"
-        Name="loginWindow">
+        Name="loginWindow"
+        Title="Đăng nhập">
     <Window.Resources>
         <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
             <Border Background="{TemplateBinding Background}" 
                 x:Name="Bd" BorderBrush="{StaticResource PrimaryColor}"
-                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20"
+                    Padding="10,0,0,0">
                 <ScrollViewer x:Name="PART_ContentHost"/>
             </Border>
             <ControlTemplate.Triggers>
@@ -63,7 +65,6 @@
                         <RowDefinition Height="89*"></RowDefinition>
                         <RowDefinition Height="27*"></RowDefinition>
                         <RowDefinition Height="50*"></RowDefinition>
-                        <RowDefinition Height="50*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="0,0,0,89" Grid.RowSpan="2">
                         <TextBlock
@@ -105,10 +106,9 @@
                             Template="{StaticResource TextBoxBaseControlTemplate}"
                             FontSize="25"
                             Text="{Binding ID}"
-                            Padding="10,0,0,0"
+                            Padding="20,0,0,0"
                             Background="Transparent"
-                            TextChanged="TextBox_TextChanged">
-                        </TextBox>
+                            TextChanged="TextBox_TextChanged" BorderThickness="1"/>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -204,35 +204,6 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <TextBlock 
-                        Text="Tạo tài khoản" 
-                        FontSize="20" 
-                        VerticalAlignment="Center"
-                        Grid.Row="5" 
-                        Foreground="{StaticResource PrimaryColor}"
-                        HorizontalAlignment="Center"
-                        FontWeight="Regular"> 
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding SignUpCommand}"
-                                                        CommandParameter="{Binding ElementName=loginWindow}"></i:InvokeCommandAction>
-                            </i:EventTrigger>   
-                        </i:Interaction.Triggers>
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver"
-                                            Value="True">
-                                        <Setter Property="TextDecorations"
-                                                Value="Underline" />
-                                        <Setter Property="Cursor"
-                                                Value="Hand"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-
                 </Grid>
             </materialDesign:Card>
         </Grid>
