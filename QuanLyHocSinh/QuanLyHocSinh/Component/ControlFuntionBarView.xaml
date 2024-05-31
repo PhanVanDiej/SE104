@@ -146,7 +146,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
+                                Command="{Binding ResultTableFieldCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -228,7 +228,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
+                                Command="{Binding ManagementCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
