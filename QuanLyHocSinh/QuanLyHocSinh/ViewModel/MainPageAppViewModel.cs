@@ -30,10 +30,15 @@ namespace QuanLyHocSinh.ViewModel
         }
         public ICommand AddStudentCommand {  get; set; }
         public ICommand StudentListCommand { get; set; }
+        public ICommand ResultTableFieldCommand { get ; set; }
+        public ICommand ManagementCommand { get; set; }
+
         public MainPageAppViewModel() 
         {
             AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new AddStudentView());
             StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new StudentListView());
+            ResultTableFieldCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new ResultTableView());
+            ManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView = new ManagementView());
 
             DispatcherTimer LiveTime = new DispatcherTimer();
             LiveTime.Interval = TimeSpan.FromSeconds(1);
