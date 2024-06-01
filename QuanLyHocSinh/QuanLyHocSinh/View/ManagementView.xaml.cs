@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuanLyHocSinh.View
 {
     /// <summary>
-    /// Interaction logic for StudentListView.xaml
+    /// Interaction logic for ManagementView.xaml
     /// </summary>
-    public partial class StudentListView : UserControl
+    public partial class ManagementView : UserControl
     {
-        public StudentListView()
+        public ManagementView()
         {
             InitializeComponent();
         }

@@ -30,7 +30,27 @@
                     Width="30"
                     Margin="0,30,0,0"
                     HorizontalAlignment="Center"
-                    Kind="HomeImportOutline" />
+                    Kind="HomeImportOutline" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction 
+                                Command="{Binding ReturnMainCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <materialDesign:PackIcon.Style>
+                        <Style TargetType="materialDesign:PackIcon">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Cursor"
+                                            Value="Hand"/>
+                                 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </materialDesign:PackIcon.Style>
+                </materialDesign:PackIcon>
                 <StackPanel Orientation="Horizontal" Grid.Column="1"
                             Width="150"
                             VerticalAlignment="Bottom"
@@ -53,6 +73,10 @@
                                             Value="Hand"/>
                                     <Setter Property="Background" Value="#E3F1F3">
                                     </Setter>
+                                </Trigger>
+                                <Trigger Property="IsFocused"
+                                         Value="True">
+                                    <Setter Property="Background" Value="#E3F1F3"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -81,7 +105,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
+                                Command="{Binding StudentListCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -122,7 +146,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
+                                Command="{Binding ResultTableFieldCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -204,7 +228,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
+                                Command="{Binding ManagementCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -235,6 +259,13 @@
                         FontSize="15"> 
                     </TextBlock>
                 </StackPanel>
+                <Label
+                    Grid.Column="6"
+                    Content="{Binding CurrentTime}"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Center"
+                    FontSize="16"/>
             </Grid>
         </materialDesign:Card>
     </Grid>

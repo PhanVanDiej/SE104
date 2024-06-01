@@ -3,4 +3,5 @@
     <SolidColorBrush x:Key="PrimaryColor" Color="#017E8B"></SolidColorBrush>
     <SolidColorBrush x:Key="LightPrimaryColor" Color="#9BE5ED"></SolidColorBrush>
     <SolidColorBrush x:Key="BlurLightHover" Color="#E3F1F3"></SolidColorBrush>
+    <SolidColorBrush x:Key="OrangeColor" Color="#FE8312"></SolidColorBrush>
 </ResourceDictionary>
