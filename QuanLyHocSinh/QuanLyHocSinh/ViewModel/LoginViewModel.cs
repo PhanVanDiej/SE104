@@ -12,7 +12,6 @@ namespace QuanLyHocSinh.ViewModel
         //Fields
         private string _ID;
         private string _password;
-        public bool isLogin { get; private set; } = false;
 
         //Properties
         public string ID

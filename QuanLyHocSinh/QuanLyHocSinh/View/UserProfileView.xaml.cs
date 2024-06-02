@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyHocSinh.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace QuanLyHocSinh.View
         public UserProfileView()
         {
             InitializeComponent();
+            IdTextBox.Text = "Mã đăng nhập: " + CurrentUser.Instance.UserId;
+            AccessTextBox.Text = "Vai trò: " + CurrentUser.Instance.Access;
         }
     }
 }

@@ -9,8 +9,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" d:DataContext="{d:DesignInstance Type=model:CurrentUser}"
              mc:Ignorable="d" 
              Name="Navigation"
-             d:DesignHeight="80" d:DesignWidth="1440"
-             DataContext="CurrentUser">
+             d:DesignHeight="80" d:DesignWidth="1440">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="210*"></ColumnDefinition>
