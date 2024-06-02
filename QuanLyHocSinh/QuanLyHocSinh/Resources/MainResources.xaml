@@ -7,4 +7,5 @@
     <viewmodels:MainPageAppViewModel x:Key="MainPageAppVM"></viewmodels:MainPageAppViewModel>
     <viewmodels:AddStudentViewModel x:Key="AddStudentVM"></viewmodels:AddStudentViewModel>
     <viewmodels:ControlFuntionViewModel x:Key="ControlFunctionVM"></viewmodels:ControlFuntionViewModel>
+    <viewmodels:UserProfileViewModel x:Key="UserProfileVM"></viewmodels:UserProfileViewModel>
 </ResourceDictionary>
