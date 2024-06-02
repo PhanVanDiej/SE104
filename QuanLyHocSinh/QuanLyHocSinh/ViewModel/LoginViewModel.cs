@@ -4,7 +4,7 @@ using System.Windows;
 using QuanLyHocSinh.Resources;
 using Microsoft.Data.SqlClient;
 using QuanLyHocSinh.View;
-
+using QuanLyHocSinh.Model;
 namespace QuanLyHocSinh.ViewModel
 {
     public class LoginViewModel: ViewModelBase
@@ -73,22 +73,34 @@ namespace QuanLyHocSinh.ViewModel
                     connection.Open();
 
                     // Example: Execute a query
-                    string query = "SELECT Pass FROM USERS WHERE ID = @ID";
+                    string query = "SELECT Pass, Access FROM USERS WHERE ID = @ID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters to prevent SQL injection
                         command.Parameters.AddWithValue("@ID", ID);
-                        // Execute the command
-                        string? storedHashedPassword = command.ExecuteScalar() as string;
-                        if (storedHashedPassword != null && PasswordManager.VerifyPassword(Password, storedHashedPassword))
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            MainPageAppView app = new();
-                            p.Close();
-                            app.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thông tin đăng nhập không chính xác!");
+                            if (reader.Read())
+                            {
+                                string storedHashedPassword = reader.GetString(0);
+                                string access = reader.GetString(1);
+
+                                if (PasswordManager.VerifyPassword(Password, storedHashedPassword))
+                                {
+                                    CurrentUser.Instance.UserId = ID;
+                                    CurrentUser.Instance.Access = access;
+                                    MainPageAppView app = new();
+                                    p.Close();
+                                    app.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Thông tin đăng nhập không chính xác!");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Thông tin đăng nhập không chính xác!");
+                            }
                         }
                     }
                 }
