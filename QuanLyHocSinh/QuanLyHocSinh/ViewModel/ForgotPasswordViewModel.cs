@@ -49,51 +49,29 @@ namespace QuanLyHocSinh.ViewModel
 			Password = "";
 			ConfirmPassword = "";
             SendCodeCommand = new RelayCommand<object>((p) => {
-				return EmailValidate();
+				return EmailCheck.Validate(Email);
             },
                 (p) => { SendCode(); });
-            SaveNewPasswordCommand = new RelayCommand<object>((p) => {
+            SaveNewPasswordCommand = new RelayCommand<Window>((p) => {
                 return PasswordValidate();
             },
-                (p) => { SaveNewPassword(); });
+                (p) => { SaveNewPassword(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
             ConfirmPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { ConfirmPassword = p.Password; });
         }
-		public bool EmailValidate()
-		{
-            if (!string.IsNullOrEmpty(Email))
-            {
-                var trimmedEmail = Email.Trim();
-
-                if (trimmedEmail.EndsWith("."))
-                {
-                    return false;
-                }
-                try
-                {
-                    var addr = new MailAddress(Email);
-                    return addr.Address == trimmedEmail;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            return false;
-		}
-		public void SendCode()
+        private void SendCode()
 		{
             string recoveryCode = GenerateRandomCode();
             if (string.IsNullOrEmpty(recoveryCode)) { return; }
             try
             {
-                string senderEmail = "projectmailer40@gmail.com";
-                string senderPassword = "vdureqfznfusmudj";
+                string senderEmail = "terror.voz@gmail.com";
+                string senderPassword = "itsyuxnttlcgxuxz";
                 string senderDisplayName = "Quản lý học sinh";
                 string subject = "Mã phục hồi mật khẩu";
                 string body = $"Mã phục hồi mật khẩu của bạn là: {recoveryCode}";
 
-                using (SmtpClient client = new SmtpClient("smtp.gmail.com", 25))
+                using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
                 {
                     client.EnableSsl = true;
                     client.UseDefaultCredentials = false;
@@ -154,7 +132,7 @@ namespace QuanLyHocSinh.ViewModel
             }
             return code;
         }
-        public bool PasswordValidate()
+        private bool PasswordValidate()
         {
             if (string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(ConfirmPassword))
                 return false;
@@ -162,7 +140,7 @@ namespace QuanLyHocSinh.ViewModel
                 return true;
             return false;
         }
-        public void SaveNewPassword()
+        private void SaveNewPassword(Window p)
         {
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
@@ -184,6 +162,7 @@ namespace QuanLyHocSinh.ViewModel
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Đã lưu mật khẩu mới");
+                            p.Close();
                         }
                         else
                         {
