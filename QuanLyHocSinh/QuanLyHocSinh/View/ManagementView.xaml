@@ -8,38 +8,865 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              Name="Management"
-             d:DesignHeight="570" d:DesignWidth="1440">
+             d:DesignHeight="800" d:DesignWidth="1440">
     <Grid Background="White">
         <ScrollViewer
             VerticalScrollBarVisibility="Hidden">
-            <Grid>
+            <Grid Height="800">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="170"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
                 <Border
+                    Grid.Column="1"
                     BorderBrush="{StaticResource PrimaryColor}"
                     BorderThickness="1"
                     HorizontalAlignment="Left"
+                    CornerRadius="5"
                     Margin="50,0,0,0"
                     Height="20"
-                    Width="100">
+                    Width="170">
                     <Grid>
                         <TextBlock
-                            Text="Mode"
+                            Text="Mode :"
                             FontSize="10"
                             FontWeight="Bold"
                             Foreground="{StaticResource PrimaryColor}"
+                            VerticalAlignment="Center"
+                            Margin="5,0,0,0"
                             HorizontalAlignment="Left"/>
+                        <TextBlock
+                            Text="Chế độ xem"
+                            FontSize="10"
+                            FontWeight="DemiBold"
+                            Foreground="Black"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="50,0,5,0"/>
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    Width="40"
+                    Margin="0,0,50,0"
+                    Height="20"
+                    CornerRadius="5"
+                    VerticalAlignment="Center">
+                    <TextBlock 
+                        Text="Lưu"
+                        Foreground="{StaticResource OrangeColor}"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Border>
+                <Border
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    Width="60"
+                    Margin="0,0,100,0"
+                    Height="20"
+                    CornerRadius="5"
+                    VerticalAlignment="Center">
+                    <TextBlock 
+                        Text="Chỉnh sửa"
+                        Foreground="{StaticResource PrimaryColor}"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </Border>
+                <TextBlock
+                    Text="Học sinh"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource PrimaryColor}"
+                    HorizontalAlignment="Left"
+                    Height="20"
+                    Margin="50,7,0,0"
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Grid.Row="1"/>
+                <Border
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    CornerRadius="5"
+                    Height="35"
+                    Margin="50,10,50,0">
+                    <StackPanel
+                       Orientation="Horizontal"
+                       VerticalAlignment="Center">
+                        <Canvas 
+                            Margin="50,0,0,0"
+                            VerticalAlignment="Center"
+                            Height="10"
+                            Width="10">
+                            <Ellipse 
+                                Canvas.Left="1"
+                                Canvas.Top="3"
+                                Width="7"
+                                Height="7"
+                                Fill="Black"/>
+                        </Canvas>
+                        <TextBlock 
+                            Text="Độ tuổi học sinh :"
+                            Foreground="Black"
+                            FontSize="12"
+                            FontWeight="Regular"
+                            Margin="30,0,0,0"
+                            VerticalAlignment="Center"/>
+                        <TextBlock 
+                            Text="Từ "
+                            Foreground="Black"
+                            FontSize="12"
+                            FontWeight="Regular"
+                            Margin="30,0,0,0"
+                            VerticalAlignment="Center"/>
+                        <ComboBox
+                            Name="minAgeStudentCombo"
+                            materialDesign:HintAssist.Hint="15"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            HorizontalAlignment="Center"
+                            Margin="10,0,0,0"
+                            Height="25"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            Width="30">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <TextBlock
+                            Text="đến"
+                            Margin="15,0,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            FontWeight="Regular"
+                            Foreground="Black"/>
+                        <ComboBox
+                            Name="maxAgeStudentCombo"
+                            materialDesign:HintAssist.Hint="20"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            HorizontalAlignment="Center"
+                            Margin="10,0,0,0"
+                            Height="25"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            Width="30">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+                <TextBlock 
+                    Text="Lớp học"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Left"
+                    Margin="50,0,0,0"
+                    VerticalAlignment="Top"
+                    Foreground="{StaticResource PrimaryColor}"/>
+                <Border
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    CornerRadius="5"
+                    Height="170"
+                    Margin="50,10,50,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <Canvas 
+                                Margin="50,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Canvas.Top="3"
+                                    Width="7"
+                                    Height="7"
+                                    Fill="Black"/>
+                            </Canvas>
+                            <TextBlock
+                                Text="Thay đổi sĩ số :"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                Margin="30,0,0,0"
+                                Foreground="Black"/>
+                            <ComboBox
+                                Name="NumChangeGrade"
+                                materialDesign:HintAssist.Hint="Khối"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Center"
+                                Margin="40,0,0,0"
+                                Height="25"
+                                Grid.Row="0"
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                Width="50">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                            <ComboBox
+                                Name="NumChangeClass"
+                                materialDesign:HintAssist.Hint="Lớp"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Center"
+                                Margin="30,0,0,0"
+                                Height="25"
+                                Grid.Row="0"
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                Width="50">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                            <TextBlock
+                                Text="Sĩ số :"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                Foreground="Black"
+                                Margin="70,0,0,0"
+                                VerticalAlignment="Center"/>
+                            <Border
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                BorderThickness="0.5"
+                                Width="40"
+                                Height="25"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBox 
+                                    BorderThickness="0"
+                                    VerticalAlignment="Top"
+                                    TextAlignment="Center"
+                                    materialDesign:HintAssist.Hint="35"/>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Margin="0,10,0,0"
+                            Height="40"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                            <Canvas 
+                                Margin="50,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Canvas.Top="3"
+                                    Width="7"
+                                    Height="7"
+                                    Fill="Black"/>
+                            </Canvas>
+                            <TextBlock
+                                Text="Thay đổi tên lớp :"
+                                FontSize="12"
+                                Foreground="Black"
+                                VerticalAlignment="Center"
+                                Margin="30,0,0,0"/>
+                            <ComboBox
+                                Name="NameChangeGrade"
+                                materialDesign:HintAssist.Hint="Khối"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Center"
+                                Margin="25,0,0,0"
+                                Height="25"
+                                Grid.Row="0"
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                Width="50">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                            <ComboBox
+                                Name="NameChangeClass"
+                                materialDesign:HintAssist.Hint="Lớp"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Center"
+                                Margin="30,0,0,0"
+                                Height="25"
+                                Grid.Row="0"
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                Width="50">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                            <TextBox 
+                                Grid.Row="1"
+                                Text="{Binding NewPass}"
+                                materialDesign:HintAssist.Hint="Tên mới" 
+                                Width="150"
+                                Margin="50,0,0,0"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="12" 
+                                BorderBrush="{StaticResource PrimaryColor}" 
+                                TabIndex="1" 
+                                VerticalAlignment="Top" 
+                                CaretBrush="{StaticResource PrimaryColor}"
+                                FontWeight="Regular" Height="35" />
+                        </StackPanel>
+                        <TextBlock
+                            Grid.Row="2"
+                            Text="Thêm lớp học mới"
+                            FontSize="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontWeight="DemiBold"
+                            Foreground="{StaticResource PrimaryColor}"
+                            Margin="50,0,0,0"/>
+                        <Line X1="0" Y1="0"
+                              X2="150" Y2="0"
+                              Grid.Row="2"
+                              Stroke="{StaticResource OrangeColor}"
+                              StrokeThickness="0.5"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Right"
+                              Margin="0,0,5,0"/>
+                        <StackPanel
+                            Grid.Row="3"
+                            Height="40"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0">
+                            <Canvas 
+                                Margin="50,10,0,0"
+                                HorizontalAlignment="Left"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Canvas.Top="3"
+                                    Width="7"
+                                    Height="7"
+                                    Fill="Black"/>
+                            </Canvas>
+                            <ComboBox
+                                Name="AddClassGrade"
+                                materialDesign:HintAssist.Hint="Khối"
+                                FontSize="12"
+                                FontWeight="Medium"
+                                HorizontalAlignment="Center"
+                                Margin="30,10,0,0"
+                                Height="25"
+                                Grid.Row="0"
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                Width="50">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+
+                            <TextBlock
+                                Text="Tên lớp :"
+                                Foreground="Black"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                VerticalAlignment="Center"
+                                Margin="50,10,0,0"/>
+                            <TextBox 
+                                Text="{Binding NewPass}"
+                                materialDesign:HintAssist.Hint="Tên mới" 
+                                Width="150"
+                                Margin="10,0,0,0"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                FontSize="12" 
+                                BorderBrush="{StaticResource PrimaryColor}" 
+                                TabIndex="1" 
+                                VerticalAlignment="Top" 
+                                CaretBrush="{StaticResource PrimaryColor}"
+                                FontWeight="Regular" Height="35" />
+                        </StackPanel>
+                        <StackPanel
+                            Grid.Row="4"
+                            Orientation="Horizontal">
+                            <Canvas 
+                                Margin="50,0,0,0"
+                                HorizontalAlignment="Left"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Width="7"
+                                    Height="7"
+                                    Fill="Black"/>
+                            </Canvas>
+                            <TextBlock
+                                Text="Sĩ số :"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                VerticalAlignment="Top"
+                                Margin="30,7,0,0"/>
+                            <Border
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                BorderThickness="0.5"
+                                Width="40"
+                                Height="25"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBox 
+                                    Text=""
+                                    TextAlignment="Center"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Top"/>
+                            </Border>
+                        </StackPanel>
+                        <Border 
+                            Grid.Row="4"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Margin="0,0,10,0"
+                            Height="20"
+                            Width="40">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Thêm"
+                                FontSize="10"
+                                Foreground="{StaticResource PrimaryColor}"
+                                FontWeight="Bold"/>
+                        </Border>
+                    </Grid>
+                </Border>
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Text="Xóa lớp học"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource PrimaryColor}"
+                    Margin="50,7,0,0"/>
+                <Border
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    CornerRadius="5"
+                    Height="35"
+                    Margin="50,10,50,0">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <Canvas 
+                            Margin="50,0,0,0"
+                            HorizontalAlignment="Left"
+                            Height="10"
+                            Width="10">
+                            <Ellipse 
+                                Canvas.Left="1"
+                                Canvas.Top="3"
+                                Width="7"
+                                Height="7"
+                                Fill="Black"/>
+                        </Canvas>
+                        <ComboBox
+                            Name="DeleteClassGrade"
+                            materialDesign:HintAssist.Hint="Khối"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            HorizontalAlignment="Center"
+                            Margin="30,0,0,0"
+                            Height="25"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            Width="50">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <ComboBox
+                             Name="DeleteClassClass"
+                             materialDesign:HintAssist.Hint="Lớp"
+                             FontSize="12"
+                             FontWeight="Medium"
+                             HorizontalAlignment="Center"
+                             Margin="50,0,0,0"
+                             Height="25"
+                             Grid.Row="0"
+                             BorderBrush="{StaticResource PrimaryColor}"
+                             Width="50">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+                <Border 
+                         Grid.Row="3"
+                         Grid.Column="1"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Top"
+                         BorderBrush="{StaticResource PrimaryColor}"
+                         BorderThickness="1"
+                         CornerRadius="5"
+                         Margin="0,35,60,0"
+                         Height="20"
+                         Width="40">
+                    <TextBlock
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Text="Xóa"
+                             FontSize="10"
+                             Foreground="{StaticResource RedColor}"
+                             FontWeight="Bold"/>
+                </Border>
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Text="Môn học"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource PrimaryColor}"
+                    Margin="50,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"/>
+                <Border
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    Margin="50,10,50,0"
+                    CornerRadius="5"
+                    Height="120">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel
+                            Grid.Row="0"
+                            Orientation="Horizontal">
+                            <Canvas 
+                                Margin="50,0,0,0"
+                                HorizontalAlignment="Left"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Canvas.Top="3"
+                                    Width="7"
+                                    Height="7"
+                                    Fill="Black"/>
+                            </Canvas>
+                            <TextBlock
+                                Text="Thay đổi tên môn học :"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                Foreground="Black"
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center"/>
+                            <ComboBox
+                                 Name="NameChangeSubject"
+                                 materialDesign:HintAssist.Hint="Môn học"
+                                 FontSize="12"
+                                 FontWeight="Medium"
+                                 HorizontalAlignment="Center"
+                                 Margin="30,0,0,0"
+                                 Height="25"
+                                 Grid.Row="0"
+                                 BorderBrush="{StaticResource PrimaryColor}"
+                                 Width="150">
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+
+                            <TextBox 
+                                 Text="{Binding NewPass}"
+                                 materialDesign:HintAssist.Hint="Tên mới" 
+                                 Width="150"
+                                 Margin="50,5,0,0"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 FontSize="12" 
+                                 BorderBrush="{StaticResource PrimaryColor}" 
+                                 TabIndex="1" 
+                                 VerticalAlignment="Top" 
+                                 CaretBrush="{StaticResource PrimaryColor}"
+                                 FontWeight="Regular" Height="35" />
+                        </StackPanel>
+                        <TextBlock
+                            Grid.Row="1"
+                            Text="Thêm môn học mới"
+                            FontSize="12"
+                            FontWeight="DemiBold"
+                            Foreground="{StaticResource PrimaryColor}"
+                            Margin="50,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"/>
+                        <Line X1="0" Y1="0"
+                              X2="150" Y2="0"
+                              Grid.Row="1"
+                              Stroke="{StaticResource OrangeColor}"
+                              StrokeThickness="0.5"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Right"
+                              Margin="0,0,5,0"/>
+                        <TextBox 
+                             Grid.Row="2"
+                             Text="{Binding NewPass}"
+                             materialDesign:HintAssist.Hint="Tên môn học" 
+                             Width="150"
+                             Margin="50,0,0,0"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             FontSize="12" 
+                             BorderBrush="{StaticResource PrimaryColor}" 
+                             TabIndex="1" 
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Left"
+                             CaretBrush="{StaticResource PrimaryColor}"
+                             FontWeight="Regular" Height="35" />
+                        <Border 
+                             Grid.Row="2"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             BorderBrush="{StaticResource PrimaryColor}"
+                             BorderThickness="1"
+                             CornerRadius="5"
+                             Margin="0,0,10,0"
+                             Height="20"
+                             Width="40">
+                            <TextBlock
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Text="Thêm"
+                                 FontSize="10"
+                                 Foreground="{StaticResource PrimaryColor}"
+                                 FontWeight="Bold"/>
+                        </Border>
+                    </Grid>
+                </Border>
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Text="Xóa môn học"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource PrimaryColor}"
+                    Margin="50,7,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"/>
+                <Border
+                    Grid.Column="1"
+                    Grid.Row="5"
+                    Margin="50,10,50,0"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    Height="35"
+                    CornerRadius="5"
+                    BorderThickness="1">
+                    <Grid>
+                        <Canvas 
+                            Margin="50,0,0,0"
+                            HorizontalAlignment="Left"
+                            Height="10"
+                            Width="10">
+                            <Ellipse 
+                                Canvas.Left="1"
+                                Canvas.Top="3"
+                                Width="7"
+                                Height="7" 
+                                Fill="Black"/>
+                        </Canvas>
+                        <ComboBox
+                             Name="DeleteSubject"
+                             materialDesign:HintAssist.Hint="Môn học"
+                             FontSize="12"
+                             FontWeight="Medium"
+                             HorizontalAlignment="Left"
+                             Margin="90,0,0,0"
+                             Height="25"
+                             Grid.Row="0"
+                             BorderBrush="{StaticResource PrimaryColor}"
+                             Width="150">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Border 
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Margin="0,6,10,0"
+                            Height="20"
+                            Width="40">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Xóa"
+                                FontSize="10"
+                                Foreground="{StaticResource RedColor}"
+                                FontWeight="Bold"/>
+                        </Border>
+                    </Grid>
+                </Border>
+                <TextBlock
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Text="Kết quả học tập"
+                    Foreground="{StaticResource PrimaryColor}"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="50,7,0,0"/>
+                <Border
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    BorderBrush="{StaticResource PrimaryColor}"
+                    BorderThickness="1"
+                    CornerRadius="5"
+                    Margin="50,10,50,0"
+                    VerticalAlignment="Center"
+                    Height="90">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel
+                            Grid.Row="0"
+                            Orientation="Horizontal">
+                            <Canvas 
+                                Margin="50,0,0,0"
+                                HorizontalAlignment="Left"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Canvas.Top="3"
+                                    Width="7"
+                                    Height="7" 
+                                    Fill="Black"/>
+                            </Canvas>
+                            <TextBlock
+                                Text="Điểm đạt qua môn : Điểm trung bình môn ≥ "
+                                Foreground="Black"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center"/>
+                            <Border
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                BorderThickness="0.5"
+                                Width="40"
+                                Height="25"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBox 
+                                    Text=""
+                                    TextAlignment="Center"
+                                    materialDesign:HintAssist.Hint="5.0"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Top"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel
+                            Grid.Row="1"
+                            Orientation="Horizontal">
+                            <Canvas 
+                                Margin="50,0,0,0"
+                                HorizontalAlignment="Left"
+                                Height="10"
+                                Width="10">
+                                <Ellipse 
+                                    Canvas.Left="1"
+                                    Canvas.Top="3"
+                                    Width="7"
+                                    Height="7" 
+                                    Fill="Black"/>
+                            </Canvas>
+                            <TextBlock
+                                Text="Điểm đạt loại Giỏi : Điểm trung bình ≥ "
+                                Foreground="Black"
+                                FontSize="12"
+                                FontWeight="Regular"
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center"/>
+                            <Border
+                                BorderBrush="{StaticResource PrimaryColor}"
+                                BorderThickness="0.5"
+                                Width="40"
+                                Height="25"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBox 
+                                    Text=""
+                                    materialDesign:HintAssist.Hint="8.0"
+                                    TextAlignment="Center"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Top"/>
+                            </Border>
+                        </StackPanel>
                     </Grid>
                 </Border>
             </Grid>
         </ScrollViewer>
-
     </Grid>
 </UserControl>
