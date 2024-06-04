@@ -50,7 +50,7 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand OldPasswordChangedCommand { get; set; }
         public ICommand NewPasswordChangedCommand { get; set; }
         public ICommand ConfirmNewPasswordChangedCommand { get; set; }
-        public ICommand SaveNameAndEmailCommand { get; set; }
+        public ICommand SaveNewEmailCommand { get; set; }
         public ICommand SaveNewPassCommand { get; set; }
         public UserProfileViewModel()
         {
@@ -59,7 +59,7 @@ namespace QuanLyHocSinh.ViewModel
             OldPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { OldPass = p.Password; });
             NewPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { NewPass = p.Password; });
             ConfirmNewPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { ConfirmNewPass = p.Password; });
-            SaveNameAndEmailCommand = new RelayCommand<object>((p) => CanSaveNameAndEmail(), (p) => SaveNameAndEmail());
+            SaveNewEmailCommand = new RelayCommand<object>((p) => CanSaveNewEmail(), (p) => SaveNewEmail());
             SaveNewPassCommand = new RelayCommand<object>((p) => CanSaveNewPass(), (p) => SaveNewPass());
         }
 
@@ -92,9 +92,9 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool CanSaveNameAndEmail()
+        private bool CanSaveNewEmail()
         {
-            if (string.IsNullOrEmpty(FullName) || !EmailCheck.Validate(Email)) return false;
+            if (!EmailCheck.Validate(Email)) return false;
             return true;
         }
         private bool CanSaveNewPass()
@@ -105,7 +105,7 @@ namespace QuanLyHocSinh.ViewModel
                 return false;
             return true;
         }
-        private void SaveNameAndEmail()
+        private void SaveNewEmail()
         {
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {

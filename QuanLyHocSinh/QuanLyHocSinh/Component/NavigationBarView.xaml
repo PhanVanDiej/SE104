@@ -16,7 +16,7 @@
             <ColumnDefinition Width="300*"></ColumnDefinition>
             <ColumnDefinition Width="40*"></ColumnDefinition>
             <ColumnDefinition Width="40*"></ColumnDefinition>
-            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Image
             Source="\Resources\Images\SimpleLogo.png"
@@ -149,7 +149,7 @@
             Foreground="{StaticResource PrimaryColor}"
             VerticalAlignment="Top"
             HorizontalAlignment="Center"
-            Margin="26,22,0,0"></TextBlock>
-
+            TextWrapping="WrapWithOverflow"
+            Margin="30,22,10,0"/>
     </Grid>
 </UserControl>
