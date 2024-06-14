@@ -32,8 +32,8 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand StudentListCommand { get; set; }
         public ICommand ResultTableFieldCommand { get ; set; }
         public ICommand ManagementCommand { get; set; }
-
-        public ICommand ProfileUserCommand { get; set; }
+        public ICommand UserManagementCommand { get; set; }
+        public ICommand UserProfileCommand { get; set; }
 
         public MainPageAppViewModel() 
         {
@@ -41,8 +41,8 @@ namespace QuanLyHocSinh.ViewModel
             StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new StudentListView());
             ResultTableFieldCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new ResultTableView());
             ManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView = new ManagementView());
-
-            ProfileUserCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserProfileView());
+            UserManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserManagementView());
+            UserProfileCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserProfileView());
 
             DispatcherTimer LiveTime = new DispatcherTimer();
             LiveTime.Interval = TimeSpan.FromSeconds(1);

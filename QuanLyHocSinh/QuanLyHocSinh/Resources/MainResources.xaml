@@ -8,4 +8,5 @@
     <viewmodels:AddStudentViewModel x:Key="AddStudentVM"></viewmodels:AddStudentViewModel>
     <viewmodels:ControlFuntionViewModel x:Key="ControlFunctionVM"></viewmodels:ControlFuntionViewModel>
     <viewmodels:UserProfileViewModel x:Key="UserProfileVM"></viewmodels:UserProfileViewModel>
+    <viewmodels:UserManagementViewModel x:Key="UserManagementVM"></viewmodels:UserManagementViewModel>
 </ResourceDictionary>
