@@ -23,7 +23,7 @@ namespace QuanLyHocSinh.ViewModel
                 {
                     ID = SelectedItem.ID;
                     FullName = SelectedItem.FullName;
-                    Password = SelectedItem.Password;
+                    Password = string.Empty;
                     Email = SelectedItem.Email;
                     Access = SelectedItem.Access;
                 }
@@ -84,7 +84,8 @@ namespace QuanLyHocSinh.ViewModel
                 if (!EmailCheck.Validate(Email)) return false;
                 foreach (var item in List)
                 {
-                    if (item.ID == SelectedItem.ID) return true;
+                    if (ID == item.ID)
+                        return true;
                 }
                 return false;
             }, (p) =>
@@ -97,7 +98,8 @@ namespace QuanLyHocSinh.ViewModel
                     return false;
                 foreach (var item in List)
                 {
-                    if (item.ID == SelectedItem.ID) return true;
+                    if (ID == item.ID)
+                        return true;
                 }
                 return false;
             }, (p) =>
@@ -160,14 +162,22 @@ namespace QuanLyHocSinh.ViewModel
 
                         int rowsAffected = command.ExecuteNonQuery();
 
-                        //if (rowsAffected > 0)
-                        //{
-                        //    MessageBox.Show("Thêm thành công!");
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Lỗi khi thêm dữ liệu!"); 
-                        //}
+                        if (rowsAffected > 0)
+                        {
+                            //MessageBox.Show("Thêm thành công!");
+                            List.Add(new User
+                            {
+                                ID = _ID,
+                                Password = PasswordManager.HashPassword(_Password),
+                                FullName = _FullName,
+                                Email = _Email,
+                                Access = _Access,
+                            });
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi thêm dữ liệu!");
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -175,14 +185,7 @@ namespace QuanLyHocSinh.ViewModel
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
-            List.Add(new User
-            {
-                ID = _ID,
-                Password = PasswordManager.HashPassword(_Password),
-                FullName = _FullName,
-                Email = _Email,
-                Access = _Access,
-            });
+
         }
         private void EditData()
         {
@@ -191,12 +194,26 @@ namespace QuanLyHocSinh.ViewModel
                 try
                 {
                     connection.Open();
+                    string query = string.Empty;
 
-                    string query = "UPDATE USERS SET PASS =  @Password, FULLNAME = @FullName, EMAIL = @Email, ACCESS = @Access WHERE ID = @ID";
+                    if (!string.IsNullOrEmpty(Password))
+                    {
+                        query = "UPDATE USERS SET PASS = @Password, FULLNAME = @FullName, EMAIL = @Email, ACCESS = @Access WHERE ID = @ID";
+                    }
+                    else
+                    {
+                        query = "UPDATE USERS SET FULLNAME = @FullName, EMAIL = @Email, ACCESS = @Access WHERE ID = @ID";
+                    }
+
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ID", ID);
-                        command.Parameters.AddWithValue("@Password", PasswordManager.HashPassword(Password));
+
+                        if (!string.IsNullOrEmpty(Password))
+                        {
+                            command.Parameters.AddWithValue("@Password", PasswordManager.HashPassword(Password));
+                        }
+
                         command.Parameters.AddWithValue("@FullName", FullName);
                         command.Parameters.AddWithValue("@Email", Email);
                         command.Parameters.AddWithValue("@Access", Access);
@@ -209,7 +226,7 @@ namespace QuanLyHocSinh.ViewModel
                             var item = List.FirstOrDefault(u => u.ID == ID);
                             if (item != null)
                             {
-                                item.Password = Password;
+                                if (!string.IsNullOrEmpty(Password)) item.Password = PasswordManager.HashPassword(Password);
                                 item.FullName = FullName;
                                 item.Email = Email;
                                 item.Access = Access;
@@ -242,27 +259,27 @@ namespace QuanLyHocSinh.ViewModel
 
                         int rowsAffected = command.ExecuteNonQuery();
 
-                        //if (rowsAffected > 0)
-                        //{
-                        //    MessageBox.Show("Xóa thành công");
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Lỗi khi xóa dữ liệu!");
-                        //}
+                        if (rowsAffected > 0)
+                        {
+                            //MessageBox.Show("Xóa thành công");
+                            foreach (var item in List)
+                            {
+                                if (item.ID == SelectedItem.ID)
+                                {
+                                    List.Remove(item);
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi khi xóa dữ liệu!");
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi: " + ex.Message);
-                }
-            }
-            foreach (var item in List)
-            {
-                if (item.ID == SelectedItem.ID)
-                {
-                    List.Remove(item);
-                    return;
                 }
             }
         }
