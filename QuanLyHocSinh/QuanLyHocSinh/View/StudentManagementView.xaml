@@ -111,7 +111,7 @@
             </Grid>
             <TextBox 
                 Text="{Binding FullName}"
-                materialDesign:HintAssist.Hint="Số nhà, tên đường,...)" 
+                materialDesign:HintAssist.Hint="Số nhà, tên đường,..." 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="16" 
                 BorderBrush="{StaticResource PrimaryColor}" 
