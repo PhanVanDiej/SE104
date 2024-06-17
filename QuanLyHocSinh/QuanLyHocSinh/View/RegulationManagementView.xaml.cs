@@ -18,9 +18,9 @@ namespace QuanLyHocSinh.View
     /// <summary>
     /// Interaction logic for ManagementView.xaml
     /// </summary>
-    public partial class ManagementView : UserControl
+    public partial class RegulationManagementView : UserControl
     {
-        public ManagementView()
+        public RegulationManagementView()
         {
             InitializeComponent();
         }

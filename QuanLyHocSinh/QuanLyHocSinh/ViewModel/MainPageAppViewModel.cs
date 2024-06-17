@@ -34,7 +34,7 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand LearningManagementCommand { get; set; }
         public ICommand TeachingManagementCommand { get ; set; }
         public ICommand ScoreInputCommand { get; set; }
-        public ICommand ManagementCommand { get; set; }
+        public ICommand RegulationManagementCommand { get; set; }
         public ICommand UserManagementCommand { get; set; }
         public ICommand UserProfileCommand { get; set; }
 
@@ -46,7 +46,7 @@ namespace QuanLyHocSinh.ViewModel
             LearningManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new LearningManagmentView());
             TeachingManagementCommand = new RelayCommand<object>((p)=>true,(p)=>CurPageView=new TeachingManagementView());
             ScoreInputCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new ScoreInputView());
-            ManagementCommand =new RelayCommand<object>((p)=>true,(p)=>CurPageView = new ManagementView());
+            RegulationManagementCommand = new RelayCommand<object>((p)=>true,(p)=>CurPageView = new RegulationManagementView());
             UserManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserManagementView());
             UserProfileCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserProfileView());
 

@@ -215,7 +215,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
-                    Command="{Binding ManagementCommand}"
+                    Command="{Binding RegulationManagementCommand}"
                     CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

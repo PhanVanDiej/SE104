@@ -31,7 +31,7 @@
     <Compile Update="View\MainPageAppView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ManagementView.xaml.cs">
+    <Compile Update="View\RegulationManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\TeachingManagementView.xaml.cs">
@@ -84,7 +84,7 @@
     <Page Update="View\MainPageAppView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ManagementView.xaml">
+    <Page Update="View\RegulationManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\TeachingManagementView.xaml">
