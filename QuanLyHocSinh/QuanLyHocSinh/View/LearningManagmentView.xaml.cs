@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuanLyHocSinh.View
 {
     /// <summary>
-    /// Interaction logic for StudentScoreBoardView.xaml
+    /// Interaction logic for StudentListView.xaml
     /// </summary>
-    public partial class StudentScoreBoardView : Window
+    public partial class LearningManagmentView : UserControl
     {
-        public StudentScoreBoardView()
+        public LearningManagmentView()
         {
             InitializeComponent();
         }

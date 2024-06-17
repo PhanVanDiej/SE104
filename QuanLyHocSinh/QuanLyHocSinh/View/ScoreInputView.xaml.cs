@@ -17,9 +17,9 @@ namespace QuanLyHocSinh.View
     /// <summary>
     /// Interaction logic for StudentProfileView.xaml
     /// </summary>
-    public partial class StudentProfileView : Window
+    public partial class ScoreInputView : UserControl
     {
-        public StudentProfileView()
+        public ScoreInputView()
         {
             InitializeComponent();
         }

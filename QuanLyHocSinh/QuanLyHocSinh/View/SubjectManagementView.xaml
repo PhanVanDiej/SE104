@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="QuanLyHocSinh.View.SubjectManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:vm="clr-namespace:QuanLyHocSinh.ViewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Name="SubjectMangement"
+             d:DesignHeight="800" d:DesignWidth="1440"
+             Background="White">
+    <UserControl.DataContext>
+        <vm:SubjectManagementViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5,10,5,0"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="{StaticResource LightPrimaryColor}"/>
+        </Style>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="{StaticResource LightPrimaryColor}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical"
+                Margin="20,30,10,30">
+            <TextBox 
+                Text="{Binding NewSubjectId, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Mã môn học" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="20"
+                BorderBrush="{StaticResource PrimaryColor}"  
+                FontWeight="Medium" Height="Auto" 
+                Margin="0,10,0,10"/>
+            <TextBox 
+                Text="{Binding NewSubjectName}"
+                materialDesign:HintAssist.Hint="Tên môn học" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="20" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" Height="Auto"
+                Margin="0,10,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <Button
+            Content="Thêm"
+            Command="{Binding AddCommand}">
+                </Button>
+                <Button
+            Content="Cập nhật"
+            Command="{Binding EditCommand}">
+                </Button>
+                <Button
+            Content="Xóa"
+            Command="{Binding DeleteCommand}">
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <materialDesign:Card Grid.Column="1" Margin="5,25,10,10" VerticalAlignment="Stretch">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+                <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã môn học" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                            <GridViewColumn Header="Tên môn học" DisplayMemberBinding="{Binding SubjectName}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

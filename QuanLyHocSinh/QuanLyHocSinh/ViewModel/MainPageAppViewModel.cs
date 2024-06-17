@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Microsoft.Win32;
+using QuanLyHocSinh.Component;
 using QuanLyHocSinh.View;
 namespace QuanLyHocSinh.ViewModel
 {
@@ -28,21 +29,30 @@ namespace QuanLyHocSinh.ViewModel
             get { return _currentTime; }
             set { _currentTime = value; OnPropertyChanged(); }
         }
+        public ICommand ReturnMainMenuCommand {  get; set; }
         public ICommand AddStudentCommand {  get; set; }
-        public ICommand StudentListCommand { get; set; }
-        public ICommand ResultTableFieldCommand { get ; set; }
-        public ICommand ManagementCommand { get; set; }
-
-        public ICommand ProfileUserCommand { get; set; }
+        public ICommand LearningManagementCommand { get; set; }
+        public ICommand TeachingManagementCommand { get ; set; }
+        public ICommand ScoreInputCommand { get; set; }
+        public ICommand RegulationManagementCommand { get; set; }
+        public ICommand ClassManagementCommand { get; set; }
+        public ICommand SubjectManagementCommand { get; set; }
+        public ICommand UserManagementCommand { get; set; }
+        public ICommand UserProfileCommand { get; set; }
 
         public MainPageAppViewModel() 
         {
-            AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new AddStudentView());
-            StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new StudentListView());
-            ResultTableFieldCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new ResultTableView());
-            ManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView = new ManagementView());
-
-            ProfileUserCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserProfileView());
+            CurPageView = new MainMenuView();
+            ReturnMainMenuCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new MainMenuView());
+            AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new StudentManagementView());
+            LearningManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new LearningManagmentView());
+            TeachingManagementCommand = new RelayCommand<object>((p)=>true,(p)=>CurPageView=new TeachingManagementView());
+            ScoreInputCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new ScoreInputView());
+            RegulationManagementCommand = new RelayCommand<object>((p)=>true,(p)=>CurPageView = new RegulationManagementView());
+            ClassManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new ClassManagementView());
+            SubjectManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new SubjectManagementView());
+            UserManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserManagementView());
+            UserProfileCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserProfileView());
 
             DispatcherTimer LiveTime = new DispatcherTimer();
             LiveTime.Interval = TimeSpan.FromSeconds(1);
