@@ -9,188 +9,158 @@
              mc:Ignorable="d" 
              DataContext="{StaticResource AddStudentVM}"
              x:Name="AddStudentUC"
-             d:DesignHeight="570" d:DesignWidth="1440">
-    <Grid Background="White"
-          Margin="30,70,0,0">
+             d:DesignHeight="570" d:DesignWidth="1440"
+             Background="White">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5,10,5,0"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="{StaticResource LightPrimaryColor}"/>
+        </Style>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="{StaticResource LightPrimaryColor}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <TextBox 
-            Grid.Row="0"
-            Text="{Binding NewPass}"
-            materialDesign:HintAssist.Hint="Họ và tên" 
-            Width="330"
-            HorizontalAlignment="Left"
-            Margin="10,0,100,0"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            FontSize="18" 
-            BorderBrush="{StaticResource PrimaryColor}" 
-            TabIndex="1" 
-            VerticalAlignment="Center" 
-            CaretBrush="{StaticResource PrimaryColor}"
-            FontWeight="Medium" Height="59" />
-        <Border 
-            Background="#ffff"
-            Grid.Row="1"
-            Grid.RowSpan="2"
-            Width="110"
-            Height="110"
-            HorizontalAlignment="Left"
-            Margin="220,0,0,0"
-            BorderThickness="1"
-            BorderBrush="Black">
-            <Image Stretch="Fill"
-                Source="{Binding StudentAvatarSource}"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding BrowseImageCommand}"
-                                                CommandParameter="{Binding ElementName=AddStudentUC}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            <Border.Style>
-                <Style TargetType="Border">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-                            <Setter Property="Cursor"
-                                    Value="Hand"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
-        </Border>
-        <ComboBox
-            Name="GradeOption"
-            materialDesign:HintAssist.Hint="Khối"
-            FontSize="18"
-            FontWeight="Medium"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            Margin="10,0,0,0"
-            Height="59"
-            Grid.Row="1"
-            BorderBrush="{StaticResource PrimaryColor}"
-            Width="150">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <ComboBox
-            Name="ClassOption"
-            materialDesign:HintAssist.Hint="Lớp"
-            FontSize="18"
-            FontWeight="Medium"
-            Grid.Column="0"
-            HorizontalAlignment="Left"
-            Margin="10,0,10,0"
-            Height="59"
-            Grid.Row="2"
-            BorderBrush="{StaticResource PrimaryColor}"
-            Width="150"> 
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <TextBox 
-            Grid.Row="0"
-            Grid.Column="0"
-            Text="{Binding NewPass}"
-            materialDesign:HintAssist.Hint="Mã số học sinh" 
-            Margin="10,0,130,0"
-            Width="200"
-            HorizontalAlignment="Right" 
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            FontSize="18" 
-            BorderBrush="{StaticResource PrimaryColor}" 
-            TabIndex="1" 
-            VerticalAlignment="Center" 
-            CaretBrush="{StaticResource PrimaryColor}"
-            FontWeight="Medium" Height="59" />
-        <DatePicker
-            FontSize="18"
-            BorderBrush="{StaticResource PrimaryColor}" 
-            FontWeight="Medium"
-            HorizontalAlignment="Right"
-            Margin="0,0,0,0"
-            Grid.Row="1"
-            Width="330"
-            Height="59"
-            materialDesign:HintAssist.Hint="Ngày sinh"
-            materialDesign:TextFieldAssist.HasClearButton="True"
-            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" /> 
-        <TextBox 
-            Grid.Row="2"
-            Grid.Column="0"
-            Text="{Binding NewPass}"
-            materialDesign:HintAssist.Hint="Email" 
-            Width="330"
-            Margin="100,0,0,0"
-            HorizontalAlignment="Right" 
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            FontSize="18" 
-            BorderBrush="{StaticResource PrimaryColor}" 
-            TabIndex="1" 
-            VerticalAlignment="Center" 
-            CaretBrush="{StaticResource PrimaryColor}"
-            FontWeight="Medium" Height="59" /> 
-        <TextBox 
-            Grid.Row="3"
-            Grid.Column="0"
-            Text="{Binding NewPass}"
-            materialDesign:HintAssist.Hint="Địa chỉ" 
-            Width="710"
-            Margin="10,0,0,0"
-            HorizontalAlignment="Left" 
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            FontSize="18" 
-            BorderBrush="{StaticResource PrimaryColor}" 
-            TabIndex="1" 
-            VerticalAlignment="Center" 
-            CaretBrush="{StaticResource PrimaryColor}"
-            FontWeight="Medium" Height="59" />
-        <ComboBox
-            Name="LocaleCombo"
-            materialDesign:HintAssist.Hint="Giới tính"
-            FontSize="18"
-            FontWeight="Medium"
-            Grid.Column="0"
-            HorizontalAlignment="Right"
-            Margin="0,0,0,0"
-            Height="59"
-            Grid.Row="0"
-            BorderBrush="{StaticResource PrimaryColor}"
-            Width="100">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <Button
-            Width="150"
-            Height="40"
-            Foreground="{StaticResource PrimaryColor}"
-            BorderBrush="{StaticResource PrimaryColor}"
-            Grid.Row="4"
-            Grid.Column="0"
-            VerticalAlignment="Top"
-            Margin="0,20,0,0"
+        <StackPanel Orientation="Vertical"
+                Margin="20,30,10,30">
+            <TextBox 
+                Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Mã học sinh" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="16"
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" Height="Auto" 
+                Margin="0,5,0,5"/>
+            <TextBox 
+                Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Tên học sinh" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="16"
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" Height="Auto" 
+                Margin="0,5,0,5"/>
+            <ComboBox 
+                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Giới tính"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" 
+                Height="Auto"
+                Margin="0,5,0,5"
+                ItemsSource="{Binding AccessLevels}">
+            </ComboBox>
+            <DatePicker
+                SelectedDate="{Binding SelectedDate}"
+                materialDesign:HintAssist.Hint="Ngày sinh" 
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                TabIndex="3" 
+                FontWeight="Medium"
+                Height="Auto"
+                Margin="0,5,0,5"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ComboBox
+                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Tỉnh thành"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" 
+                Height="Auto"
+                Margin="0,5,0,5"
+                ItemsSource="{Binding AccessLevels}">
+                </ComboBox>
+                <ComboBox  Grid.Column="1"
+                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Quận huyện"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" 
+                Height="Auto"
+                Margin="0,5,0,5"
+                ItemsSource="{Binding AccessLevels}">
+                </ComboBox>
+                <ComboBox  Grid.Column="2"
+                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Xã phường"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" 
+                Height="Auto"
+                Margin="0,5,0,5"
+                ItemsSource="{Binding AccessLevels}">
+                </ComboBox>
+            </Grid>
+            <TextBox 
+                Text="{Binding FullName}"
+                materialDesign:HintAssist.Hint="Số nhà, tên đường,...)" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium" Height="Auto"
+                Margin="0,5,0,5"/>
+            <TextBox 
+                Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Email" 
+                Width="330"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}"  
+                FontWeight="Medium" Height="Auto"
+                Margin="0,5,0,5"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button
             Content="Thêm"
-            Style="{StaticResource MaterialDesignPaperLightButton}"
-            ToolTip="Resource name: MaterialDesignPaperLightButton" /> 
+            Command="{Binding AddCommand}">
+                </Button>
+                <Button
+            Content="Cập nhật"
+            Command="{Binding EditCommand}">
+                </Button>
+                <Button
+            Content="Xóa"
+            Command="{Binding DeleteCommand}">
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <materialDesign:Card Grid.Column="1" Margin="5,25,10,10" VerticalAlignment="Stretch">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+                <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                            <GridViewColumn Header="Tên học sinh" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
+                            <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
+                            <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                            <GridViewColumn Header="Tỉnh thành" DisplayMemberBinding="{Binding Access}"></GridViewColumn>
+                            <GridViewColumn Header="Quận huyện" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                            <GridViewColumn Header="Phường xã" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
+                            <GridViewColumn Header="Số nhà, tên đường" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
+                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
