@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Microsoft.Win32;
+using QuanLyHocSinh.Component;
 using QuanLyHocSinh.View;
 namespace QuanLyHocSinh.ViewModel
 {
@@ -28,6 +29,7 @@ namespace QuanLyHocSinh.ViewModel
             get { return _currentTime; }
             set { _currentTime = value; OnPropertyChanged(); }
         }
+        public ICommand ReturnMainMenuCommand {  get; set; }
         public ICommand AddStudentCommand {  get; set; }
         public ICommand StudentListCommand { get; set; }
         public ICommand ResultTableFieldCommand { get ; set; }
@@ -37,6 +39,8 @@ namespace QuanLyHocSinh.ViewModel
 
         public MainPageAppViewModel() 
         {
+            CurPageView = new MainMenuView();
+            ReturnMainMenuCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new MainMenuView());
             AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new AddStudentView());
             StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new StudentListView());
             ResultTableFieldCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new ResultTableView());

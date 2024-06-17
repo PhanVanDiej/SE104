@@ -13,6 +13,9 @@
     <Compile Update="Component\FooterView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Component\MainMenuView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Component\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Component\FooterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Component\MainMenuView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Component\NavigationBarView.xaml">

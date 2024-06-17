@@ -1,0 +1,380 @@
+﻿<UserControl x:Class="QuanLyHocSinh.Component.MainMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="1440"
+             Background="White"
+             x:Name="MainMenu">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5" CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30">
+            <StackPanel Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding AddStudentCommand}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused"
+                             Value="True">
+                                <Setter Property="Background" Value="#E3F1F3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="CardAccountDetailsOutline" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Tiếp nhận học sinh"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Column="1">
+            <StackPanel Grid.Column="1"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding StudentListCommand}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="ViewList" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Xếp lớp cho học sinh"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Column="2">
+            <StackPanel Grid.Column="2"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding HocSinhFieldClick}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="HumanMaleBoardPoll" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Phân công giảng dạy"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Column="3">
+            <StackPanel Grid.Column="3"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding ResultTableFieldCommand}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="Pencil" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Nhập điểm"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Row="1">
+            <StackPanel Grid.Row="1"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding ManagementCommand}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="ProgressWrench" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Quy định chung"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Row="1"
+                Grid.Column="1">
+            <StackPanel Grid.Row="1" Grid.Column="1"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding ResultTableFieldCommand}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="GoogleClassroom" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Mở lớp"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Row="1"
+                Grid.Column="2">
+            <StackPanel Grid.Row="1" Grid.Column="2"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command=""
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="BookOpenVariant" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Môn học"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="{StaticResource PrimaryColor}"
+                BorderThickness="5"
+                CornerRadius="10"
+                Background="{StaticResource VeryLightPrimaryColor}"
+                Margin="30"
+                Grid.Row="1"
+                Grid.Column="3">
+            <StackPanel Grid.Row="1" Grid.Column="3"
+                Orientation="Vertical"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                    Command="{Binding UserManagementCommand}"
+                    CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                             Value="True">
+                                <Setter Property="Cursor"
+                                Value="Hand"/>
+                                <Setter Property="Background" Value="#E3F1F3">
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <materialDesign:PackIcon 
+            Height="100"
+            Width="100"
+            HorizontalAlignment="Center"
+            Kind="AccountGroup" />
+                <TextBlock
+            FontWeight="Medium"
+            Text="Quản lý người dùng"
+            VerticalAlignment="Center"
+            FontSize="30">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</UserControl>
