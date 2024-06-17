@@ -13,10 +13,13 @@
     <Compile Update="Component\FooterView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Component\MainMenuView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Component\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\AddStudentView.xaml.cs">
+    <Compile Update="View\StudentManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ForgotPasswordView.xaml.cs">
@@ -28,19 +31,25 @@
     <Compile Update="View\MainPageAppView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ManagementView.xaml.cs">
+    <Compile Update="View\RegulationManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ResultTableView.xaml.cs">
+    <Compile Update="View\SubjectManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\StudentListView.xaml.cs">
+    <Compile Update="View\TeachingManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\StudentProfileView.xaml.cs">
+    <Compile Update="View\LearningManagmentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\StudentScoreBoardView.xaml.cs">
+    <Compile Update="View\ScoreInputView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ClassManagementView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserProfileView.xaml.cs">
@@ -54,6 +63,9 @@
     <Page Update="Component\FooterView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Component\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Component\NavigationBarView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -63,7 +75,7 @@
     <Page Update="Resources\MainResources.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AddStudentView.xaml">
+    <Page Update="View\StudentManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ForgotPasswordView.xaml">
@@ -75,19 +87,25 @@
     <Page Update="View\MainPageAppView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ManagementView.xaml">
+    <Page Update="View\RegulationManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ResultTableView.xaml">
+    <Page Update="View\SubjectManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\StudentListView.xaml">
+    <Page Update="View\TeachingManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\StudentProfileView.xaml">
+    <Page Update="View\LearningManagmentView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\StudentScoreBoardView.xaml">
+    <Page Update="View\ScoreInputView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ClassManagementView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserProfileView.xaml">
