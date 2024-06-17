@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewmodels="clr-namespace:QuanLyHocSinh.ViewModel">
     <!--usercontrol-->
-    <viewmodels:LoginViewModel x:Key="LoginVM"></viewmodels:LoginViewModel>
-    <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>
-    <viewmodels:MainPageAppViewModel x:Key="MainPageAppVM"></viewmodels:MainPageAppViewModel>
-    <viewmodels:AddStudentViewModel x:Key="AddStudentVM"></viewmodels:AddStudentViewModel>
-    <viewmodels:ControlFuntionViewModel x:Key="ControlFunctionVM"></viewmodels:ControlFuntionViewModel>
-    <viewmodels:UserProfileViewModel x:Key="UserProfileVM"></viewmodels:UserProfileViewModel>
-    <viewmodels:UserManagementViewModel x:Key="UserManagementVM"></viewmodels:UserManagementViewModel>
+    <viewmodels:LoginViewModel x:Key="LoginVM"/>
+    <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"/>
+    <viewmodels:MainPageAppViewModel x:Key="MainPageAppVM"/>
+    <viewmodels:AddStudentViewModel x:Key="AddStudentVM"/>
+    <viewmodels:ControlFuntionViewModel x:Key="ControlFunctionVM"/>
+    <viewmodels:UserProfileViewModel x:Key="UserProfileVM"/>
+    <viewmodels:UserManagementViewModel x:Key="UserManagementVM"/>
 </ResourceDictionary>
