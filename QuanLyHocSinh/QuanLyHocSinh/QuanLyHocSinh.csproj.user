@@ -43,7 +43,7 @@
     <Compile Update="View\ScoreInputView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\StudentScoreBoardView.xaml.cs">
+    <Compile Update="View\ClassManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserManagementView.xaml.cs">
@@ -96,7 +96,7 @@
     <Page Update="View\ScoreInputView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\StudentScoreBoardView.xaml">
+    <Page Update="View\ClassManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserManagementView.xaml">

@@ -256,12 +256,12 @@
                 Grid.Column="1">
             <StackPanel Grid.Row="1" Grid.Column="1"
                Orientation="Vertical"
- VerticalAlignment="Stretch"
- HorizontalAlignment="Stretch">
+                 VerticalAlignment="Stretch"
+                 HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
-                    Command="{Binding ResultTableFieldCommand}"
+                    Command="{Binding ClassManagementCommand}"
                     CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

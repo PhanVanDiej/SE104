@@ -300,7 +300,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command=""
+                                Command="{Binding ClassManagementCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
