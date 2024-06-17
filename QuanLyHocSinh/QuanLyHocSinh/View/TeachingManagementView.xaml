@@ -4,9 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:local="clr-namespace:QuanLyHocSinh.View"
-             Name="ResultSubject"
+             Name="TeachingManagement"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="1440"
              Background="White">
@@ -135,11 +133,10 @@
                     <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                                <GridViewColumn Header="Mã giáo viên" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
                                 <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
-                                <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
-                                <GridViewColumn Header="Điểm trung bình" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
-                                <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding Access}"></GridViewColumn>
+                                <GridViewColumn Header="Môn học" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
+                                <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
