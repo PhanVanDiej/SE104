@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="PrimaryColor" Color="#017E8B"></SolidColorBrush>
     <SolidColorBrush x:Key="LightPrimaryColor" Color="#9BE5ED"></SolidColorBrush>
+    <SolidColorBrush x:Key="VeryLightPrimaryColor" Color="#B3E9F0"></SolidColorBrush>
     <SolidColorBrush x:Key="BlurLightHover" Color="#E3F1F3"></SolidColorBrush>
     <SolidColorBrush x:Key="OrangeColor" Color="#FE8312"></SolidColorBrush>
     <SolidColorBrush x:Key="RedColor" Color="#F40D29"></SolidColorBrush>

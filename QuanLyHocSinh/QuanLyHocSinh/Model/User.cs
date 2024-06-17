@@ -4,14 +4,14 @@
     {
 		private string _id;
 
-		public string id
+		public string ID
 		{
 			get { return _id; }
-			set { id = value; OnPropertyChanged(); }
+			set { _id = value; OnPropertyChanged(); }
 		}
         private string? _pass;
 
-		public string pass
+		public string Password
 		{
 			get { return _pass; }
 			set { _pass = value; OnPropertyChanged(); }

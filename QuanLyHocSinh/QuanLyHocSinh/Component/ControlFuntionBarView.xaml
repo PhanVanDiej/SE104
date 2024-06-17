@@ -9,59 +9,60 @@
              mc:Ignorable="d" 
              Name="ControlFuntion"
              d:DesignHeight="70" d:DesignWidth="1440">
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="113*"/>
-            <ColumnDefinition Width="367*"/>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card Grid.ColumnSpan="2">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120"></ColumnDefinition>
-                    <ColumnDefinition Width="165"></ColumnDefinition>
-                    <ColumnDefinition Width="140"></ColumnDefinition>
-                    <ColumnDefinition Width="120"></ColumnDefinition>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <materialDesign:PackIcon 
-                    Height="30"
-                    Width="30"
-                    Margin="0,30,0,0"
+    <materialDesign:Card Grid.ColumnSpan="2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="175"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon 
+                    Height="50"
+                    Width="50"
                     HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
                     Kind="HomeImportOutline" >
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:InvokeCommandAction 
-                                Command="{Binding ReturnMainCommand}"
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction 
+                                Command="{Binding ReturnMainMenuCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    <materialDesign:PackIcon.Style>
-                        <Style TargetType="materialDesign:PackIcon">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver"
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <materialDesign:PackIcon.Style>
+                    <Style TargetType="materialDesign:PackIcon">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
                                          Value="True">
-                                    <Setter Property="Cursor"
+                                <Setter Property="Cursor"
                                             Value="Hand"/>
-                                 
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </materialDesign:PackIcon.Style>
-                </materialDesign:PackIcon>
-                <StackPanel Orientation="Horizontal" Grid.Column="1"
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </materialDesign:PackIcon.Style>
+            </materialDesign:PackIcon>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
                             Width="150"
-                            VerticalAlignment="Bottom"
-                            Margin="0,0,0,10"
-                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
                             Height="30">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
                                 Command="{Binding AddStudentCommand}"
-                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <StackPanel.Style>
@@ -96,17 +97,15 @@
                     </TextBlock>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Column="2"
-                            Width="120"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Margin="0,0,0,10"
-                            Height="30"> 
+                <StackPanel Orientation="Horizontal" Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding StudentListCommand}"
-                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
+                                Command="{Binding LearningManagementCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <StackPanel.Style>
@@ -127,27 +126,26 @@
                         Height="15"
                         Width="15"
                         VerticalAlignment="top"
-                        Kind="ViewList" /> 
+                        Kind="ViewList" />
                     <TextBlock
                         FontWeight="Light"
-                        Text="Danh sách lớp"
+                        Text="Xếp lớp - Phân công học tập"
                         Margin="10,3,0,0"
                         VerticalAlignment="Center"
-                        FontSize="15"> 
+                        FontSize="15">
                     </TextBlock>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="3"
                             Width="105"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Margin="0,0,0,10"
-                            Height="30">        
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding ResultTableFieldCommand}"
-                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
+                                Command="{Binding ScoreInputCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <StackPanel.Style>
@@ -168,27 +166,25 @@
                         Height="15"
                         Width="15"
                         VerticalAlignment="top"
-                        Kind="Pencil" /> 
+                        Kind="Pencil" />
                     <TextBlock
                         FontWeight="Light"
                         Text="Nhập điểm"
                         Margin="10,3,0,0"
                         VerticalAlignment="Center"
-                        FontSize="15"> 
+                        FontSize="15">
                     </TextBlock>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Column="4"
-                            Width="85"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Margin="0,0,0,10"
-                            Height="30"> 
+                <StackPanel Orientation="Horizontal" Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding HocSinhFieldClick}"
-                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
+                                Command="{Binding TeachingManagementCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <StackPanel.Style>
@@ -209,27 +205,25 @@
                         Height="15"
                         Width="15"
                         VerticalAlignment="top"
-                        Kind="ChartBellCurveCumulative" /> 
+                        Kind="HumanMaleBoardPoll" />
                     <TextBlock
                         FontWeight="Light"
-                        Text="Báo cáo"
+                        Text="Phân công giảng dạy"
                         Margin="10,3,0,0"
                         VerticalAlignment="Center"
-                        FontSize="15"> 
+                        FontSize="15">
                     </TextBlock>
                 </StackPanel>
-                
-                <StackPanel Orientation="Horizontal" Grid.Column="5"
-                            Width="85"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Margin="0,0,0,10"
-                            Height="30"> 
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding ManagementCommand}"
-                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction> 
+                                Command="{Binding RegulationManagementCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <StackPanel.Style>
@@ -250,23 +244,140 @@
                         Height="15"
                         Width="15"
                         VerticalAlignment="top"
-                        Kind="ProgressWrench" /> 
+                        Kind="ProgressWrench" />
                     <TextBlock
                         FontWeight="Light"
-                        Text="Quản lý"
+                        Text="Quy định chung"
                         Margin="10,3,0,0"
                         VerticalAlignment="Center"
-                        FontSize="15"> 
+                        FontSize="15">
                     </TextBlock>
                 </StackPanel>
-                <Label
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1"
+                            Width="105"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction 
+                                Command="{Binding ClassManagementCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Cursor"
+                                            Value="Hand"/>
+                                    <Setter Property="Background" Value="#E3F1F3">
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <materialDesign:PackIcon 
+                        Margin="5,10,0,0"
+                        Height="15"
+                        Width="15"
+                        VerticalAlignment="top"
+                        Kind="GoogleClassroom" />
+                    <TextBlock
+                        FontWeight="Light"
+                        Text="Mở lớp"
+                        Margin="10,3,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15">
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction 
+                                Command="{Binding SubjectManagementCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Cursor"
+                                            Value="Hand"/>
+                                    <Setter Property="Background" Value="#E3F1F3">
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <materialDesign:PackIcon 
+                        Margin="5,10,0,0"
+                        Height="15"
+                        Width="15"
+                        VerticalAlignment="top"
+                        Kind="BookOpenVariant" />
+                    <TextBlock
+                        FontWeight="Light"
+                        Text="Môn học"
+                        Margin="10,3,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15">
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="30">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction 
+                                Command="{Binding UserManagementCommand}"
+                                CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Cursor"
+                                            Value="Hand"/>
+                                    <Setter Property="Background" Value="#E3F1F3">
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <materialDesign:PackIcon 
+                        Margin="5,10,0,0"
+                        Height="15"
+                        Width="15"
+                        VerticalAlignment="top"
+                        Kind="AccountGroup" />
+                    <TextBlock
+                        FontWeight="Light"
+                        Text="Quản lý tài khoản người dùng"
+                        Margin="10,3,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15">
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <Label
                     Grid.Column="6"
                     Content="{Binding CurrentTime}"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"
                     VerticalAlignment="Center"
                     FontSize="16"/>
-            </Grid>
-        </materialDesign:Card>
-    </Grid>
+        </Grid>
+    </materialDesign:Card>
 </UserControl>

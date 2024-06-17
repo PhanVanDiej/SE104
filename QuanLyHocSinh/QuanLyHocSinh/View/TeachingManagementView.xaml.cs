@@ -18,9 +18,9 @@ namespace QuanLyHocSinh.View
     /// <summary>
     /// Interaction logic for ResultTableView.xaml
     /// </summary>
-    public partial class ResultTableView : UserControl
+    public partial class TeachingManagementView : UserControl
     {
-        public ResultTableView()
+        public TeachingManagementView()
         {
             InitializeComponent();
         }

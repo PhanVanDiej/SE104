@@ -118,7 +118,7 @@
                         Grid.Column="1"
                         Text="{Binding FullName}"
                         Style="{StaticResource TextBoxStyle}"
-                        HorizontalAlignment="Stretch"/>
+                        IsReadOnly="True"/>
             <PasswordBox    Grid.Row="2"
                             Grid.Column="1"
                             x:Name="OldPasswordBox"
@@ -163,14 +163,14 @@
             <Button
                 Grid.Row="6"
                 Grid.Column="0"
-                Content="Lưu tên và email"
+                Content="Lưu email mới"
                 FontSize="20"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Height="40"
                 Margin="0,20"
                 Background="{StaticResource LightPrimaryColor}"
-                Command="{Binding SaveNameAndEmailCommand}">
+                Command="{Binding SaveNewEmailCommand}">
             </Button>
             <Button
                 Grid.Row="6"
