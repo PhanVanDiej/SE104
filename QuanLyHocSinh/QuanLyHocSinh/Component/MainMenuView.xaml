@@ -25,8 +25,8 @@
                 Background="{StaticResource VeryLightPrimaryColor}"
                 Margin="30">
             <StackPanel Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -54,12 +54,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="CardAccountDetailsOutline" />
                 <TextBlock
             FontWeight="Medium"
             Text="Tiếp nhận học sinh"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -72,9 +73,9 @@
                 Margin="30"
                 Grid.Column="1">
             <StackPanel Grid.Column="1"
-                Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+               Orientation="Vertical"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -98,12 +99,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="ViewList" />
                 <TextBlock
             FontWeight="Medium"
             Text="Xếp lớp cho học sinh"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -116,9 +118,9 @@
                 Margin="30"
                 Grid.Column="2">
             <StackPanel Grid.Column="2"
-                Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+               Orientation="Vertical"
+ VerticalAlignment="Stretch"
+ HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -142,12 +144,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="HumanMaleBoardPoll" />
                 <TextBlock
             FontWeight="Medium"
             Text="Phân công giảng dạy"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -160,9 +163,9 @@
                 Margin="30"
                 Grid.Column="3">
             <StackPanel Grid.Column="3"
-                Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+               Orientation="Vertical"
+ VerticalAlignment="Stretch"
+ HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -186,12 +189,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="Pencil" />
                 <TextBlock
             FontWeight="Medium"
             Text="Nhập điểm"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -204,9 +208,9 @@
                 Margin="30"
                 Grid.Row="1">
             <StackPanel Grid.Row="1"
-                Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+               Orientation="Vertical"
+ VerticalAlignment="Stretch"
+ HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -230,12 +234,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="ProgressWrench" />
                 <TextBlock
             FontWeight="Medium"
             Text="Quy định chung"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -249,9 +254,9 @@
                 Grid.Row="1"
                 Grid.Column="1">
             <StackPanel Grid.Row="1" Grid.Column="1"
-                Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+               Orientation="Vertical"
+ VerticalAlignment="Stretch"
+ HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -275,12 +280,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="GoogleClassroom" />
                 <TextBlock
             FontWeight="Medium"
             Text="Mở lớp"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -295,8 +301,8 @@
                 Grid.Column="2">
             <StackPanel Grid.Row="1" Grid.Column="2"
                 Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+ VerticalAlignment="Stretch"
+ HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -320,12 +326,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="BookOpenVariant" />
                 <TextBlock
             FontWeight="Medium"
             Text="Môn học"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
@@ -339,9 +346,9 @@
                 Grid.Row="1"
                 Grid.Column="3">
             <StackPanel Grid.Row="1" Grid.Column="3"
-                Orientation="Vertical"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+               Orientation="Vertical"
+ VerticalAlignment="Stretch"
+ HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
@@ -365,12 +372,13 @@
                 <materialDesign:PackIcon 
             Height="100"
             Width="100"
+            Margin="0,40,0,0"
             HorizontalAlignment="Center"
             Kind="AccountGroup" />
                 <TextBlock
             FontWeight="Medium"
             Text="Quản lý người dùng"
-            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
             </StackPanel>
