@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodel="clr-namespace:QuanLyHocSinh.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainPageAppViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="1440"
              Background="White"
@@ -79,7 +79,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
-                    Command="{Binding StudentListCommand}"
+                    Command="{Binding LearningManagementCommand}"
                     CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

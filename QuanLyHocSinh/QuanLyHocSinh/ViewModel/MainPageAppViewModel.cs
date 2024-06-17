@@ -31,8 +31,8 @@ namespace QuanLyHocSinh.ViewModel
         }
         public ICommand ReturnMainMenuCommand {  get; set; }
         public ICommand AddStudentCommand {  get; set; }
-        public ICommand StudentListCommand { get; set; }
-        public ICommand ResultTableFieldCommand { get ; set; }
+        public ICommand LearningManagementCommand { get; set; }
+        public ICommand TeachingManagementCommand { get ; set; }
         public ICommand ManagementCommand { get; set; }
         public ICommand UserManagementCommand { get; set; }
         public ICommand UserProfileCommand { get; set; }
@@ -42,8 +42,8 @@ namespace QuanLyHocSinh.ViewModel
             CurPageView = new MainMenuView();
             ReturnMainMenuCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new MainMenuView());
             AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new StudentManagementView());
-            StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new LearningManagmentView());
-            ResultTableFieldCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new ResultTableView());
+            LearningManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new LearningManagmentView());
+            TeachingManagementCommand = new RelayCommand<object>((p)=>true,(p)=>CurPageView=new TeachingManagementView());
             ManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView = new ManagementView());
             UserManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserManagementView());
             UserProfileCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserProfileView());
