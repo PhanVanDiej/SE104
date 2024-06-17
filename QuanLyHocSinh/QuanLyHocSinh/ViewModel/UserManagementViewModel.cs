@@ -84,7 +84,8 @@ namespace QuanLyHocSinh.ViewModel
                 if (!EmailCheck.Validate(Email)) return false;
                 foreach (var item in List)
                 {
-                    if (item.ID == SelectedItem.ID) return true;
+                    if (ID == item.ID)
+                        return true;
                 }
                 return false;
             }, (p) =>
@@ -97,7 +98,8 @@ namespace QuanLyHocSinh.ViewModel
                     return false;
                 foreach (var item in List)
                 {
-                    if (item.ID == SelectedItem.ID) return true;
+                    if (ID == item.ID)
+                        return true;
                 }
                 return false;
             }, (p) =>
