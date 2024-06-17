@@ -18,9 +18,9 @@ namespace QuanLyHocSinh.View
     /// <summary>
     /// Interaction logic for StudentListView.xaml
     /// </summary>
-    public partial class StudentListView : UserControl
+    public partial class LearningManagmentView : UserControl
     {
-        public StudentListView()
+        public LearningManagmentView()
         {
             InitializeComponent();
         }

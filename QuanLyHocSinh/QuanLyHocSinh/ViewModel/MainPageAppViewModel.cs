@@ -41,8 +41,8 @@ namespace QuanLyHocSinh.ViewModel
         {
             CurPageView = new MainMenuView();
             ReturnMainMenuCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new MainMenuView());
-            AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new AddStudentView());
-            StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new StudentListView());
+            AddStudentCommand =new RelayCommand<object>((p)=>true,(p)=> CurPageView=new StudentManagementView());
+            StudentListCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new LearningManagmentView());
             ResultTableFieldCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView=new ResultTableView());
             ManagementCommand=new RelayCommand<object>((p)=>true,(p)=>CurPageView = new ManagementView());
             UserManagementCommand = new RelayCommand<object>((p) => true, (p) => CurPageView = new UserManagementView());

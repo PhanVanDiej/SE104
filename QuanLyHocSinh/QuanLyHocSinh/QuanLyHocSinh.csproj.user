@@ -19,7 +19,7 @@
     <Compile Update="Component\NavigationBarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\AddStudentView.xaml.cs">
+    <Compile Update="View\StudentManagementView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ForgotPasswordView.xaml.cs">
@@ -37,7 +37,7 @@
     <Compile Update="View\ResultTableView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\StudentListView.xaml.cs">
+    <Compile Update="View\LearningManagmentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\StudentProfileView.xaml.cs">
@@ -72,7 +72,7 @@
     <Page Update="Resources\MainResources.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AddStudentView.xaml">
+    <Page Update="View\StudentManagementView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ForgotPasswordView.xaml">
@@ -90,7 +90,7 @@
     <Page Update="View\ResultTableView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\StudentListView.xaml">
+    <Page Update="View\LearningManagmentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\StudentProfileView.xaml">

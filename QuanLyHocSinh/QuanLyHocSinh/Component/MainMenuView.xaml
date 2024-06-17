@@ -104,7 +104,8 @@
             Kind="ViewList" />
                 <TextBlock
             FontWeight="Medium"
-            Text="Xếp lớp cho học sinh"
+            Text="Xếp lớp - Tra cứu điểm trung bình"
+            TextWrapping="Wrap"
             HorizontalAlignment="Center"
             FontSize="30">
                 </TextBlock>
@@ -142,16 +143,16 @@
                     </Style>
                 </StackPanel.Style>
                 <materialDesign:PackIcon 
-            Height="100"
-            Width="100"
-            Margin="0,40,0,0"
-            HorizontalAlignment="Center"
-            Kind="HumanMaleBoardPoll" />
+                    Height="100"
+                    Width="100"
+                    Margin="0,40,0,0"
+                    HorizontalAlignment="Center"
+                    Kind="HumanMaleBoardPoll" />
                 <TextBlock
-            FontWeight="Medium"
-            Text="Phân công giảng dạy"
-            HorizontalAlignment="Center"
-            FontSize="30">
+                    FontWeight="Medium"
+                    Text="Phân công giảng dạy"
+                    HorizontalAlignment="Center"
+                    FontSize="30">
                 </TextBlock>
             </StackPanel>
         </Border>
@@ -163,9 +164,9 @@
                 Margin="30"
                 Grid.Column="3">
             <StackPanel Grid.Column="3"
-               Orientation="Vertical"
- VerticalAlignment="Stretch"
- HorizontalAlignment="Stretch">
+                        Orientation="Vertical"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
