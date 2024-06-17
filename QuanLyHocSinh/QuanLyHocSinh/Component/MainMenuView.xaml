@@ -302,12 +302,12 @@
                 Grid.Column="2">
             <StackPanel Grid.Row="1" Grid.Column="2"
                 Orientation="Vertical"
- VerticalAlignment="Stretch"
- HorizontalAlignment="Stretch">
+                 VerticalAlignment="Stretch"
+                 HorizontalAlignment="Stretch">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction 
-                    Command=""
+                    Command="{Binding SubjectManagementCommand}"
                     CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

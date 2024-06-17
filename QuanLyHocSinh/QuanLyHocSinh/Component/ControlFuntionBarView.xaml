@@ -261,7 +261,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding ResultTableFieldCommand}"
+                                Command="{Binding ClassManagementCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
@@ -300,7 +300,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction 
-                                Command="{Binding ClassManagementCommand}"
+                                Command="{Binding SubjectManagementCommand}"
                                 CommandParameter="{Binding ElementName=ControlFuntion}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
