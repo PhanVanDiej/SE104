@@ -29,8 +29,8 @@ namespace QuanLyHocSinh.Model
             set { _gender = value; OnPropertyChanged(); }
         }
 
-        private DateTime _dateOfBirth;
-        public DateTime DateOfBirth
+        private DateTime? _dateOfBirth;
+        public DateTime? DateOfBirth
         {
             get { return _dateOfBirth; }
             set { _dateOfBirth = value; OnPropertyChanged(); }
