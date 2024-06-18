@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             DataContext="{StaticResource AddStudentVM}"
+             DataContext="{StaticResource StudentManagementVM}"
              x:Name="AddStudentUC"
              d:DesignHeight="570" d:DesignWidth="1440"
              Background="White">
@@ -33,7 +33,7 @@
         <StackPanel Orientation="Vertical"
                 Margin="20,30,10,30">
             <TextBox 
-                Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Mã học sinh" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="16"
@@ -41,7 +41,7 @@
                 FontWeight="Medium" Height="Auto" 
                 Margin="0,5,0,5"/>
             <TextBox 
-                Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding StudentName, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Tên học sinh" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="16"
@@ -49,7 +49,7 @@
                 FontWeight="Medium" Height="Auto" 
                 Margin="0,5,0,5"/>
             <ComboBox 
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = StudentGender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Giới tính"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
@@ -57,10 +57,10 @@
                 FontWeight="Medium" 
                 Height="Auto"
                 Margin="0,5,0,5"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding Gender}">
             </ComboBox>
             <DatePicker
-                SelectedDate="{Binding SelectedDate}"
+                SelectedDate="{Binding StudentBirth}"
                 materialDesign:HintAssist.Hint="Ngày sinh" 
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                 FontSize="16" 
@@ -76,7 +76,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <ComboBox
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = StudentProvince, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Tỉnh thành"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
@@ -84,10 +84,10 @@
                 FontWeight="Medium" 
                 Height="Auto"
                 Margin="0,5,0,5"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding Province}">
                 </ComboBox>
                 <ComboBox  Grid.Column="1"
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = StudentDistrict, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Quận huyện"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
@@ -95,10 +95,10 @@
                 FontWeight="Medium" 
                 Height="Auto"
                 Margin="0,5,0,5"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding District}">
                 </ComboBox>
                 <ComboBox  Grid.Column="2"
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = StudentCommune, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Xã phường"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
@@ -106,11 +106,11 @@
                 FontWeight="Medium" 
                 Height="Auto"
                 Margin="0,5,0,5"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding Commune}">
                 </ComboBox>
             </Grid>
             <TextBox 
-                Text="{Binding FullName}"
+                Text="{Binding StudentAddress}"
                 materialDesign:HintAssist.Hint="Số nhà, tên đường,..." 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="16" 
@@ -118,7 +118,7 @@
                 FontWeight="Medium" Height="Auto"
                 Margin="0,5,0,5"/>
             <TextBox 
-                Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding StudentEmail, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Email" 
                 Width="330"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -145,17 +145,17 @@
         <materialDesign:Card Grid.Column="1" Margin="5,25,10,10" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-                <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedStudent, Mode=OneWayToSource}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                            <GridViewColumn Header="Tên học sinh" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
-                            <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
-                            <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
-                            <GridViewColumn Header="Tỉnh thành" DisplayMemberBinding="{Binding Access}"></GridViewColumn>
-                            <GridViewColumn Header="Quận huyện" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                            <GridViewColumn Header="Phường xã" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
-                            <GridViewColumn Header="Số nhà, tên đường" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
+                            <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                            <GridViewColumn Header="Tên học sinh" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
+                            <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding Gender}"></GridViewColumn>
+                            <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding DateOfBirth}"></GridViewColumn>
+                            <GridViewColumn Header="Tỉnh thành" DisplayMemberBinding="{Binding Province}"></GridViewColumn>
+                            <GridViewColumn Header="Quận huyện" DisplayMemberBinding="{Binding District}"></GridViewColumn>
+                            <GridViewColumn Header="Phường xã" DisplayMemberBinding="{Binding Commune}"></GridViewColumn>
+                            <GridViewColumn Header="Số nhà, tên đường" DisplayMemberBinding="{Binding AddictiveAddress}"></GridViewColumn>
                             <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
                         </GridView>
                     </ListView.View>

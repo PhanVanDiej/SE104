@@ -9,4 +9,5 @@
     <viewmodels:ControlFuntionViewModel x:Key="ControlFunctionVM"/>
     <viewmodels:UserProfileViewModel x:Key="UserProfileVM"/>
     <viewmodels:UserManagementViewModel x:Key="UserManagementVM"/>
+    <viewmodels:StudentManagementViewModel x:Key="StudentManagementVM"/>
 </ResourceDictionary>
