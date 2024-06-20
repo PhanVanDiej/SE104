@@ -4,6 +4,7 @@ using QuanLyHocSinh.Resources;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Printing;
 using System.Text;
@@ -96,7 +97,7 @@ namespace QuanLyHocSinh.ViewModel
         public String StudentProvince
         {
             get { return _StudentProvince; }
-            set { _StudentProvince = value; OnPropertyChanged(nameof(StudentProvince)); }
+            set { _StudentProvince = value; OnPropertyChanged(nameof(StudentProvince));  LoadDistrict(); }
         }
 
         private ObservableCollection<String> _District { get; set; }
@@ -109,7 +110,7 @@ namespace QuanLyHocSinh.ViewModel
         public String StudentDistrict
         {
             get { return _StudentDistrict; }
-            set { _StudentDistrict = value; OnPropertyChanged(nameof(StudentDistrict)); }
+            set { _StudentDistrict = value; OnPropertyChanged(nameof(StudentDistrict)); LoadCommune(); }
         }
         private ObservableCollection<String> _Commune { get; set; }
         public ObservableCollection<String> Commune
@@ -122,7 +123,7 @@ namespace QuanLyHocSinh.ViewModel
         public String StudentCommune
         {
             get { return _StudentCommune; }
-            set { _StudentCommune = value; OnPropertyChanged(nameof(StudentCommune)); }
+            set { _StudentCommune = value; OnPropertyChanged(nameof(StudentCommune));   }
         }
 
         private String _StudentAddress { get; set; }
@@ -147,9 +148,9 @@ namespace QuanLyHocSinh.ViewModel
         public StudentManagementViewModel() 
         {
             Gender = LoadGender();
-            Province = LoadProvince();
-            District = LoadDistrict();
-            Commune = LoadCommune();
+            LoadProvince();
+            LoadDistrict();
+            LoadCommune();
             List = LoadData();
 
             AddCommand = new RelayCommand<object>((p) => true , (p) => AddStudent());
@@ -188,20 +189,65 @@ namespace QuanLyHocSinh.ViewModel
             gender.Add("Khác");
             return gender;
         }
-        private ObservableCollection<String> LoadProvince()
+        private void LoadProvince()
         {
             var province = new ObservableCollection<String>();
-            return province;
+            using(SqlConnection connection=new SqlConnection(Data.connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT DISTINCT Province FROM ADDRESSES", connection);
+                using (var  reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        province.Add(reader.GetString(0));
+                    }
+                }
+            }
+            Province = province;
         }
-        private ObservableCollection<String> LoadDistrict()
+        private void LoadDistrict()
         {
             var district = new ObservableCollection<String>();
-            return district;
+
+            if (StudentProvince == null) return;
+
+            using(SqlConnection connection=new SqlConnection(Data.connectionString))
+            {
+                connection.Open();
+                var command=new SqlCommand("SELECT DISTINCT District FROM ADDRESSES WHERE Province=@StudentProvince",connection);
+                command.Parameters.AddWithValue("@StudentProvince",StudentProvince);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        district.Add(reader.GetString(0));
+                    }
+                }
+            }
+            District =district;
         }
-        private ObservableCollection<String> LoadCommune()
+        private void LoadCommune()
         {
             var commune = new ObservableCollection<String>();
-            return commune;
+           
+            if (StudentProvince == null|| StudentDistrict==null) return;
+
+            using (SqlConnection connection = new SqlConnection(Data.connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT DISTINCT Commune FROM ADDRESSES WHERE Province=@StudentProvince AND District=@StudentDistrict", connection);
+                command.Parameters.AddWithValue("@StudentProvince", StudentProvince);
+                command.Parameters.AddWithValue("@StudentDistrict", StudentDistrict);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        commune.Add(reader.GetString(0));
+                    }
+                }
+            }
+            Commune = commune;
         }
         private ObservableCollection<Student> LoadData()
         {
@@ -246,7 +292,7 @@ namespace QuanLyHocSinh.ViewModel
                     try
                     {
                         connection.Open();
-                        string query = "INSERT INTO STUDENT (ID, FullName, Gender, DateOfBirth, Province, District, Commune, AddictiveAddress, Email) VALUES (@Id, @FullName, @Gender, @DateOfBirth, @Province, @District, @Commune, @AddictiveAddress, @Email ";
+                        string query = "INSERT INTO STUDENT (ID, FullName, Gender, DateOfBirth, Province, District, Commune, AddictiveAddress, Email) VALUES (@Id, @FullName, @Gender, @DateOfBirth, @Province, @District, @Commune, @AddictiveAddress, @Email) ";
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@Id", Id);
@@ -256,7 +302,7 @@ namespace QuanLyHocSinh.ViewModel
                             command.Parameters.AddWithValue("@Province", StudentProvince);
                             command.Parameters.AddWithValue("@District", StudentDistrict);
                             command.Parameters.AddWithValue("@Commune", StudentCommune);
-                            command.Parameters.AddWithValue("@Address", StudentAddress);
+                            command.Parameters.AddWithValue("@AddictiveAddress", StudentAddress);
                             command.Parameters.AddWithValue("@Email", StudentEmail);
 
                             int rowsAffected = command.ExecuteNonQuery();

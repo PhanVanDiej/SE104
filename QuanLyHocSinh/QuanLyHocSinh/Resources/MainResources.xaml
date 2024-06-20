@@ -10,4 +10,5 @@
     <viewmodels:UserProfileViewModel x:Key="UserProfileVM"/>
     <viewmodels:UserManagementViewModel x:Key="UserManagementVM"/>
     <viewmodels:StudentManagementViewModel x:Key="StudentManagementVM"/>
+    <viewmodels:LearningManagementViewModel x:Key="LearningManagementVM"/>
 </ResourceDictionary>
