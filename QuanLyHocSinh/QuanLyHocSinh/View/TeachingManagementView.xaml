@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Name="TeachingManagement"
              mc:Ignorable="d" 
+             DataContext="{StaticResource TeachingManagementVM}"
              d:DesignHeight="570" d:DesignWidth="1440"
              Background="White">
     <UserControl.Resources>
@@ -30,7 +31,7 @@
         <StackPanel Orientation="Vertical"
             Margin="20,30,10,30">
             <ComboBox 
-            SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding Path = TeacherId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             materialDesign:HintAssist.Hint="Mã giáo viên"
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
             FontSize="16" 
@@ -38,10 +39,10 @@
             FontWeight="Medium" 
             Height="Auto"
             Margin="0,5,0,5"
-            ItemsSource="{Binding AccessLevels}">
+            ItemsSource="{Binding TeacherIdList}">
             </ComboBox>
             <ComboBox
-            SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding Path = ClassId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             materialDesign:HintAssist.Hint="Mã lớp"
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
             FontSize="16" 
@@ -49,21 +50,21 @@
             FontWeight="Medium" 
             Height="Auto"
             Margin="0,5,0,5"
-            ItemsSource="{Binding AccessLevels}">
+            ItemsSource="{Binding ClassIdList}">
             </ComboBox>
             <ComboBox
-            SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            materialDesign:HintAssist.Hint="Năm học"
+            SelectedItem="{Binding Path = SubjectId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            materialDesign:HintAssist.Hint="Môn học"
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
             FontSize="16" 
             BorderBrush="{StaticResource PrimaryColor}" 
             FontWeight="Medium" 
             Height="Auto"
             Margin="0,5,0,5"
-            ItemsSource="{Binding AccessLevels}">
+            ItemsSource="{Binding SubjectIdList}">
             </ComboBox>
             <ComboBox
-            SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding Path = Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             materialDesign:HintAssist.Hint="Học kỳ"
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
             FontSize="16" 
@@ -71,18 +72,15 @@
             FontWeight="Medium" 
             Height="Auto"
             Margin="0,5,0,5"
-            ItemsSource="{Binding AccessLevels}">
+            ItemsSource="{Binding TermList}">
             </ComboBox>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button
         Content="Thêm"
         Command="{Binding AddCommand}">
                 </Button>
-                <Button
-        Content="Cập nhật"
-        Command="{Binding EditCommand}">
-                </Button>
+              
                 <Button
         Content="Xóa"
         Command="{Binding DeleteCommand}">
@@ -97,46 +95,56 @@
             <StackPanel Grid.Row="0"
                         Orientation="Horizontal">
                 <ComboBox
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = SortteacherId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Mã giáo viên"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                FontSize="16" 
+                BorderBrush="{StaticResource PrimaryColor}" 
+                FontWeight="Medium"
+                Margin="20,0,0,0"
+                ItemsSource="{Binding SortTeacherIdList}">
+                </ComboBox>
+                <ComboBox
+                SelectedItem="{Binding Path = SortClassId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Mã lớp"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
                 BorderBrush="{StaticResource PrimaryColor}" 
                 FontWeight="Medium"
                 Margin="20,0,0,0"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding SortClassIdList}">
                 </ComboBox>
                 <ComboBox
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                materialDesign:HintAssist.Hint="Năm học"
+                SelectedItem="{Binding Path = SortSubId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Môn học"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
                 BorderBrush="{StaticResource PrimaryColor}" 
                 FontWeight="Medium"
                 Margin="20,0,0,0"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding SortSubjectIdList}">
                 </ComboBox>
                 <ComboBox
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = SortTermId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Học kỳ"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
                 BorderBrush="{StaticResource PrimaryColor}" 
                 FontWeight="Medium"
                 Margin="20,0,0,0"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding SortTermList}">
                 </ComboBox>
             </StackPanel>
             <materialDesign:Card Grid.Row="1" Margin="5,25,10,10" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
                   HorizontalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView ItemsSource="{Binding RealList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Mã giáo viên" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                                <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
-                                <GridViewColumn Header="Môn học" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
-                                <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                                <GridViewColumn Header="Mã giáo viên" DisplayMemberBinding="{Binding TeacherId}"></GridViewColumn>
+                                <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding ClassId}"></GridViewColumn>
+                                <GridViewColumn Header="Môn học" DisplayMemberBinding="{Binding SubjectId}"></GridViewColumn>
+                                <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding Term}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

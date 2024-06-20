@@ -113,7 +113,7 @@
                 BorderBrush="{StaticResource PrimaryColor}" 
                 FontWeight="Medium"
                 Margin="20,0,0,0"
-                ItemsSource="{Binding ClassIdList}">
+                ItemsSource="{Binding SortClassIdList}">
                 </ComboBox>
                 <Button Content = "Xuất tập tin Excel"
                         Command=""

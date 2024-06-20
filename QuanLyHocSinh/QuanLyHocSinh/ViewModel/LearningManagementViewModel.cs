@@ -49,6 +49,13 @@ namespace QuanLyHocSinh.ViewModel
             get { return _ClassIdList; }
             set { _ClassIdList = value; OnPropertyChanged(nameof(ClassIdList)); }
         }
+        private ObservableCollection<String> _SortClassIdList {  get; set; }
+        public ObservableCollection<String> SortClassIdList
+        {
+            get { return _SortClassIdList; }
+            set { _SortClassIdList = value;OnPropertyChanged(nameof(SortClassIdList)); }
+        }
+
         private ObservableCollection<int> _TermList { get; set; }
         public ObservableCollection<int> TermList
         {
@@ -118,9 +125,9 @@ namespace QuanLyHocSinh.ViewModel
 
             StudentIdList = LoadStudentId();
             LoadData();
-            ClassIdList = LoadClassIdList();
+            LoadClassIdList();
+            LoadSortClassIdList();
             TermList = LoadTerm();
-
             AddCommand = new RelayCommand<object>((p) => true, (p) => AddLearningCommand());
             EditCommand = new RelayCommand<object>((p) =>
             {
@@ -191,7 +198,25 @@ namespace QuanLyHocSinh.ViewModel
             }
             return listId;
         }
-        private ObservableCollection<String> LoadClassIdList()
+        private void LoadClassIdList()
+        {
+            var ListId = new ObservableCollection<String>();
+            using (var connection = new SqlConnection(Data.connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT Id FROM CLASS", connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        String item = reader.GetString(0);
+                        ListId.Add(item);
+                    }
+                }
+            }
+            ClassIdList= ListId;
+        }
+        private void LoadSortClassIdList()
         {
             var ListId = new ObservableCollection<String>();
             ListId.Add("Tất cả");
@@ -208,7 +233,7 @@ namespace QuanLyHocSinh.ViewModel
                     }
                 }
             }
-            return ListId;
+            SortClassIdList = ListId;
         }
 
         private ObservableCollection<int> LoadTerm()
