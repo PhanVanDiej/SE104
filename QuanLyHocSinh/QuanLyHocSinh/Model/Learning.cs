@@ -22,22 +22,22 @@ namespace QuanLyHocSinh.Model
             set { _classId = value; OnPropertyChanged(); }
         }
 
-        private byte _term;
-        public byte Term
+        private int? _term;
+        public int? Term
         {
             get { return _term; }
             set { _term = value; OnPropertyChanged(); }
         }
 
-        private decimal _gpa;
-        public decimal GPA
+        private decimal? _gpa;
+        public decimal? GPA
         {
             get { return _gpa; }
             set { _gpa = value; OnPropertyChanged(); }
         }
-        private string _note;
+        private string? _note;
 
-        public string Note
+        public string? Note
         {
             get { return _note; }
             set { _note = value; OnPropertyChanged(); }
