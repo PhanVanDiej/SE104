@@ -29,40 +29,46 @@ namespace QuanLyHocSinh.Model
             set { _studentId = value; OnPropertyChanged(); }
         }
 
-        private byte _term;
-        public byte Term
+        private int? _term;
+        public int? Term
         {
             get { return _term; }
             set { _term = value; OnPropertyChanged(); }
         }
 
-        private decimal _miniTest;
-        public decimal MiniTest
+        private decimal? _miniTest;
+        public decimal? MiniTest
         {
             get { return _miniTest; }
             set { _miniTest = value; OnPropertyChanged(); }
         }
 
-        private decimal _midTermTest;
-        public decimal MidTermTest
+        private decimal? _midTermTest;
+        public decimal? MidTermTest
         {
             get { return _midTermTest; }
             set { _midTermTest = value; OnPropertyChanged(); }
         }
 
-        private decimal _finalTermTest;
-        public decimal FinalTermTest
+        private decimal? _finalTermTest;
+        public decimal? FinalTermTest
         {
             get { return _finalTermTest; }
             set { _finalTermTest = value; OnPropertyChanged(); }
         }
 
-        private decimal _average;
-        public decimal Average
+        private decimal? _average;
+        public decimal? Average
         {
             get { return _average; }
             set { _average = value; OnPropertyChanged(); }
         }
+        private string _isPass;
+        public string IsPass
+        {
+            get { return _isPass; }
+            set { _isPass = value; OnPropertyChanged(); }
+        } 
     }
 
 }

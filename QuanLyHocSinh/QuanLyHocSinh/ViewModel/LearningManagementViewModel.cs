@@ -70,12 +70,12 @@ namespace QuanLyHocSinh.ViewModel
             get { return _Term; }
             set { _Term = value; OnPropertyChanged(nameof(Term)); }
         }
-        private Decimal? _StudentGPA {  get; set; }
-        public Decimal? StudentGPA
-        {
-            get { return _StudentGPA; }
-            set { _StudentGPA = value; OnPropertyChanged(nameof(StudentGPA)); }
-        }
+        //private Decimal? _StudentGPA {  get; set; }
+        //public Decimal? StudentGPA
+        //{
+        //    get { return _StudentGPA; }
+        //    set { _StudentGPA = value; OnPropertyChanged(nameof(StudentGPA)); }
+        //}
 
         private String _Note { get; set; }
         public String Note
@@ -97,7 +97,7 @@ namespace QuanLyHocSinh.ViewModel
                     StudentId= SelectedItem.StudentId;
                     ClassId = SelectedItem.ClassId;
                     Term = SelectedItem.Term;
-                    StudentGPA = SelectedItem.GPA;
+                    //StudentGPA = SelectedItem.GPA;
                     Note=SelectedItem.Note;
                 }
             }
@@ -157,10 +157,10 @@ namespace QuanLyHocSinh.ViewModel
                 var command = new SqlCommand();
                 if (SortClassId != null && SortClassId != "Tất cả")
                 {
-                    command = new SqlCommand("SELECT StudentId,ClassId,Term,GPA,Note FROM LEARNING WHERE ClassId=@SortClassId", connection);
+                    command = new SqlCommand("SELECT StudentId,ClassId,Term,GPA,Note,IsPass FROM LEARNING WHERE ClassId=@SortClassId", connection);
                     command.Parameters.AddWithValue("@SortClassId", SortClassId);
                 }
-                else command = new SqlCommand("SELECT StudentId,ClassId,Term,GPA,Note FROM LEARNING", connection);
+                else command = new SqlCommand("SELECT StudentId,ClassId,Term,GPA,Note,IsPass FROM LEARNING", connection);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -172,6 +172,7 @@ namespace QuanLyHocSinh.ViewModel
                             Term=reader.IsDBNull(2)? null:reader.GetByte(2),
                             GPA=reader.IsDBNull(3)? null:reader.GetDecimal(3),
                             Note=reader.IsDBNull(4)? string.Empty:reader.GetString(4),
+                            IsPass=reader.IsDBNull(5)? string.Empty:reader.GetString(5),
                         };
                         data.Add(newLearning);
                     }
@@ -253,13 +254,13 @@ namespace QuanLyHocSinh.ViewModel
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO LEARNING (StudentId, ClassId, Term, GPA, Note) VALUES (@StudentId, @ClassId, @Term, @GPA, @Note)";
+                    string query = "INSERT INTO LEARNING (StudentId, ClassId, Term, Note) VALUES (@StudentId, @ClassId, @Term, @Note)";
                     using (SqlCommand  command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@StudentId", StudentId);
                         command.Parameters.AddWithValue("@ClassId", ClassId);
                         command.Parameters.AddWithValue("@Term", Term);
-                        command.Parameters.AddWithValue("@GPA", StudentGPA);
+                      //  command.Parameters.AddWithValue("@GPA", null);
                         command.Parameters.AddWithValue("@Note", Note==null? string.Empty:Note);
 
                         int rowAffected = command.ExecuteNonQuery();
@@ -271,8 +272,9 @@ namespace QuanLyHocSinh.ViewModel
                                 StudentId = _StudentId,
                                 ClassId = _ClassId,
                                 Term = _Term,
-                                GPA = _StudentGPA,
+                                GPA = null,
                                 Note = _Note,
+                                IsPass="",
                             });
                         }
                         else
@@ -292,8 +294,8 @@ namespace QuanLyHocSinh.ViewModel
             if (StudentId == null || StudentId == string.Empty) { MessageBox.Show("Thông tin Mã số học sinh bị thiếu!"); return false; }
             if(ClassId==null||ClassId==string.Empty) { MessageBox.Show("Thông tin mã số lớp học bị thiếu!"); return false; }
             if (Term == null) { MessageBox.Show("Thông tin học kì bị thiếu!"); return false; }
-            if(StudentGPA==null) { MessageBox.Show("Thông tin GPA học sinh bị thiếu!"); return false; }
-            if (StudentGPA > 10 || StudentGPA < 0) { MessageBox.Show("Thông tin GPA học sinh không hợp lệ!"); return false; }
+            //if(StudentGPA==null) { MessageBox.Show("Thông tin GPA học sinh bị thiếu!"); return false; }
+            //if (StudentGPA > 10 || StudentGPA < 0) { MessageBox.Show("Thông tin GPA học sinh không hợp lệ!"); return false; }
             
             return true;
         }
@@ -304,10 +306,10 @@ namespace QuanLyHocSinh.ViewModel
                 try
                 {
                     connection.Open();
-                    string query="UPDATE LEARNING SET GPA=@EditGPA, Note=@EditNote WHERE StudentId=@StudentId AND ClassId=@ClassId AND Term=@Term";
+                    string query="UPDATE LEARNING SET Note=@EditNote WHERE StudentId=@StudentId AND ClassId=@ClassId AND Term=@Term";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@EditGPA",StudentGPA);
+                       // command.Parameters.AddWithValue("@EditGPA",StudentGPA);
                         command.Parameters.AddWithValue("@EditNote",Note);
                         command.Parameters.AddWithValue("@StudentId",StudentId);
                         command.Parameters.AddWithValue("@ClassId",ClassId);
@@ -320,7 +322,7 @@ namespace QuanLyHocSinh.ViewModel
                             var item = List.FirstOrDefault(Stu => Stu.StudentId == StudentId && Stu.ClassId == ClassId && Stu.Term==Term);
                             if(item != null)
                             {
-                                item.GPA = StudentGPA;
+                               // item.GPA = StudentGPA;
                                 item.Note = Note;
                             }
                             MessageBox.Show("Cập nhật thành công");
@@ -342,8 +344,8 @@ namespace QuanLyHocSinh.ViewModel
             if (StudentId == null || StudentId == string.Empty) { MessageBox.Show("Thông tin Mã số học sinh bị thiếu!"); return false; }
             if (ClassId == null || ClassId == string.Empty) { MessageBox.Show("Thông tin mã số lớp học bị thiếu!"); return false; }
             if (Term == null) { MessageBox.Show("Thông tin học kì bị thiếu!"); return false; }
-            if (StudentGPA == null) { MessageBox.Show("Thông tin GPA học sinh bị thiếu!"); return false; }
-            if (StudentGPA > 10 || StudentGPA < 0) { MessageBox.Show("Thông tin GPA học sinh không hợp lệ!"); return false; }
+            //if (StudentGPA == null) { MessageBox.Show("Thông tin GPA học sinh bị thiếu!"); return false; }
+            //if (StudentGPA > 10 || StudentGPA < 0) { MessageBox.Show("Thông tin GPA học sinh không hợp lệ!"); return false; }
 
             foreach(var item in List)
             {
