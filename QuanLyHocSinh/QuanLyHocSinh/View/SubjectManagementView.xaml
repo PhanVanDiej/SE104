@@ -29,7 +29,7 @@
         <StackPanel Orientation="Vertical"
                 Margin="20,30,10,30">
             <TextBox 
-                Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding NewSubjectId, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Mã môn học" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="20"
@@ -37,7 +37,7 @@
                 FontWeight="Medium" Height="Auto" 
                 Margin="0,10,0,10"/>
             <TextBox 
-                Text="{Binding FullName}"
+                Text="{Binding NewSubjectName}"
                 materialDesign:HintAssist.Hint="Tên môn học" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="20" 
@@ -65,8 +65,8 @@
                 <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Mã môn học" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                            <GridViewColumn Header="Tên môn học" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                            <GridViewColumn Header="Mã môn học" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                            <GridViewColumn Header="Tên môn học" DisplayMemberBinding="{Binding SubjectName}"></GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
