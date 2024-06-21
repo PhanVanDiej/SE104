@@ -66,14 +66,6 @@
             ItemsSource="{Binding TermList}">
             </ComboBox>
             <TextBox 
-            Text="{Binding StudentGPA}"
-            materialDesign:HintAssist.Hint="Điểm trung bình" 
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            FontSize="16" 
-            BorderBrush="{StaticResource PrimaryColor}" 
-            FontWeight="Medium" Height="Auto"
-            Margin="0,5,0,5"/>
-            <TextBox 
             Text="{Binding Note, UpdateSourceTrigger=PropertyChanged}"
             materialDesign:HintAssist.Hint="Ghi chú" 
             Width="330"
@@ -113,7 +105,7 @@
                 BorderBrush="{StaticResource PrimaryColor}" 
                 FontWeight="Medium"
                 Margin="20,0,0,0"
-                ItemsSource="{Binding ClassIdList}">
+                ItemsSource="{Binding SortClassIdList}">
                 </ComboBox>
                 <Button Content = "Xuất tập tin Excel"
                         Command=""
@@ -132,6 +124,7 @@
                                 <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding ClassId}"></GridViewColumn>
                                 <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding Term}"></GridViewColumn>
                                 <GridViewColumn Header="Điểm trung bình" DisplayMemberBinding="{Binding GPA}"></GridViewColumn>
+                                <GridViewColumn Header="Kết quả" DisplayMemberBinding="{Binding IsPass}"></GridViewColumn>
                                 <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding Note}"></GridViewColumn>
                             </GridView>
                         </ListView.View>

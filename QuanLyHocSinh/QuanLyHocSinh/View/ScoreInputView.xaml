@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Name="ScoreInput"
+        DataContext="{StaticResource ScoreInputVM}"
         d:DesignHeight="570" d:DesignWidth="1440"
         Background="White">
     <UserControl.Resources>
@@ -30,7 +31,7 @@
         <StackPanel Orientation="Vertical"
            Margin="20,30,10,30">
             <ComboBox 
-           SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+           SelectedItem="{Binding Path = ClassId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
            materialDesign:HintAssist.Hint="Mã lớp"
            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
            FontSize="16" 
@@ -38,10 +39,10 @@
            FontWeight="Medium" 
            Height="Auto"
            Margin="0,5,0,5"
-           ItemsSource="{Binding AccessLevels}">
+           ItemsSource="{Binding ClassIdList}">
             </ComboBox>
             <ComboBox
-           SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+           SelectedItem="{Binding Path = SubjectId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
            materialDesign:HintAssist.Hint="Mã môn"
            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
            FontSize="16" 
@@ -49,10 +50,10 @@
            FontWeight="Medium" 
            Height="Auto"
            Margin="0,5,0,5"
-           ItemsSource="{Binding AccessLevels}">
+           ItemsSource="{Binding SubjectIdList}">
             </ComboBox>
             <ComboBox
-           SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+           SelectedItem="{Binding Path = StudentId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
            materialDesign:HintAssist.Hint="Mã học sinh"
            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
            FontSize="16" 
@@ -60,10 +61,10 @@
            FontWeight="Medium" 
            Height="Auto"
            Margin="0,5,0,5"
-           ItemsSource="{Binding AccessLevels}">
+           ItemsSource="{Binding StudentIdList}">
             </ComboBox>
             <ComboBox
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Học kỳ"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="16" 
@@ -71,10 +72,10 @@
                 FontWeight="Medium" 
                 Height="Auto"
                 Margin="0,5,0,5"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding TermList}">
             </ComboBox>
             <TextBox 
-                Text="{Binding FullName}"
+                Text="{Binding MiniTest}"
                 materialDesign:HintAssist.Hint="Điểm 15 phút" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="16" 
@@ -82,7 +83,7 @@
                 FontWeight="Medium" Height="Auto"
                 Margin="0,5,0,5"/>
             <TextBox 
-                Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding MidTermTest, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Điểm giữa kỳ" 
                 Width="330"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -91,34 +92,18 @@
                 FontWeight="Medium" Height="Auto"
                 Margin="0,5,0,5"/>
             <TextBox 
-                Text="{Binding FullName}"
+                Text="{Binding FinalTermTest}"
                 materialDesign:HintAssist.Hint="Điểm cuối kỳ" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="16" 
                 BorderBrush="{StaticResource PrimaryColor}" 
                 FontWeight="Medium" Height="Auto"
                 Margin="0,5,0,5"/>
-            <TextBox 
-                Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
-                materialDesign:HintAssist.Hint="Điểm trung bình" 
-                Width="330"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                FontSize="16" 
-                BorderBrush="{StaticResource PrimaryColor}"  
-                FontWeight="Medium" Height="Auto"
-                Margin="0,5,0,5"/>
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button
-                   Content="Thêm"
-                   Command="{Binding AddCommand}">
-                    </Button>
-                    <Button
                    Content="Cập nhật"
                    Command="{Binding EditCommand}">
-                    </Button>
-                    <Button
-                   Content="Xóa"
-                   Command="{Binding DeleteCommand}">
                 </Button>
             </StackPanel>
         </StackPanel>
@@ -130,34 +115,34 @@
             <StackPanel Grid.Row="0"
                        Orientation="Horizontal">
                 <ComboBox
-               SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+               SelectedItem="{Binding Path = SortYear, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                materialDesign:HintAssist.Hint="Năm học"
                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                FontSize="16" 
                BorderBrush="{StaticResource PrimaryColor}" 
                FontWeight="Medium"
                Margin="20,0,0,0"
-               ItemsSource="{Binding AccessLevels}">
+               ItemsSource="{Binding YearList}">
                 </ComboBox>
                 <ComboBox
-               SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+               SelectedItem="{Binding Path = SortClassId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                materialDesign:HintAssist.Hint="Mã lớp"
                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                FontSize="16" 
                BorderBrush="{StaticResource PrimaryColor}" 
                FontWeight="Medium"
                Margin="20,0,0,0"
-               ItemsSource="{Binding AccessLevels}">
+               ItemsSource="{Binding SortClassIdList}">
                 </ComboBox>
                 <ComboBox
-               SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+               SelectedItem="{Binding Path = SortTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                materialDesign:HintAssist.Hint="Học kỳ"
                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                FontSize="16" 
                BorderBrush="{StaticResource PrimaryColor}" 
                FontWeight="Medium"
                Margin="20,0,0,0"
-               ItemsSource="{Binding AccessLevels}">
+               ItemsSource="{Binding SortTermList}">
                 </ComboBox>
                 <Button Content = "Xuất tập tin Excel"
                         Command=""
@@ -169,17 +154,18 @@
             <materialDesign:Card Grid.Row="1" Margin="5,25,10,10" VerticalAlignment="Stretch">
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
                  HorizontalScrollBarVisibility="Auto">
-                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView ItemsSource="{Binding ViewList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
-                                <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                                <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding Password}"></GridViewColumn>
-                                <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding FullName}"></GridViewColumn>
-                                <GridViewColumn Header="Điểm 15 phút" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
-                                <GridViewColumn Header="Điểm giữa kỳ" DisplayMemberBinding="{Binding Access}"></GridViewColumn>
-                                <GridViewColumn Header="Điểm cuối kỳ" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
-                                <GridViewColumn Header="Điểm trung bình" DisplayMemberBinding="{Binding Access}"></GridViewColumn>
+                                <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding ClassId}"></GridViewColumn>
+                                <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding SubjectId}"></GridViewColumn>
+                                <GridViewColumn Header="Mã học sinh" DisplayMemberBinding="{Binding StudentId}"></GridViewColumn>
+                                <GridViewColumn Header="Học kỳ" DisplayMemberBinding="{Binding Term}"></GridViewColumn>
+                                <GridViewColumn Header="Điểm 15 phút" DisplayMemberBinding="{Binding MiniTest}"></GridViewColumn>
+                                <GridViewColumn Header="Điểm giữa kỳ" DisplayMemberBinding="{Binding MidTermTest}"></GridViewColumn>
+                                <GridViewColumn Header="Điểm cuối kỳ" DisplayMemberBinding="{Binding FinalTermTest}"></GridViewColumn>
+                                <GridViewColumn Header="Điểm trung bình" DisplayMemberBinding="{Binding Average}"></GridViewColumn>
+                                <GridViewColumn Header="Kết quả" DisplayMemberBinding="{Binding IsPass}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

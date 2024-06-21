@@ -1,7 +1,7 @@
 ﻿<Application x:Class="QuanLyHocSinh.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="View/MainPageAppView.xaml">
+             StartupUri="View/Login.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -29,8 +29,8 @@ namespace QuanLyHocSinh.Model
             set { _subjectId = value; OnPropertyChanged(); }
         }
 
-        private byte _term;
-        public byte Term
+        private int? _term;
+        public int? Term
         {
             get { return _term; }
             set { _term = value; OnPropertyChanged(); }

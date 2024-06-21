@@ -42,6 +42,14 @@ namespace QuanLyHocSinh.Model
             get { return _note; }
             set { _note = value; OnPropertyChanged(); }
         }
+        private string _IsPass;
+
+        public string IsPass
+        {
+            get { return _IsPass; }
+            set { _IsPass = value; OnPropertyChanged(); }
+        }
+
 
     }
 
