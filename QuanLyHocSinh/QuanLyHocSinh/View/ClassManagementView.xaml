@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Name="ClassMangement"
+             DataContext="{StaticResource ClassManagementVM}"
              d:DesignHeight="800" d:DesignWidth="1440"
              Background="White">
     <UserControl.Resources>
@@ -30,7 +31,7 @@
         <StackPanel Orientation="Vertical"
                 Margin="20,30,10,30">
             <TextBox 
-                Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding ClassId, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Mã lớp" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="20"
@@ -38,7 +39,7 @@
                 FontWeight="Medium" Height="Auto" 
                 Margin="0,10,0,10"/>
             <TextBox 
-                Text="{Binding FullName}"
+                Text="{Binding ClassName}"
                 materialDesign:HintAssist.Hint="Tên lớp" 
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 FontSize="20" 
@@ -46,7 +47,7 @@
                 FontWeight="Medium" Height="Auto"
                 Margin="0,10,0,10"/>
             <ComboBox 
-                SelectedItem="{Binding Path = Access, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path = SchoolYear, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Năm học" 
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                 FontSize="20" 
@@ -55,7 +56,7 @@
                 FontWeight="Medium" 
                 Height="Auto"
                 Margin="0,10,0,10"
-                ItemsSource="{Binding AccessLevels}">
+                ItemsSource="{Binding SchoolYearList}">
             </ComboBox>
             <StackPanel Orientation="Horizontal">
                 <Button
@@ -75,12 +76,12 @@
         <materialDesign:Card Grid.Column="1" Margin="5,25,10,10" VerticalAlignment="Stretch">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-                <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                <ListView ItemsSource="{Binding ClassList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                            <GridViewColumn Header="Tên lớp" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                            <GridViewColumn Header="Năm học" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                            <GridViewColumn Header="Mã lớp" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                            <GridViewColumn Header="Tên lớp" DisplayMemberBinding="{Binding ClassName}"></GridViewColumn>
+                            <GridViewColumn Header="Năm học" DisplayMemberBinding="{Binding SchoolYear}"></GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

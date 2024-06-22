@@ -22,19 +22,11 @@ namespace QuanLyHocSinh.Model
             set { _className = value; OnPropertyChanged(); }
         }
 
-        private short _schoolYear;
-        public short SchoolYear
+        private short? _schoolYear;
+        public short? SchoolYear
         {
             get { return _schoolYear; }
             set { _schoolYear = value; OnPropertyChanged(); }
         }
-
-        private string _homeroomTeacherId;
-        public string HomeroomTeacherId
-        {
-            get { return _homeroomTeacherId; }
-            set { _homeroomTeacherId = value; OnPropertyChanged(); }
-        }
     }
-
 }
