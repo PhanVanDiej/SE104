@@ -8,32 +8,44 @@ namespace QuanLyHocSinh.Model
 {
     public class Regulation : ModelBase
     {
-        private byte _minAge;
-        public byte MinAge
+        private int? _minAge;
+        public int? MinAge
         {
             get { return _minAge; }
             set { _minAge = value; OnPropertyChanged(); }
         }
 
-        private byte _maxAge;
-        public byte MaxAge
+        private int? _maxAge;
+        public int? MaxAge
         {
             get { return _maxAge; }
             set { _maxAge = value; OnPropertyChanged(); }
         }
 
-        private byte _maxClassSize;
-        public byte MaxClassSize
+        private int? _maxClassSize;
+        public int? MaxClassSize
         {
             get { return _maxClassSize; }
             set { _maxClassSize = value; OnPropertyChanged(); }
         }
 
-        private decimal _passGPD;
-        public decimal PassGPD
+        private decimal? _passGPA;
+        public decimal? PassGPA
         {
-            get { return _passGPD; }
-            set { _passGPD = value; OnPropertyChanged(); }
+            get { return _passGPA; }
+            set { _passGPA = value; OnPropertyChanged(); }
+        }
+        private decimal? _passingGPAPerSubject;
+        public decimal? PassingGPAPerSubject
+        {
+            get { return _passingGPAPerSubject; }
+            set { _passingGPAPerSubject = value; OnPropertyChanged(); }
+        }
+        private short? _SchoolYear;
+        public short? SchoolYear
+        {
+            get { return _SchoolYear; }
+            set { _SchoolYear = value; OnPropertyChanged(); }
         }
     }
 

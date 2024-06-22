@@ -13,4 +13,5 @@
     <viewmodels:LearningManagementViewModel x:Key="LearningManagementVM"/>
     <viewmodels:TeachingManagementViewModel x:Key="TeachingManagementVM"/>
     <viewmodels:ScoreInputViewModel x:Key="ScoreInputVM"/>
+    <viewmodels:RegulationManagementViewModel x:Key="RegulationManagementVM"/>
 </ResourceDictionary>
