@@ -71,10 +71,21 @@ namespace QuanLyHocSinh.ViewModel
         {
             LoadData();
             LoadSchoolYearList();
-            AddCommand = new RelayCommand<object>((p) => true, (p) => AddClassCommand());
+            AddCommand = new RelayCommand<object>((p) => 
+            { 
+                if (CurrentUser.Instance.Access != "Quản trị viên" ||CurrentUser.Instance.Access!="Phó hiệu trưởng") 
+                { 
+                    MessageBox.Show("Bạn không có quyền làm điều này."); 
+                    return false; 
+                } return true; }, (p) => AddClassCommand());
             EditCommand = new RelayCommand<Object>((p) =>
             {
                 if (SelectedItem == null) return false;
+                if (CurrentUser.Instance.Access != "Quản trị viên" || CurrentUser.Instance.Access != "Phó hiệu trưởng")
+                {
+                    MessageBox.Show("Bạn không có quyền làm điều này.");
+                    return false;
+                }
                 foreach (var item in ClassList)
                 {
                     if (item.Id == ClassId) return true;
@@ -84,6 +95,11 @@ namespace QuanLyHocSinh.ViewModel
             DeleteCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
+                if (CurrentUser.Instance.Access != "Quản trị viên" || CurrentUser.Instance.Access != "Phó hiệu trưởng")
+                {
+                    MessageBox.Show("Bạn không có quyền làm điều này.");
+                    return false;
+                }
                 foreach (var item in ClassList)
                 {
                     if (item.Id == ClassId) return true;
