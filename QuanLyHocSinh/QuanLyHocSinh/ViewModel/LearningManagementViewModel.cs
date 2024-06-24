@@ -128,10 +128,11 @@ namespace QuanLyHocSinh.ViewModel
             LoadClassIdList();
             LoadSortClassIdList();
             TermList = LoadTerm();
-            AddCommand = new RelayCommand<object>((p) => true, (p) => AddLearningCommand());
+            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; } return true; }, (p) => AddLearningCommand());
             EditCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
+                if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
                 foreach (var item in List)
                 {
                     if (StudentId == item.StudentId&&ClassId==item.ClassId&&Term==item.Term) return true;
@@ -141,6 +142,8 @@ namespace QuanLyHocSinh.ViewModel
             DeleteCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
+                if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
+
                 foreach (var item in List)
                 {
                     if (StudentId == item.StudentId && Term == item.Term && ClassId == item.ClassId) return true;

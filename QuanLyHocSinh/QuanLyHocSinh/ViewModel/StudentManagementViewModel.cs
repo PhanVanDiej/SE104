@@ -153,11 +153,13 @@ namespace QuanLyHocSinh.ViewModel
             LoadCommune();
             List = LoadData();
 
-            AddCommand = new RelayCommand<object>((p) => true , (p) => AddStudent());
+            AddCommand = new RelayCommand<object>((p) => { return CurrentUser.Instance.Access != "Giáo viên"; } , (p) => AddStudent());
             EditCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedStudent == null)
                     return false;
+                if(CurrentUser.Instance.Access=="Giáo viên") return false;
+
                 if (!EmailCheck.Validate(StudentEmail)) return false;
                 foreach (var item in List)
                 {
@@ -171,6 +173,8 @@ namespace QuanLyHocSinh.ViewModel
             {
                 if (SelectedStudent == null)
                     return false;
+                if (CurrentUser.Instance.Access == "Giáo viên") return false;
+
                 if (!EmailCheck.Validate(StudentEmail)) return false;
                 foreach (var item in List)
                 {

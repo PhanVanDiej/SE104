@@ -83,11 +83,12 @@ namespace QuanLyHocSinh.ViewModel
         public RegulationManagementViewModel()
         {
             LoadData();
-            AddCommand = new RelayCommand<object>((p) => true, (p) => AddRegulationCommand());
+            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Quản trị viên") return true;  MessageBox.Show("Bạn không có quyền làm điều này."); return false; }, (p) => AddRegulationCommand());
             EditCommand=new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                foreach(var item in List)
+                if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
+                foreach (var item in List)
                 {
                     if (item.SchoolYear == SchoolYear) return true;
                 }
@@ -95,6 +96,7 @@ namespace QuanLyHocSinh.ViewModel
             }, (p) => EditRegulationCommand());
             DeleteCommand=new RelayCommand<object>((p)=>
             {
+                if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
                 if (SelectedItem == null) return false;
                 foreach (var item in List)
                 {
