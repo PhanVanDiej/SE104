@@ -172,11 +172,11 @@ namespace QuanLyHocSinh.ViewModel
             LoadSortSubjectId();
             LoadSortTermList();
 
-            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { return false; } return true; }, (p) => AddTeachingCommand());
+            AddCommand = new RelayCommand<object>((p) => { return true; }, (p) => AddTeachingCommand());
             DeleteCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access == "Giáo viên") { return false; }
+                
                 return true;
             }, (p) => DeleteTeachingCommand());
         }
@@ -405,6 +405,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedAddCommand()
         {
+            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (TeacherId == null) { MessageBox.Show("Thông tin Mã giáo viên bị thiếu!"); return false; }
             if (ClassId == null) { MessageBox.Show("Thông tin Mã lớp bị thiếu!"); return false; }
             if(SubjectId == null) { MessageBox.Show("Thông tin Mã môn học bị thiếu!"); return false; }
@@ -447,6 +448,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedDeleteCommand()
         {
+            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             DialogResult dialog = MessageBox.Show("Xóa dữ liệu được chọn?","", MessageBoxButtons.YesNo);
             if(dialog == DialogResult.Yes) { return true; }
 

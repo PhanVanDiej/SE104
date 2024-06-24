@@ -65,7 +65,7 @@ namespace QuanLyHocSinh.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (CurrentUser.Instance.Access != "Quản trị viên") return false;
+              
                 if (!EmailCheck.Validate(Email)) return false;
                 foreach (var item in List)
                 {
@@ -146,6 +146,8 @@ namespace QuanLyHocSinh.ViewModel
         }
         private void AddData()
         {
+            if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return; }
+
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
                 try
@@ -190,6 +192,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private void EditData()
         {
+            if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return; }
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
                 try
@@ -247,6 +250,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private void DeleteData()
         {
+            if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return; }
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
                 try

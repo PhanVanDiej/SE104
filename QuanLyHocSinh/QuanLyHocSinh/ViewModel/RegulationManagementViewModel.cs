@@ -83,11 +83,11 @@ namespace QuanLyHocSinh.ViewModel
         public RegulationManagementViewModel()
         {
             LoadData();
-            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Quản trị viên") return true;   return false; }, (p) => AddRegulationCommand());
+            AddCommand = new RelayCommand<object>((p) => { return true; }, (p) => AddRegulationCommand());
             EditCommand=new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access != "Quản trị viên") { return false; }
+                
                 foreach (var item in List)
                 {
                     if (item.SchoolYear == SchoolYear) return true;
@@ -96,7 +96,7 @@ namespace QuanLyHocSinh.ViewModel
             }, (p) => EditRegulationCommand());
             DeleteCommand=new RelayCommand<object>((p)=>
             {
-                if (CurrentUser.Instance.Access != "Quản trị viên") { return false; }
+                
                 if (SelectedItem == null) return false;
                 foreach (var item in List)
                 {
@@ -167,7 +167,9 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedAddCommand()
         {
-            if(SchoolYear==null) { MessageBox.Show("Thông tin năm học bị thiếu!");return false;}
+
+            if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (SchoolYear==null) { MessageBox.Show("Thông tin năm học bị thiếu!");return false;}
             if(MinAge==null) { MessageBox.Show("Thông tin Tuổi tối thiểu bị thiếu!"); return false; }
             if (MaxAge == null) { MessageBox.Show("Thông tin Tuổi tối đa bị thiếu!"); return false; }
             if(MaxClassSize==null) { MessageBox.Show("Thông tin Sĩ số lớp tối đa bị thiếu!"); return false; }
@@ -216,6 +218,8 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedEditCommand()
         {
+            if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+
             if (SchoolYear == null) { MessageBox.Show("Thông tin năm học bị thiếu!"); return false; }
             if (MinAge == null) { MessageBox.Show("Thông tin Tuổi tối thiểu bị thiếu!"); return false; }
             if (MaxAge == null) { MessageBox.Show("Thông tin Tuổi tối đa bị thiếu!"); return false; }
@@ -258,7 +262,9 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedDeleteCommand()
         {
-            DialogResult dialog=MessageBox.Show("Xóa dữ liệu được chọn?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (CurrentUser.Instance.Access != "Quản trị viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+
+            DialogResult dialog =MessageBox.Show("Xóa dữ liệu được chọn?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dialog == DialogResult.Yes) { return true; }
             return false;
         }

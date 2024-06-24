@@ -4,7 +4,10 @@ using QuanLyHocSinh.Resources;
 using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
+using MessageBox = System.Windows.Forms.MessageBox;
+using UserControl = System.Windows.Controls.UserControl;
 namespace QuanLyHocSinh.ViewModel
 {
     public class UserProfileViewModel : ViewModelBase
@@ -52,6 +55,7 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand ConfirmNewPasswordChangedCommand { get; set; }
         public ICommand SaveNewEmailCommand { get; set; }
         public ICommand SaveNewPassCommand { get; set; }
+        public ICommand LogoutCommand { get; set; }
         public UserProfileViewModel()
         {
             OldHashedPass = OldPass = NewPass = ConfirmNewPass = FullName = Email = string.Empty;
@@ -61,6 +65,7 @@ namespace QuanLyHocSinh.ViewModel
             ConfirmNewPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { ConfirmNewPass = p.Password; });
             SaveNewEmailCommand = new RelayCommand<object>((p) => CanSaveNewEmail(), (p) => SaveNewEmail());
             SaveNewPassCommand = new RelayCommand<object>((p) => CanSaveNewPass(), (p) => SaveNewPass());
+            LogoutCommand = new RelayCommand<UserControl>((p) => { return true; }, (p) => LogOut(p));
         }
 
         private void LoadData()
@@ -163,6 +168,21 @@ namespace QuanLyHocSinh.ViewModel
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+        }
+        private void LogOut(UserControl p)
+        {
+            DialogResult dialog = MessageBox.Show("Bạn có muốn Đăng xuất tài khoản?", "", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.No) return;
+            var returnLogin = new Login();
+            var curWindow = Window.GetWindow(p);
+            if (curWindow != null)
+            {
+                CurrentUser.Instance.UserId = null;
+                CurrentUser.Instance.Access = null;
+                Window window = curWindow as Window;
+                window.Close();
+            }
+            returnLogin.Show();
         }
     }
 }

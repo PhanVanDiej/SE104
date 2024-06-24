@@ -122,6 +122,10 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand ExportFile {  get; set; }
+        public ICommand ClickAddCommad {  get; set; }
+        public ICommand ClickEditCommand {  get; set; }
+        public ICommand ClickDeleteCommad { get; set; }
+
         public LearningManagementViewModel()
         {
 
@@ -130,11 +134,11 @@ namespace QuanLyHocSinh.ViewModel
             LoadClassIdList();
             LoadSortClassIdList();
             TermList = LoadTerm();
-            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { return false; } return true; }, (p) => AddLearningCommand());
+            AddCommand = new RelayCommand<object>((p) => { return true; }, (p) => AddLearningCommand());
             EditCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access == "Giáo viên") { return false; }
+               
                 foreach (var item in List)
                 {
                     if (StudentId == item.StudentId&&ClassId==item.ClassId&&Term==item.Term) return true;
@@ -144,8 +148,7 @@ namespace QuanLyHocSinh.ViewModel
             DeleteCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access == "Giáo viên") { return false; }
-
+                
                 foreach (var item in List)
                 {
                     if (StudentId == item.StudentId && Term == item.Term && ClassId == item.ClassId) return true;
@@ -297,6 +300,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedAddCommand()
         {
+            if(CurrentUser.Instance.Access=="Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (StudentId == null || StudentId == string.Empty) { MessageBox.Show("Thông tin Mã số học sinh bị thiếu!"); return false; }
             if(ClassId==null||ClassId==string.Empty) { MessageBox.Show("Thông tin mã số lớp học bị thiếu!"); return false; }
             if (Term == null) { MessageBox.Show("Thông tin học kì bị thiếu!"); return false; }
@@ -307,6 +311,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private void EditLearningCommand()
         {
+            if (!checkedEditLearningCommand()) return;
             using (SqlConnection connection=new SqlConnection(Data.connectionString))
             {
                 try
@@ -347,6 +352,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedEditLearningCommand()
         {
+            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (StudentId == null || StudentId == string.Empty) { MessageBox.Show("Thông tin Mã số học sinh bị thiếu!"); return false; }
             if (ClassId == null || ClassId == string.Empty) { MessageBox.Show("Thông tin mã số lớp học bị thiếu!"); return false; }
             if (Term == null) { MessageBox.Show("Thông tin học kì bị thiếu!"); return false; }
@@ -404,6 +410,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedDeleteCommand()
         {
+            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             DialogResult result = MessageBox.Show("Xóa dữ liệu được chọn?", "", MessageBoxButtons.YesNo);
             if(result==DialogResult.Yes) { return true; }
             return false;
