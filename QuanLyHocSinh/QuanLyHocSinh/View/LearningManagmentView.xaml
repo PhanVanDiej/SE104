@@ -108,7 +108,7 @@
                 ItemsSource="{Binding SortClassIdList}">
                 </ComboBox>
                 <Button Content = "Xuất tập tin Excel"
-                        Command=""
+                        Command="{Binding ExportFile}"
                         Width = "Auto"
                         HorizontalAlignment="Right"
                         FontSize="16" 

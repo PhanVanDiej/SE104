@@ -75,7 +75,7 @@ namespace QuanLyHocSinh.ViewModel
             { 
                 if (CurrentUser.Instance.Access != "Quản trị viên" ||CurrentUser.Instance.Access!="Phó hiệu trưởng") 
                 { 
-                    MessageBox.Show("Bạn không có quyền làm điều này."); 
+                   
                     return false; 
                 } return true; }, (p) => AddClassCommand());
             EditCommand = new RelayCommand<Object>((p) =>
@@ -83,7 +83,7 @@ namespace QuanLyHocSinh.ViewModel
                 if (SelectedItem == null) return false;
                 if (CurrentUser.Instance.Access != "Quản trị viên" || CurrentUser.Instance.Access != "Phó hiệu trưởng")
                 {
-                    MessageBox.Show("Bạn không có quyền làm điều này.");
+                    
                     return false;
                 }
                 foreach (var item in ClassList)
@@ -97,7 +97,7 @@ namespace QuanLyHocSinh.ViewModel
                 if (SelectedItem == null) return false;
                 if (CurrentUser.Instance.Access != "Quản trị viên" || CurrentUser.Instance.Access != "Phó hiệu trưởng")
                 {
-                    MessageBox.Show("Bạn không có quyền làm điều này.");
+                    
                     return false;
                 }
                 foreach (var item in ClassList)
