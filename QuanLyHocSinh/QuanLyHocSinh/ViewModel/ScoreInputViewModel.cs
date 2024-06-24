@@ -394,6 +394,7 @@ namespace QuanLyHocSinh.ViewModel
         }
         private bool checkedEditCommand()
         {
+
             if (MiniTest < 0 || MiniTest > 10) { MessageBox.Show("Điểm số phải ≥ 0 và ≤ 10."); return false; }
             if (MidTermTest < 0 || MidTermTest > 10) { MessageBox.Show("Điểm số phải ≥ 0 và ≤ 10."); return false; }
             if (FinalTermTest < 0 || FinalTermTest > 10) { MessageBox.Show("Điểm số phải ≥ 0 và ≤ 10."); return false; }
