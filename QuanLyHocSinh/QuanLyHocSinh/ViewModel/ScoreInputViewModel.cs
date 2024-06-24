@@ -16,8 +16,10 @@ using Timer = System.Timers.Timer;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    internal class ScoreInputViewModel : ViewModelBase
+    public class ScoreInputViewModel : ViewModelBase
     {
+        private static ScoreInputViewModel _instance;
+        public static ScoreInputViewModel Instance => _instance?? (_instance = new ScoreInputViewModel());
         private ObservableCollection<string> _ClassIdList { get; set; }
         public ObservableCollection<string> ClassIdList
         {
@@ -167,10 +169,10 @@ namespace QuanLyHocSinh.ViewModel
             LoadSortClassIdList();
             LoadSortTermList();
 
-            Timer myTimer = new Timer();
-            myTimer.Elapsed += new ElapsedEventHandler(DisplayTimeEvent);
-            myTimer.Interval = 3000; // 1000 ms is one second
-            myTimer.Start();
+            //Timer myTimer = new Timer();
+            //myTimer.Elapsed += new ElapsedEventHandler(DisplayTimeEvent);
+            //myTimer.Interval = 3000; // 1000 ms is one second
+            //myTimer.Start();
 
             EditCommand = new RelayCommand<object>((p) =>
             {
@@ -182,10 +184,10 @@ namespace QuanLyHocSinh.ViewModel
                 return false;
             }, (p) => EditScoreCommand());
         }
-       private void DisplayTimeEvent(object source, ElapsedEventArgs e)
-        {
-            LoadData();
-        }
+       //private void DisplayTimeEvent(object source, ElapsedEventArgs e)
+       // {
+       //     LoadData();
+       // }
         private void LoadClassIdList()
         {
             var ListId = new ObservableCollection<String>();
@@ -305,11 +307,16 @@ namespace QuanLyHocSinh.ViewModel
                     command.Parameters.AddWithValue("@SortYear", SortYear);
                     command.Parameters.AddWithValue("@TeacherId", userId);
                 }
-                else
+                else if(CurrentUser.Instance.Access!="Quản trị viên")
                 {
                     command = new SqlCommand("SELECT SCORE.CLASSID,SCORE.SUBJECTID,SCORE.STUDENTID,SCORE.TERM,MINITEST,MIDTERMTEST,FINALTERMTEST,AVERAGE,ISPASS FROM SCORE " +
                         "JOIN TEACHING ON TEACHING.CLASSID=SCORE.CLASSID AND TEACHING.SUBJECTID=SCORE.SUBJECTID AND TEACHING.TERM=SCORE.TERM WHERE TEACHING.TEACHERID=@TeacherId", connection);
                     command.Parameters.AddWithValue("@TeacherId", userId);
+                }
+                else
+                {
+                    command = new SqlCommand("SELECT SCORE.CLASSID,SCORE.SUBJECTID,SCORE.STUDENTID,SCORE.TERM,MINITEST,MIDTERMTEST,FINALTERMTEST,AVERAGE,ISPASS FROM SCORE " +
+                       "JOIN TEACHING ON TEACHING.CLASSID=SCORE.CLASSID AND TEACHING.SUBJECTID=SCORE.SUBJECTID AND TEACHING.TERM=SCORE.TERM", connection);
                 }
                 using(var reader = command.ExecuteReader())
                 {

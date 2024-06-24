@@ -65,6 +65,7 @@ namespace QuanLyHocSinh.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
             AddCommand = new RelayCommand<object>((p) =>
             {
+                if (CurrentUser.Instance.Access != "Quản trị viên") return false;
                 if (!EmailCheck.Validate(Email)) return false;
                 foreach (var item in List)
                 {

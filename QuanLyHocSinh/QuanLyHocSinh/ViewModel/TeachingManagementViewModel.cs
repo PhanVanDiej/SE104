@@ -172,11 +172,11 @@ namespace QuanLyHocSinh.ViewModel
             LoadSortSubjectId();
             LoadSortTermList();
 
-            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; } return true; }, (p) => AddTeachingCommand());
+            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { return false; } return true; }, (p) => AddTeachingCommand());
             DeleteCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
+                if (CurrentUser.Instance.Access == "Giáo viên") { return false; }
                 return true;
             }, (p) => DeleteTeachingCommand());
         }

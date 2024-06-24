@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using ClosedXML.Excel;
+using Microsoft.Data.SqlClient;
 using QuanLyHocSinh.Model;
 using QuanLyHocSinh.Resources;
 using System;
@@ -120,6 +121,7 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand ExportFile {  get; set; }
         public LearningManagementViewModel()
         {
 
@@ -128,11 +130,11 @@ namespace QuanLyHocSinh.ViewModel
             LoadClassIdList();
             LoadSortClassIdList();
             TermList = LoadTerm();
-            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; } return true; }, (p) => AddLearningCommand());
+            AddCommand = new RelayCommand<object>((p) => { if (CurrentUser.Instance.Access == "Giáo viên") { return false; } return true; }, (p) => AddLearningCommand());
             EditCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
+                if (CurrentUser.Instance.Access == "Giáo viên") { return false; }
                 foreach (var item in List)
                 {
                     if (StudentId == item.StudentId&&ClassId==item.ClassId&&Term==item.Term) return true;
@@ -142,7 +144,7 @@ namespace QuanLyHocSinh.ViewModel
             DeleteCommand = new RelayCommand<object>((p) =>
             {
                 if (SelectedItem == null) return false;
-                if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này."); return false; }
+                if (CurrentUser.Instance.Access == "Giáo viên") { return false; }
 
                 foreach (var item in List)
                 {
@@ -150,6 +152,7 @@ namespace QuanLyHocSinh.ViewModel
                 }
                 return false;
             }, (p) => DeleteLearningCommand());
+            ExportFile = new RelayCommand<object>((p) => true, (p) => Export_Excel());
         }
         private void LoadData()
         {
@@ -404,6 +407,64 @@ namespace QuanLyHocSinh.ViewModel
             DialogResult result = MessageBox.Show("Xóa dữ liệu được chọn?", "", MessageBoxButtons.YesNo);
             if(result==DialogResult.Yes) { return true; }
             return false;
+        }
+        private void Export_Excel()
+        {
+            DataTable dataTable = ConvertToDatatable<Learning>(List);
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Sheet1");
+
+                // Add column headers
+                for (int col = 1; col <= dataTable.Columns.Count; col++)
+                {
+                    worksheet.Cell(1, col).Value = dataTable.Columns[col - 1].ColumnName;
+                }
+
+                // Add rows
+                for (int row = 1; row <= dataTable.Rows.Count; row++)
+                {
+                    for (int col = 1; col <= dataTable.Columns.Count; col++)
+                    {
+                        worksheet.Cell(row + 1, col).Value = dataTable.Rows[row - 1][col - 1].ToString();
+                    }
+                }
+
+                // Save the workbook
+                var saveFileDialog = new Microsoft.Win32.SaveFileDialog
+                {
+                    Filter = "Excel Workbook|*.xlsx",
+                    Title = "Save an Excel File"
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    workbook.SaveAs(saveFileDialog.FileName);
+                }
+            }
+        }
+        private DataTable ConvertToDatatable<Learning>(ObservableCollection<Learning> data)
+        {
+            DataTable dataTable = new DataTable(typeof(Learning).Name);
+
+            // Get all the properties
+            var properties = typeof(Learning).GetProperties();
+            foreach (var prop in properties)
+            {
+                dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            }
+
+            foreach (var item in data)
+            {
+                var values = new object[properties.Length];
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    values[i] = properties[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+
+            return dataTable;
         }
     }
 }
