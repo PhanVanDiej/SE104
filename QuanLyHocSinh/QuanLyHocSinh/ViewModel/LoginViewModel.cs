@@ -5,6 +5,7 @@ using QuanLyHocSinh.Resources;
 using Microsoft.Data.SqlClient;
 using QuanLyHocSinh.View;
 using QuanLyHocSinh.Model;
+using DocumentFormat.OpenXml.Math;
 namespace QuanLyHocSinh.ViewModel
 {
     public class LoginViewModel: ViewModelBase
@@ -38,6 +39,7 @@ namespace QuanLyHocSinh.ViewModel
                 OnPropertyChanged();
             }
         }
+        public bool SimulateDatabaseError { get; set; }
         //Command
         public ICommand OpenForgotPassCommand { get; set; }  
         public ICommand LoginCommand { get; set; }
@@ -62,8 +64,10 @@ namespace QuanLyHocSinh.ViewModel
             ForgotPasswordView newView= new ForgotPasswordView();
             newView.ShowDialog();
         }
-        private void Login(Window p)
+        public bool CheckLogin()
         {
+            if (SimulateDatabaseError)
+                return false;
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
                 try
@@ -87,18 +91,18 @@ namespace QuanLyHocSinh.ViewModel
                                 {
                                     CurrentUser.Instance.UserId = ID;
                                     CurrentUser.Instance.Access = access;
-                                    MainPageAppView app = new();
-                                    p.Close();
-                                    app.Show();
+                                    return true;
                                 }
                                 else
                                 {
                                     MessageBox.Show("Thông tin đăng nhập không chính xác!");
+                                    return false;
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("Thông tin đăng nhập không chính xác!");
+                                return false;
                             }
                         }
                     }
@@ -106,9 +110,18 @@ namespace QuanLyHocSinh.ViewModel
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                    return false;
                 }
             }
         }
-      
+        private void Login(Window p)
+        {
+            if (CheckLogin())
+            {
+                MainPageAppView app = new();
+                p.Close();
+                app.Show();
+            }
+        }
     }
 }
