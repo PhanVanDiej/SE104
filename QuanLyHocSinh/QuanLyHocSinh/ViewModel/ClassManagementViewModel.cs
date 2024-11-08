@@ -1,20 +1,13 @@
 ﻿using Microsoft.Data.SqlClient;
 using QuanLyHocSinh.Model;
 using QuanLyHocSinh.Resources;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    internal class ClassManagementViewModel:ViewModelBase
+    public class ClassManagementViewModel:ViewModelBase
     {
         private String _ClassId {  get; set; }
         public String ClassId
