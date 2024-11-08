@@ -15,7 +15,7 @@ using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    internal class TeachingManagementViewModel:ViewModelBase
+    public class TeachingManagementViewModel:ViewModelBase
     {
         private ObservableCollection<Teaching> _List { get; set; }
         public ObservableCollection<Teaching> List
@@ -403,9 +403,9 @@ namespace QuanLyHocSinh.ViewModel
             }
             LoadViewData();
         }
-        private bool checkedAddCommand()
+        public bool checkedAddCommand()
         {
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (TeacherId == null) { MessageBox.Show("Thông tin Mã giáo viên bị thiếu!"); return false; }
             if (ClassId == null) { MessageBox.Show("Thông tin Mã lớp bị thiếu!"); return false; }
             if(SubjectId == null) { MessageBox.Show("Thông tin Mã môn học bị thiếu!"); return false; }
@@ -446,9 +446,9 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedDeleteCommand()
+        public bool checkedDeleteCommand()
         {
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             DialogResult dialog = MessageBox.Show("Xóa dữ liệu được chọn?","", MessageBoxButtons.YesNo);
             if(dialog == DialogResult.Yes) { return true; }
 
