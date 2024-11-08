@@ -118,14 +118,6 @@ namespace QuanLyHocSinh.Tests
             Assert.IsFalse(canSave);
         }
 
-        [TestMethod]
-        [Description("GF-UP-007: Logout functionality")]
-        public void Logout_ShouldClearUserSession()
-        {
-            // This test is unreliable and tests UI interaction
-            // Better handled through manual testing
-        }
-
         [TestCleanup]
         public void Cleanup()
         {

@@ -15,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    internal class StudentManagementViewModel:ViewModelBase
+    public class StudentManagementViewModel:ViewModelBase
     {
         private ObservableCollection<Student> _List;
         public ObservableCollection<Student> List { get => _List; set { _List = value; OnPropertyChanged(); } }
@@ -336,10 +336,10 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedAddCommand()
+        public bool checkedAddCommand()
         {
 
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (Id == null || Id == string.Empty) { MessageBox.Show("Thông tin mã học sinh bị thiếu"); return false; }
             if (StudentName == null || StudentName == string.Empty) { MessageBox.Show("Thông tin tên học sinh bị thiếu"); return false; }
             if (StudentGender == null || StudentGender == string.Empty) { MessageBox.Show("Thông tin giới tính học sinh bị thiếu"); return false; }
@@ -417,10 +417,10 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedEditCommand()
+        public bool checkedEditCommand()
         {
 
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (Id == null || Id == string.Empty) { MessageBox.Show("Thông tin mã học sinh bị thiếu"); return false; }
             if (StudentName == null || StudentName == string.Empty) { MessageBox.Show("Thông tin tên học sinh bị thiếu"); return false; }
             if (StudentGender == null || StudentGender == string.Empty) { MessageBox.Show("Thông tin giới tính học sinh bị thiếu"); return false; }
@@ -475,9 +475,9 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedDeleteCommand()
+        public bool checkedDeleteCommand()
         {
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             DialogResult dialog = MessageBox.Show("Xóa dữ liệu được chọn?", "", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes) { return true; }
             return false;
