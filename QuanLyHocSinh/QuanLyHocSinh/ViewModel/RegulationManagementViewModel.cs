@@ -13,7 +13,7 @@ using System.Windows.Input;
 using MessageBox = System.Windows.Forms.MessageBox;
 namespace QuanLyHocSinh.ViewModel
 {
-    internal class RegulationManagementViewModel:ViewModelBase
+    public class RegulationManagementViewModel:ViewModelBase
     {
         private short? _SchoolYear { get; set; }
         public short? SchoolYear
