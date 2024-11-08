@@ -58,7 +58,7 @@ namespace QuanLyHocSinh.ViewModel
         public ICommand LogoutCommand { get; set; }
         public UserProfileViewModel()
         {
-            OldHashedPass = OldPass = NewPass = ConfirmNewPass = FullName = Email = string.Empty;
+            OldHashedPass = OldPass = NewPass = ConfirmNewPass = FullName = Email = null;
             LoadData();
             OldPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { OldPass = p.Password; });
             NewPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { NewPass = p.Password; });
@@ -68,7 +68,7 @@ namespace QuanLyHocSinh.ViewModel
             LogoutCommand = new RelayCommand<UserControl>((p) => { return true; }, (p) => LogOut(p));
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             if (string.IsNullOrEmpty(CurrentUser.Instance.UserId)) return;
             using (SqlConnection connection = new SqlConnection(Data.connectionString))
