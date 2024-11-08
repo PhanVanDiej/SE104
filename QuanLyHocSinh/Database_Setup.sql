@@ -102,8 +102,6 @@ ALTER TABLE SCORE ADD CONSTRAINT FK_SCORE_LEARNING FOREIGN KEY (CLASSID, STUDENT
 
 ALTER TABLE CLASS ADD CONSTRAINT FK_SCHOOLYEAR FOREIGN KEY (SCHOOLYEAR) REFERENCES REGULATION(SCHOOLYEAR)
 
-ALTER TABLE SUBJECTS ADD CONSTRAINT FK_TEACHERID_3 FOREIGN KEY (CHIEFTEACHERID) REFERENCES USERS(ID)
-
 alter table student add constraint FK_Address FOREIGN KEY (Province, District, Commune) references addresses(Province, District, Commune)
 
 INSERT INTO REGULATION (SchoolYear, MinAge, MaxAge, MaxClassSize, PassingGPA, PassingGPAPerSubject)
@@ -138,7 +136,6 @@ INSERT INTO ADDRESSES (Province, District, Commune) VALUES
 (N'Thành phố Hồ Chí Minh', N'Quận Tân Bình', N'Phường 10'),
 (N'Thành phố Hồ Chí Minh', N'Thành phố Thủ Đức', N'Phường Linh Tây'),
 (N'Thành phố Hồ Chí Minh', N'Thành phố Thủ Đức', N'Phường Bình Thọ');
-select distinct Province from ADDRESSES
 INSERT INTO STUDENT (ID, FullName, Gender, DateOfBirth, Province, District, Commune, AddictiveAddress, Email)
 VALUES
 ('S001', N'Nguyễn Văn A', N'M', '2005-03-15', N'Thành phố Hồ Chí Minh', N'Quận 1', N'Phường Bến Nghé', N'', 'nguyenvana@example.com'),
@@ -154,13 +151,10 @@ VALUES
 ('SUB004', N'Biology');
 select * from USERS
 INSERT INTO USERS (ID, FullName, Pass, Email, Access, Code) VALUES 
-('U001', N'Nguyễn Thị A', 'pass', 'nguyenthia@example.com', N'Quản trị viên', NULL),
-('U002', N'Trần Văn B', 'pass', 'tranvanb@example.com', N'Giáo viên', NULL),
-('U003', N'Phạm Thị C','pass', 'phamthic@example.com', N'Giáo vụ', NULL),
-('U004', N'Lê Văn D','pass', 'levand@example.com', N'Phó hiệu trưởng chuyên môn', NULL);
-update USERS
-set pass = 'TMFW1mdj2g6zYcFmHf0OP+u+VKAqU0wn4hHWqCWdGpjXvwJYyDSlsQ3aCfPx4Dmg'
-where id = 'u001'
+('U001', N'Nguyễn Thị A', 'AfrQNK/RcPcN7HrVB5T9/Vp7fDzFZP2V4AMXCEBW12EPeujdWQV2H2E9nsTPw6WU', 'nguyenthia@example.com', N'Quản trị viên', NULL),
+('U002', N'Trần Văn B', 'c7H7cyN6nS9EtXP3l+iu9CHqP4hkefrZzKrQW8TbrsSPzLm7JL9sh0oOTieWcxQm', 'tranvanb@example.com', N'Giáo viên', NULL),
+('U003', N'Phạm Thị C','35DB71M15InzNpD2ocklHRaBOsY0x+i73eZnNkpoJsvmQFDVVrlmBYnXYHVv1N6h', 'phamthic@example.com', N'Giáo vụ', NULL),
+('U004', N'Lê Văn D','P8x0FUxrn2Mr+H6mejqUR9y9lfkkl/Uh/N3dR55JXm1OXiNoNuEwVVa46RHAtHZc', 'levand@example.com', N'Phó hiệu trưởng chuyên môn', NULL);
 INSERT INTO TEACHING (TeacherID, ClassID, SubjectID, Term)
 VALUES
 ('U002', 'C001', 'SUB001', 1),
@@ -174,8 +168,6 @@ VALUES
 ('S002', 'C003', 1),
 ('S003', 'C001', 1);
 
-select * from LEARNING
-select * from SCORE
 
 CREATE OR ALTER TRIGGER trg_AfterInsertTeaching
 ON TEACHING
@@ -231,10 +223,7 @@ BEGIN
           AND SCORE.Term = d.Term
     );
 END;
-INSERT INTO LEARNING (StudentID, ClassID, Term)
-VALUES('S003', 'C003', 1)
-update LEARNING set StudentID ='s001' where StudentID ='s003' and ClassID = 'c003'
-select * from LEARNING
+
 CREATE OR ALTER TRIGGER auto_calc_gpa_and_pass_trigger
 ON SCORE
 INSTEAD OF UPDATE
@@ -454,15 +443,6 @@ BEGIN
     END;
 END;
 
-SELECT s.ClassID, s.SubjectID, s.StudentID, s.Term, s.MiniTest, s.MidTermTest, s.Average, s.IsPass
-FROM SCORE s, TEACHING t, CLASS c
-WHERE s.ClassID = t.ClassID
-AND s.SubjectID = t.SubjectID
-AND s.Term = t.Term
-AND t.TeacherID = 'U002'
-select * from LEARNING
-select * from TEACHING
-select * from SCORE
 
 INSERT INTO TEACHING (TeacherID, ClassID, SubjectID, Term)
 VALUES
@@ -473,7 +453,3 @@ VALUES
 ('S005', 'C004', 2)
 delete LEARNING where StudentID ='s005'
 delete TEACHING where SubjectID ='sub004'
-
-
-select *
-from LEARNING

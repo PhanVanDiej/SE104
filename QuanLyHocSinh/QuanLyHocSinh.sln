@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyHocSinh", "QuanLyHocSinh\QuanLyHocSinh.csproj", "{24F1BFA6-EC68-4530-9F73-11CA8DC192AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyHocSinh.Tests", "QuanLyHocSinh.Tests\QuanLyHocSinh.Tests.csproj", "{DDDDB8AC-ED82-4AEC-B4DB-AB22FCB88B55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuanLyHocSinh.Tests", "QuanLyHocSinh.Tests\QuanLyHocSinh.Tests.csproj", "{DDDDB8AC-ED82-4AEC-B4DB-AB22FCB88B55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{9D65BC3C-B4FE-4FA5-98D0-5A4ED75EEDA2}"
 	ProjectSection(SolutionItems) = preProject
-		Query.sql = Query.sql
+		Database_Setup.sql = Database_Setup.sql
 	EndProjectSection
 EndProject
 Global
