@@ -21,20 +21,5 @@ namespace QuanLyHocSinh.Model
             get { return _subjectName; }
             set { _subjectName = value; OnPropertyChanged(); }
         }
-
-        private decimal _passingScore;
-        public decimal PassingScore
-        {
-            get { return _passingScore; }
-            set { _passingScore = value; OnPropertyChanged(); }
-        }
-
-        private string _chiefTeacherId;
-        public string ChiefTeacherId
-        {
-            get { return _chiefTeacherId; }
-            set { _chiefTeacherId = value; OnPropertyChanged(); }
-        }
     }
-
 }

@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using QuanLyHocSinh.Model;
+using Microsoft.Data.SqlClient;
+using QuanLyHocSinh.Resources;
+using DocumentFormat.OpenXml.VariantTypes;
+using System.Windows;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    public class SubjectManagementViewModel : INotifyPropertyChanged
+    public class SubjectManagementViewModel : ViewModelBase
     {
         private ObservableCollection<Subject> _list;
         private Subject _selectedItem;
@@ -31,7 +25,16 @@ namespace QuanLyHocSinh.ViewModel
         public Subject SelectedItem
         {
             get { return _selectedItem; }
-            set { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem)); }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+                if (SelectedItem != null)
+                {
+                    NewSubjectId = SelectedItem.Id;
+                    NewSubjectName = SelectedItem.SubjectName;
+                }
+            }
         }
 
         public string NewSubjectId
@@ -53,126 +56,179 @@ namespace QuanLyHocSinh.ViewModel
         public SubjectManagementViewModel()
         {
             List = new ObservableCollection<Subject>();
-            InitializeCommands();
             LoadData(); // Load initial data (for example)
+            AddCommand = new RelayCommand<object>((p) =>
+            {
+                return CanAddExecute();
+            }, (p) => AddExecute());
+            EditCommand = new RelayCommand<Object>((p) =>
+            {
+                return CanEditExecute();
+            }, (p) => EditExecute());
+            DeleteCommand = new RelayCommand<object>((p) =>
+            {
+                return CanDeleteExecute();
+            }, (p) => DeleteExecute());
         }
 
-        private void InitializeCommands()
-        {
-            AddCommand = new RelayCommand(AddExecute, CanAddExecute);
-            EditCommand = new RelayCommand(EditExecute, CanEditExecute);
-            DeleteCommand = new RelayCommand(DeleteExecute, CanDeleteExecute);
-        }
 
         private void LoadData()
         {
-            // Example: Load initial data into List (optional)
-            // For demonstration purpose, you may load some initial data here
-            List.Add(new Subject { Id = "M001", SubjectName = "Toán học", PassingScore = 5.0m, ChiefTeacherId = "T001" });
-            List.Add(new Subject { Id = "M002", SubjectName = "Văn học", PassingScore = 4.5m, ChiefTeacherId = "T002" });
-            List.Add(new Subject { Id = "M003", SubjectName = "Lịch sử", PassingScore = 4.0m, ChiefTeacherId = "T003" });
-        }
-
-        private void AddExecute(object parameter)
-        {
-            // Default values for PassingScore and ChiefTeacherId
-            decimal defaultPassingScore;
-            string defaultChiefTeacherId;
-
-            // Logic to add new Subject
-            Subject newSubject = new Subject
+            var data = new ObservableCollection<Subject>();
+            using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
-                Id = NewSubjectId,
-                SubjectName = NewSubjectName
-            };
-
-
-            List.Add(newSubject); // Add new Subject to ObservableCollection
-            SelectedItem = newSubject; // Set the newly added Subject as SelectedItem
-
-            // Reset NewSubjectId and NewSubjectName for next input
-            NewSubjectId = string.Empty;
-            NewSubjectName = string.Empty;
+                connection.Open();
+                var command = new SqlCommand("SELECT ID, SUBJECTNAME FROM SUBJECTS", connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        data.Add(new Subject
+                        {
+                            Id = reader.IsDBNull(0) ? string.Empty : reader.GetString(0),
+                            SubjectName = reader.IsDBNull(1) ? string.Empty : reader.GetString(1)
+                        });
+                    }
+                }
+            }
+            List = data;
         }
 
-        private bool CanAddExecute(object parameter)
+        private void AddExecute()
         {
-            // Example: Logic to determine if AddCommand can execute
-            // Here, you can add validation logic if needed
-            return true; // Placeholder logic
-        }
-
-        private void EditExecute(object parameter)
-        {
-            // Logic to edit selected Subject
-            if (SelectedItem != null)
+            using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
-                SelectedItem.Id = NewSubjectId;
-                SelectedItem.SubjectName = NewSubjectName;
+                connection.Open();
+                var command = new SqlCommand("INSERT INTO SUBJECTS (ID,SUBJECTNAME) VALUES (@Id, @SubjectName)", connection);
+                command.Parameters.AddWithValue("@Id", NewSubjectId);
+                command.Parameters.AddWithValue("@SubjectName", NewSubjectName);
 
-                // Reset NewSubjectId and NewSubjectName for next input
-                NewSubjectId = string.Empty;
-                NewSubjectName = string.Empty;
+                int rowAffected = command.ExecuteNonQuery();
+                if (rowAffected > 0)
+                {
+                    List.Add(new Subject
+                    {
+                        Id = NewSubjectId,
+                        SubjectName = NewSubjectName,
+                    });
+                }
+                else
+                {
+                    MessageBox.Show("Đã xảy ra lỗi khi thêm dữ liệu!");
+                }
             }
         }
 
-        private bool CanEditExecute(object parameter)
+        private bool CanAddExecute()
         {
-            // Example: Logic to determine if EditCommand can execute
-            return SelectedItem != null; // Only allow editing if an item is selected
+            if (string.IsNullOrEmpty(NewSubjectId)||string.IsNullOrEmpty(NewSubjectName))
+                return false;
+            foreach (var item in List)
+            {
+                if (item.Id == NewSubjectId)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-        private void DeleteExecute(object parameter)
+        private void EditExecute()
         {
-            // Example: Logic to delete selected Subject
-            if (SelectedItem != null)
+            using (SqlConnection connection = new SqlConnection(Data.connectionString))
             {
-                List.Remove(SelectedItem); // Remove selected item from ObservableCollection
-                SelectedItem = null; // Clear the selected item
+                connection.Open();
+                var command = new SqlCommand("UPDATE SUBJECTS SET SUBJECTNAME=@SubjectName WHERE ID=@Id", connection);
+                command.Parameters.AddWithValue("SubjectName", NewSubjectName);
+                command.Parameters.AddWithValue("Id", NewSubjectId);
+
+                int rowAffected = command.ExecuteNonQuery();
+                if (rowAffected > 0)
+                {
+                    var item = List.FirstOrDefault(c => c.Id == NewSubjectId);
+                    if (item != null)
+                    {
+                        item.SubjectName = NewSubjectName;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Đã xảy ra lỗi khi cập nhật dữ liệu!");
+                }
             }
         }
 
-        private bool CanDeleteExecute(object parameter)
+        private bool CanEditExecute()
         {
-            // Example: Logic to determine if DeleteCommand can execute
-            return SelectedItem != null; // Only allow deletion if an item is selected
+            foreach (var item in List)
+            {
+                if (item.Id == NewSubjectId)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        // INotifyPropertyChanged implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        private void DeleteExecute()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            using (SqlConnection connection = new SqlConnection(Data.connectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand("DELETE SUBJECTS WHERE ID=@Id", connection);
+                command.Parameters.AddWithValue("@Id", NewSubjectId);
+
+                try
+                {
+                    int rowAffected = command.ExecuteNonQuery();
+                    if (rowAffected > 0)
+                    {
+                        List.Remove(SelectedItem); // Remove directly using SelectedItem
+                        SelectedItem = null; // Clear selection after successful delete
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Không tìm thấy môn học để xóa!",
+                            "Thông báo",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    // Handle foreign key violation (error number 547)
+                    if (ex.Number == 547)
+                    {
+                        MessageBox.Show(
+                            "Không thể xóa môn học này vì đã được giảng dạy ",
+                            "Lỗi",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
+                    }
+                    // Handle other SQL-specific errors
+                    else
+                    {
+                        MessageBox.Show(
+                            $"Lỗi khi xóa môn học: {ex.Message}",
+                            "Lỗi",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+                }
+            }
         }
-    }
 
-    // RelayCommand class for ICommand implementation (unchanged)
-    public class RelayCommand : ICommand
-    {
-        private readonly Action<object> _execute;
-        private readonly Func<object, bool> _canExecute;
-
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        private bool CanDeleteExecute()
         {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute == null || _canExecute(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            _execute(parameter);
+            foreach (var item in List)
+            {
+                if (item.Id == NewSubjectId)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
