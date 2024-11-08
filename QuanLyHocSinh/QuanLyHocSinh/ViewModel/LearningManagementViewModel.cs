@@ -16,7 +16,7 @@ using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace QuanLyHocSinh.ViewModel
 {
-    class LearningManagementViewModel:ViewModelBase
+    public class LearningManagementViewModel:ViewModelBase
     {
         private ObservableCollection<Learning> _List { get; set; }
         public ObservableCollection<Learning> List
@@ -298,9 +298,9 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedAddCommand()
+        public bool checkedAddCommand()
         {
-            if(CurrentUser.Instance.Access=="Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if(CurrentUser.Instance.Access=="Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (StudentId == null || StudentId == string.Empty) { MessageBox.Show("Thông tin Mã số học sinh bị thiếu!"); return false; }
             if(ClassId==null||ClassId==string.Empty) { MessageBox.Show("Thông tin mã số lớp học bị thiếu!"); return false; }
             if (Term == null) { MessageBox.Show("Thông tin học kì bị thiếu!"); return false; }
@@ -350,9 +350,9 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedEditLearningCommand()
+        public bool checkedEditLearningCommand()
         {
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             if (StudentId == null || StudentId == string.Empty) { MessageBox.Show("Thông tin Mã số học sinh bị thiếu!"); return false; }
             if (ClassId == null || ClassId == string.Empty) { MessageBox.Show("Thông tin mã số lớp học bị thiếu!"); return false; }
             if (Term == null) { MessageBox.Show("Thông tin học kì bị thiếu!"); return false; }
@@ -408,9 +408,9 @@ namespace QuanLyHocSinh.ViewModel
                 }
             }
         }
-        private bool checkedDeleteCommand()
+        public bool checkedDeleteCommand()
         {
-            if (CurrentUser.Instance.Access == "Giáo viên") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
+            if (CurrentUser.Instance.Access == "Giáo vụ") { MessageBox.Show("Bạn không có quyền làm điều này!"); return false; }
             DialogResult result = MessageBox.Show("Xóa dữ liệu được chọn?", "", MessageBoxButtons.YesNo);
             if(result==DialogResult.Yes) { return true; }
             return false;
